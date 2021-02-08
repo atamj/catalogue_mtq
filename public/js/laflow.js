@@ -1,6 +1,7 @@
 var total_sections = 0;
 var num_section = 0;
 var active_section = 1;
+var found_section="";
 $(document).ready(function () {
 
     $("#next")
@@ -19,6 +20,8 @@ $(document).ready(function () {
 
         if (("#" + $(this).attr("id")) == location.hash) {
             active_section = num_section;
+            found_section = active_section;
+
             $(this)
                 .addClass("active left");
             $(this)
@@ -38,14 +41,14 @@ $(document).ready(function () {
 
     });
 
-    var initSections = setTimeout(initializeSections, 50000);
+    var initSections = setTimeout(initializeSections, 500);
 
     if (active_section > 1) {
         $("#prev")
             .removeClass("nav-inactive")
             .addClass("nav-active");
     }
-    if (num_section < total_sections) {
+    if (active_section < total_sections) {
         $("#next")
             .removeClass("nav-inactive")
             .addClass("nav-active");
