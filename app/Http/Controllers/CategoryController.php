@@ -19,9 +19,7 @@ class CategoryController extends Controller
     public function __construct()
     {
         $this->csv = env('SHEET_ID');
-        $this->getData();
-        $this->formatData();
-        $this->addId();
+        $this->getProducts();
     }
 
     public function index($category)
@@ -38,13 +36,14 @@ class CategoryController extends Controller
 
         foreach ($sous_cats as $key => $sous_category){
 
-            $url = strtolower($sous_category);
-            $url = str_replace(" ", "-", $url);
-            $url = str_replace("é", 'e', $url);
-            $url = str_replace("è", 'e', $url);
+            $url = str_replace(" ", "-", $sous_category);
+            $url = str_replace("É", 'E', $url);
+            $url = str_replace("È", 'E', $url);
+            $url = strtolower($url);
             $sous_categories[$url] = $sous_category;
 
         }
+
         return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories'));
     }
 
@@ -52,6 +51,19 @@ class CategoryController extends Controller
     {
         $product = $this->products->where('id', $id)->first();
         dump($product);
+    }
+
+    private function getProducts()
+    {
+        if (session()->has('products')){
+            $this->products = session('products');
+        }else{
+
+            $this->getData();
+            $this->formatData();
+            $this->addId();
+            session()->put('products', $this->products);
+        }
     }
 
     /**
@@ -96,9 +108,17 @@ class CategoryController extends Controller
             if (!in_array($product->sous_categorie, $this->subcategories) && $product->sous_categorie) {
                 $this->subcategories[] = $product->sous_categorie;
             }
+            $sous_category = $product->sous_categorie;
+            $sous_categorie_url = str_replace(" ", "-", $sous_category);
+            $sous_categorie_url = str_replace("É", 'E', $sous_categorie_url);
+            $sous_categorie_url = str_replace("È", 'E', $sous_categorie_url);
+            $sous_categorie_url = strtolower($sous_categorie_url);
+            $product->sous_categorie_url = $sous_categorie_url;
+
             $this->products[] = $product;
 
         }
+
         $this->products = collect($this->products);
     }
 

@@ -101,55 +101,69 @@ document.addEventListener('DOMContentLoaded', () => {
         sheet.post(email, postSuccess, postFail)
 
     })
+    $(".p__more_infos").click((e)=>{
+        let target = e.target
+        $('#designation').html(target.getAttribute('data-designation'))
+        $('#description_produit').html(target.getAttribute('data-description_produit'))
+        $('#prix_vente_1').html(target.getAttribute('data-prix_vente_1'))
+        $('#prix_vente_2').html(target.getAttribute('data-prix_vente_2'))
+        $('#eco_part').html(target.getAttribute('data-eco_part'))
+        $('#marque').html(target.getAttribute('data-marque'))
+        $('#ean').html(target.getAttribute('data-ean'))
+        $('#photo_principale').css('background-image', 'url(/images/'+ target.getAttribute('data-photo_principale') + ')')
 
-    /** Events when form is submit with success */
-    function postSuccess(message = "Merci! Votre inscription a été enregistré!") {
+    })
 
-        $(".w-form-done").html("<div>" + message + "</div>")
-        /** Show success message */
-        $(".w-form-done").show()
-
-        /** Hide fail message */
-        $(".w-form-fail").hide()
-
-        /** Clear email input */
-        $("input[type=email]").val("")
-
-        /** Remove loader */
-        $('#loader').remove()
-
-        /** Show sbmit button */
-        $('.w-button').show()
-
-    }
-
-    /** Events when form is submit with error */
-    function postFail(error) {
-        $(".w-form-done").html("<div>Oups! Une erreur s'est produite lors de la soumission du formulaire.</div>")
-        /** SHow error message */
-        $(".w-form-fail").show()
-
-        /** Hide success message */
-        $(".w-form-done").hide()
-
-        /** Remove loader */
-        $('#loader').remove()
-
-        /** Show submit button*/
-        $('.w-button').show()
-
-        /** Show error in console*/
-        console.log(error);
-    }
-
-    /** Events when get request have success*/
-    function getSuccess(data) {
-        console.log(data)
-    }
-
-    /** Envents when get request have error*/
-    function getError(error) {
-        console.error(error)
-    }
 
 })
+
+
+/** Events when form is submit with success */
+function postSuccess(message = "Merci! Votre inscription a été enregistré!") {
+
+    $(".w-form-done").html("<div>" + message + "</div>")
+    /** Show success message */
+    $(".w-form-done").show()
+
+    /** Hide fail message */
+    $(".w-form-fail").hide()
+
+    /** Clear email input */
+    $("input[type=email]").val("")
+
+    /** Remove loader */
+    $('#loader').remove()
+
+    /** Show sbmit button */
+    $('.w-button').show()
+
+}
+
+/** Events when form is submit with error */
+function postFail(error) {
+    $(".w-form-done").html("<div>Oups! Une erreur s'est produite lors de la soumission du formulaire.</div>")
+    /** SHow error message */
+    $(".w-form-fail").show()
+
+    /** Hide success message */
+    $(".w-form-done").hide()
+
+    /** Remove loader */
+    $('#loader').remove()
+
+    /** Show submit button*/
+    $('.w-button').show()
+
+    /** Show error in console*/
+    console.log(error);
+}
+
+/** Events when get request have success*/
+function getSuccess(data) {
+    console.log(data)
+}
+
+/** Envents when get request have error*/
+function getError(error) {
+    console.error(error)
+}
