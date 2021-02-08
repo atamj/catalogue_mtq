@@ -22,7 +22,7 @@
             <div class="p__details">
                 <div class="p__wrapper p_wrapper_details">
                     <div class="p__title p_title--detail" id="designation">Produit<br></div>
-                    <p class="p__infos p_infos--details" >Le range pyjama ours ou pingouin est
+                    <p class="p__infos p_infos--details">Le range pyjama ours ou pingouin est
                         idéal comme ami pour tous
                         les bébés.Dès la naissance Composition : 100% polyester   </p>
                     <div class="p__price_wrapper p_price_wrapper--detail">
@@ -32,7 +32,8 @@
                     <div class="p__ecopart" id="eco_part">ÉCOPART 0€90</div>
                     <div class="brand brand--detail" id="marque">MARQUE</div>
                     <div class="text-block-12"><span class="ean ean--detail" id="ean">EAN: 3616181593223</span></div>
-                    <p class="paragraph" id="description_produit">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius
+                    <p class="paragraph" id="description_produit">Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit. Suspendisse varius
                         enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.</p>
                     <div class="img_details_wrapper">
                         <div class="img-share--wrapper">
@@ -82,17 +83,19 @@
                              style="background-image: url('{{$bombe->where('sous_categorie', $sous_category)->first()->photo_principale ? asset('images/'.$bombe->where('sous_categorie', $sous_category)->first()->photo_principale) : ""}}')"></div>
                         <div class="spotlight__container">
                             <div class="spotlight_price">
-                                <div class="p__old_price old_price--spotlight">
-                                    <div class="p__old_price_wrapper old_price_wrapper--spotlight">
-                                        <div
-                                            class="p__price_1st price_1st--old _1st--spotlight">{{explode(",",$bombe->where('sous_categorie', $sous_category)->first()->prix_barre)[0]}}</div>
-                                        <div class="p__price_2nd">
-                                            <div class="p__price_cents price_cents--old cents--spotlight">
-                                                €{{explode(",",$bombe->where('sous_categorie', $sous_category)->first()->prix_barre)[1] ?? "00"}}</div>
+                                @if ($bombe->where('sous_categorie', $sous_category)->first()->prix_barre)
+                                    <div class="p__old_price old_price--spotlight">
+                                        <div class="p__old_price_wrapper old_price_wrapper--spotlight">
+                                            <div
+                                                class="p__price_1st price_1st--old _1st--spotlight">{{explode(",",$bombe->where('sous_categorie', $sous_category)->first()->prix_barre)[0]}}</div>
+                                            <div class="p__price_2nd">
+                                                <div class="p__price_cents price_cents--old cents--spotlight">
+                                                    €{{explode(",",$bombe->where('sous_categorie', $sous_category)->first()->prix_barre)[1] ?? "00"}}</div>
+                                            </div>
                                         </div>
+                                        <div class="p__cross_bar cross_bar--spotlight"></div>
                                     </div>
-                                    <div class="p__cross_bar cross_bar--spotlight"></div>
-                                </div>
+                                @endif
                                 <div class="price_content_wrapper">
                                     <div class="p__price_wrapper p_price_wrapper--spotlight">
                                         <div
@@ -168,18 +171,21 @@
                                         </li>
                                     </ul>
                                     <div class="p__price {{($product->bombe_2 == '1') ? "spotlight-02" : ""}} ">
-                                        <div class="p__old_price">
-                                            <div class="p__old_price_wrapper">
-                                                <div
-                                                    class="p__price_1st price_1st--old">{{explode(',', $product->prix_barre)[0]}}</div>
-                                                <div class="p__price_2nd">
-                                                    <div class="p__price_cents price_cents--old">
-                                                        €{{explode(',', $product->prix_barre)[1] ?? "00"}}</div>
+                                        @if ($product->prix_barre)
+                                            <div class="p__old_price">
+                                                <div class="p__old_price_wrapper">
+                                                    <div
+                                                        class="p__price_1st price_1st--old">{{explode(',', $product->prix_barre)[0]}}</div>
+                                                    <div class="p__price_2nd">
+                                                        <div class="p__price_cents price_cents--old">
+                                                            €{{explode(',', $product->prix_barre)[1] ?? "00"}}</div>
+                                                    </div>
                                                 </div>
+                                                <div
+                                                    class="p__cross_bar {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}"></div>
                                             </div>
-                                            <div
-                                                class="p__cross_bar {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}"></div>
-                                        </div>
+                                        @endif
+
                                         <div class="p__price_wrapper">
                                             <div
                                                 class="p__price_1st {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}-txt">{{explode(',', $product->prix_vente)[0]}}</div>

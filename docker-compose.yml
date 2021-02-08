@@ -1,0 +1,11 @@
+version: "2"
+services:
+    php:
+      image: php:7.4-apache
+      ports:
+        - "80:80"
+      volumes:
+        - ./:/var/www/html
+      restart: always
+volumes:
+    php:

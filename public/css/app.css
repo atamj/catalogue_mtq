@@ -1,3 +1,9 @@
+.spotlight--img, .p_img--big{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
 @media screen and (min-width: 992px){
     .section-wrapper {
         position: absolute;

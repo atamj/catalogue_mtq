@@ -25,7 +25,7 @@
             <div class="text-block-4">du 17 février au 7 mars</div>
         </li>
         <li class="nav__ctg_lnk">
-            <a href="catalogue.html" class="link-block-6 w-inline-block">
+            <a href="{{url('/equipement#rehausseur')}}" class="link-block-6 w-inline-block">
                 <div class="text-block-5">VOIR LE CATALOGUE</div>
             </a>
         </li>
@@ -40,21 +40,22 @@
             <a data-w-id="Link Block 11" href="#" class="ctg__link close_menu w-inline-block">
                 <div class="ctg__link_txt"></div>
             </a>
-            <a href="{{url('equipement#lit')}}" class="ctg__link w-inline-block">
-                <div class="ctg__link_txt link_text--green">Lit bébé</div>
-            </a>
-            <a href="{{url('equipement#poussettes')}}" class="ctg__link w-inline-block">
-                <div class="ctg__link_txt link_text--green">Poussettes</div>
-            </a>
             <a href="{{url('equipement#rehausseur')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--green">Réhausseur</div>
-            </a>
-            <a href="{{url('equipement#repas')}}" class="ctg__link w-inline-block">
-                <div class="ctg__link_txt link_text--green">REPAS</div>
             </a>
             <a href="{{url('equipement#siege-auto')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--green">Siège auto</div>
             </a>
+            <a href="{{url('equipement#poussettes')}}" class="ctg__link w-inline-block">
+                <div class="ctg__link_txt link_text--green">Poussettes</div>
+            </a>
+            <a href="{{url('equipement#lit')}}" class="ctg__link w-inline-block">
+                <div class="ctg__link_txt link_text--green">Lit bébé</div>
+            </a>
+            <a href="{{url('equipement#repas')}}" class="ctg__link w-inline-block">
+                <div class="ctg__link_txt link_text--green">REPAS</div>
+            </a>
+
         </div>
     </div>
     <div class="categories">
@@ -65,11 +66,11 @@
             <a data-w-id="e737e8ab-8ea7-a3fc-5439-b8442fdbf46b" href="#" class="ctg__link close_menu w-inline-block">
                 <div class="ctg__link_txt"></div>
             </a>
-            <a href="{{url('eveil-bain#bain')}}" class="ctg__link w-inline-block">
-                <div class="ctg__link_txt link_text--yellow">Bain</div>
-            </a>
             <a href="{{url('eveil-bain#eveil')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--yellow">éveil</div>
+            </a>
+            <a href="{{url('eveil-bain#bain')}}" class="ctg__link w-inline-block">
+                <div class="ctg__link_txt link_text--yellow">Bain</div>
             </a>
         </div>
     </div>

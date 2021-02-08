@@ -9,28 +9,28 @@ class GSheet {
      * */
     post(email, success, fail) {
 
-        /** Add one line to the sheet */
-        let date = new Date()
-
         /** Prepare data*/
         const data = {
             email: email,
-            "Created at": date.toLocaleDateString(),
-            // "Appareil": navigator.userAgent,
+            "Created at": (new Date()).toLocaleDateString(),
         };
 
         /** Test il this email exist*/
         fetch(this.url)
             .then((response) => response.json())
             .then((res) => {
+
                 let exist = false
+                /** Check in each lines if this mail exist */
                 res.forEach((elm) => {
+
                     if (elm['email'] == email) {
                         exist = true
                         success('Vous êtes déjà inscrit')
                     }
-                })
 
+                })
+                /** Post email */
                 if (!exist) {
                     /** Post */
                     fetch(this.url, {
@@ -64,7 +64,7 @@ class GSheet {
     /**
      * Get content in Sheet
      * */
-    get() {
+    /*get() {
         fetch(this.url)
             .then((response) => response.json())
             .then((data) => {
@@ -74,7 +74,7 @@ class GSheet {
                 return false
                 console.error(error)
             });
-    }
+    }*/
 }
 
 /** Connect to GSheet API */

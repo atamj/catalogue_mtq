@@ -18,23 +18,32 @@ class CategoryController extends Controller
 
     public function __construct()
     {
+        /** Get products google sheet id */
         $this->csv = env('SHEET_ID');
-        $this->getProducts();
     }
 
     public function index($category)
     {
+        /** Get products from GSheet or Session */
+        $this->getProducts();
+
+        /** Filter products by category based on  URL */
         $products = $this->products->where('categorie_url', $category);
+
+        /** Get product bombe 1*/
         $bombe = $products->where('bombe_1', '1');
+
+        /** Get list of sub-categories for current products list */
         $sous_cats = [];
         foreach ($products as $product){
             if (!in_array($product->sous_categorie, $sous_cats)){
                 $sous_cats[] = $product->sous_categorie;
             }
         }
-        $sous_categories = [];
 
-        foreach ($sous_cats as $key => $sous_category){
+        /** Create an array key value for sub-categories for get slug in key*/
+        $sous_categories = [];
+        foreach ($sous_cats as $sous_category){
 
             $url = str_replace(" ", "-", $sous_category);
             $url = str_replace("É", 'E', $url);
@@ -63,7 +72,9 @@ class CategoryController extends Controller
             $this->formatData();
             $this->addId();
             session()->put('products', $this->products);
+
         }
+
     }
 
     /**
