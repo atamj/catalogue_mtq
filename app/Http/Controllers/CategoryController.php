@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -35,15 +36,15 @@ class CategoryController extends Controller
 
         /** Get list of sub-categories for current products list */
         $sous_cats = [];
-        foreach ($products as $product){
-            if (!in_array($product->sous_categorie, $sous_cats)){
+        foreach ($products as $product) {
+            if (!in_array($product->sous_categorie, $sous_cats)) {
                 $sous_cats[] = $product->sous_categorie;
             }
         }
 
         /** Create an array key value for sub-categories for get slug in key*/
         $sous_categories = [];
-        foreach ($sous_cats as $sous_category){
+        foreach ($sous_cats as $sous_category) {
 
             $url = str_replace(" ", "-", $sous_category);
             $url = str_replace("É", 'E', $url);
@@ -64,13 +65,28 @@ class CategoryController extends Controller
 
     private function getProducts()
     {
-        if (session()->has('products')){
+        if (session()->has('products')) {
             $this->products = session('products');
-        }else{
+        } else {
 
-            $this->getData();
-            $this->formatData();
-            $this->addId();
+            if (Storage::exists('data.json')) {
+                $products = json_decode(Storage::get('data.json'));
+                $this->products = [];
+                foreach ($products as $item) {
+                    $product = new Product();
+                    foreach ($item as $key => $value) {
+                        $product->$key = $value;
+                    }
+                    $this->products[] = $product;
+                }
+                $this->products = collect($this->products);
+            } else {
+                $this->getData();
+                $this->formatData();
+                $this->addId();
+            }
+
+
             session()->put('products', $this->products);
 
         }
@@ -85,11 +101,14 @@ class CategoryController extends Controller
         /** Google Sheet URL*/
         $urlGoogleSheet = "https://docs.google.com/spreadsheets/d/" . $this->csv . "/gviz/tq?tqx=out:csv";
 
-        /** Get CSV GoogleSheet content*/
-        $csv = file_get_contents($urlGoogleSheet);
-
+        if (Storage::exists('data.csv')) {
+            $csv = Storage::get('data.csv');
+        } else {
+            /** Get CSV GoogleSheet content*/
+            $csv = file_get_contents($urlGoogleSheet);
+        }
         /** Convert CSV to Array*/
-        $this->data = str_getcsv($csv, "\n");
+        $this->data = str_getcsv($csv, "\r\n");
         foreach ($this->data as &$row) $row = str_getcsv($row, ",");
 
     }
@@ -129,7 +148,7 @@ class CategoryController extends Controller
             $this->products[] = $product;
 
         }
-
+        Storage::put('data.json', json_encode($this->products));
         $this->products = collect($this->products);
     }
 
@@ -218,10 +237,11 @@ class CategoryController extends Controller
         return $this->filtered;
 
     }
+
     private function addId()
     {
-        foreach ($this->products as $key=> $product){
-            $product->id = $key+1;
+        foreach ($this->products as $key => $product) {
+            $product->id = $key + 1;
         }
     }
 

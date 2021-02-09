@@ -1,7 +1,16 @@
 @media screen and (min-width: 992px){
     .section-wrapper {
         position: absolute;
+        /*max-height: 80vh;*/
     }
+    /*.cat__wrapper{*/
+    /*    height: 80vh;*/
+    /*    overflow-y: hidden;*/
+    /*}*/
+    /*.items-wrapper{*/
+    /*    max-height: 80vh;*/
+    /*    overflow-y: scroll;*/
+    /*}*/
 
     .active {
         transition: all .55s cubic-bezier(0, .98, .42, 1.01);

@@ -128,11 +128,6 @@
                                         <div class="p__ecopart p_ecopart--spotlight">
                                             ÉCOPART {{explode(",",$bombe->where('sous_categorie', $sous_category)->first()->eco_part)[0] ?? "0"}}
                                             €{{explode(",",$bombe->where('sous_categorie', $sous_category)->first()->eco_part)[1] ?? "00"}}</div>
-                                    @else
-
-                                        <div class="p__ecopart p_ecopart--spotlight">
-                                            ÉCOPART 0€00
-                                        </div>
                                     @endif
                                 </div>
                             </div>
@@ -225,17 +220,9 @@
                                                 class="p__ecopart {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}-txt">
                                                 ÉCOPART {{explode(',', $product->eco_part)[0] ?? "0"}}
                                                 €{{explode(',', $product->eco_part)[1] ?? "00"}}</div>
-                                            @if ($product->bombe_2 == '1')
-                                                <div class="spotlight-02-bg"></div>
-                                            @endif
-                                        @else
-                                            <div
-                                                class="p__ecopart {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}-txt">
-                                                ÉCOPART 0€00
-                                            </div>
-                                            @if ($product->bombe_2 == '1')
-                                                <div class="spotlight-02-bg"></div>
-                                            @endif
+                                        @endif
+                                        @if ($product->bombe_2 == '1')
+                                            <div class="spotlight-02-bg"></div>
                                         @endif
                                     </div>
                                     <div class="p__wrapper">
