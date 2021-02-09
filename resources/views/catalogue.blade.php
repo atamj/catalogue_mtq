@@ -51,7 +51,7 @@
                                 <div class="share-bn__wrapper"><img src="images/share-icon.svg"
                                                                     loading="lazy" alt="">
                                 </div>
-                                <div class="text-block-11">Partager</div>
+                                <div class="text-block-11" id="share">Partager</div>
                             </a>
                         </div>
                     </div>

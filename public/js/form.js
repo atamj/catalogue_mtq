@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     /** Pop up fiche produit*/
-    $(".p__more_infos").click((e)=>{
+    $(".p__more_infos").click((e) => {
 
         /**Product target */
         let target = e.target
@@ -116,33 +116,33 @@ document.addEventListener('DOMContentLoaded', () => {
         $('#eco_part').html(target.getAttribute('data-eco_part'))
         $('#marque').html(target.getAttribute('data-marque'))
         $('#ean').html(target.getAttribute('data-ean'))
-        $('#photo_principale').css('background-image', 'url(/images/'+ target.getAttribute('data-photo_principale') + ')')
+        $('#photo_principale').css('background-image', 'url(/images/' + target.getAttribute('data-photo_principale') + ')')
 
         /** Multi img*/
-        if (target.getAttribute('data-photo_2')){
+        if (target.getAttribute('data-photo_2')) {
 
             $('.img-gallery').show()
             let photo_1 = $('#photo_1')
             let photo_2 = $('#photo_2')
             let photo_3 = $('#photo_3')
-            photo_1.attr('href',target.getAttribute('data-photo_principale'))
-            photo_1.css('background-image', 'url(/images/'+ target.getAttribute('data-photo_principale') + ')')
+            photo_1.attr('href', target.getAttribute('data-photo_principale'))
+            photo_1.css('background-image', 'url(/images/' + target.getAttribute('data-photo_principale') + ')')
             photo_2.attr('href', target.getAttribute('data-photo_2'))
-            photo_2.css('background-image', 'url(/images/'+ target.getAttribute('data-photo_2') + ')')
+            photo_2.css('background-image', 'url(/images/' + target.getAttribute('data-photo_2') + ')')
 
-            if (target.getAttribute('data-photo_3')){
+            if (target.getAttribute('data-photo_3')) {
 
                 photo_3.show()
                 photo_3.attr('href', target.getAttribute('data-photo_3'))
-                photo_3.css('background-image', 'url(/images/'+ target.getAttribute('data-photo_3') + ')')
+                photo_3.css('background-image', 'url(/images/' + target.getAttribute('data-photo_3') + ')')
 
-            }else{
+            } else {
 
                 photo_3.hide()
 
             }
 
-        }else {
+        } else {
 
             $('.img-gallery').hide()
 
@@ -151,12 +151,36 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
     /** Slide multi img */
-    $('.img-gallery-grid > a').click((e)=>{
+    $('.img-gallery-grid > a').click((e) => {
         e.preventDefault()
         let target = e.target
-        $('#photo_principale').css('background-image', 'url(/images/'+ target.getAttribute('href') + ')')
+        $('#photo_principale').css('background-image', 'url(/images/' + target.getAttribute('href') + ')')
 
     })
+
+    /** Share */
+    const shareData = {
+        title: 'Carefour',
+        text: 'Consulter le nouveau catalogue de Carefour Martinique',
+        url: location.href
+    }
+
+    const shareButton = document.querySelector('#share');
+
+    shareButton.addEventListener('click', event => {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Carefour',
+                text: 'Consulter le nouveau catalogue de Carefour Martinique',
+                url: location.href
+            }).then(() => {
+                console.log('Thanks for sharing!');
+            })
+                .catch(console.error);
+        } else {
+            // shareDialog.classList.add('is-open');
+        }
+    });
 
 
 })

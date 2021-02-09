@@ -9,3 +9,8 @@
 .img-gallery-grid > a{
     background-size: contain;
 }
+@media screen and (min-width: 992px){
+    .img-share--wrapper{
+        display: none;
+    }
+}
