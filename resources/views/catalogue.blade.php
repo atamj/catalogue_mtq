@@ -47,6 +47,8 @@
                     </div>
                     <div class="img_details_wrapper">
                         <div class="img-share--wrapper">
+                            @include('partials.share')
+
                             <a href="#" class="link-block-11 w-inline-block">
                                 <div class="share-bn__wrapper"><img src="images/share-icon.svg"
                                                                     loading="lazy" alt="">

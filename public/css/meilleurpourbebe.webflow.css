@@ -50,6 +50,7 @@ h3:hover {
 }
 
 .download_catalogue {
+    width: 25%;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -59,6 +60,9 @@ h3:hover {
     -ms-flex-align: center;
     align-items: center;
     text-decoration: none;
+}
+.logo-full{
+    width: 25%;
 }
 
 .image {
@@ -1821,7 +1825,7 @@ h3:hover {
 }
 
 .event-link {
-    position: absolute;
+    /*position: absolute;*/
     left: 0%;
     top: 0%;
     right: 0%;
@@ -2293,6 +2297,16 @@ h3:hover {
 }
 
 @media screen and (max-width: 991px) {
+    .ctg__title.img_bath {
+        background-image: url('../images/category-img-02.jpg');
+        background-position: 50% 50%;
+        background-size: auto;
+    }
+    .ctg__title.img_food {
+        background-image: url('../images/category-img-04.jpg');
+        background-position: 50% 50%;
+        background-size: auto;
+    }
     .nav__container {
         height: 100%;
         -webkit-box-orient: vertical;
@@ -2886,10 +2900,12 @@ h3:hover {
 
     .logo-full {
         display: none;
+        width: 25%;
     }
 
     .logo-short {
         display: block;
+        width: 25%;
     }
 
     .event {

@@ -144,4 +144,106 @@ $(document).ready(function () {
         }
     }
 
+
+    /** Pop up fiche produit*/
+    $(".p__more_infos").click((e) => {
+
+        /**Product target */
+        let target = e.target
+
+        /** Get products variable*/
+        $('#designation').html(target.getAttribute('data-designation'))
+        $('#description_produit').html(target.getAttribute('data-description_produit'))
+        $('#prix_vente_1').html(target.getAttribute('data-prix_vente_1'))
+        $('#prix_vente_2').html(target.getAttribute('data-prix_vente_2'))
+        $('#eco_part').html(target.getAttribute('data-eco_part'))
+        $('#marque').html(target.getAttribute('data-marque'))
+        $('#ean').html(target.getAttribute('data-ean'))
+        $('#photo_principale').css('background-image', 'url(/images/' + target.getAttribute('data-photo_principale') + ')')
+
+        /** Multi img*/
+        if (target.getAttribute('data-photo_2')) {
+
+            $('.img-gallery').show()
+            let photo_1 = $('#photo_1')
+            let photo_2 = $('#photo_2')
+            let photo_3 = $('#photo_3')
+            photo_1.attr('href', target.getAttribute('data-photo_principale'))
+            photo_1.css('background-image', 'url(/images/' + target.getAttribute('data-photo_principale') + ')')
+            photo_2.attr('href', target.getAttribute('data-photo_2'))
+            photo_2.css('background-image', 'url(/images/' + target.getAttribute('data-photo_2') + ')')
+
+            if (target.getAttribute('data-photo_3')) {
+
+                photo_3.show()
+                photo_3.attr('href', target.getAttribute('data-photo_3'))
+                photo_3.css('background-image', 'url(/images/' + target.getAttribute('data-photo_3') + ')')
+
+            } else {
+
+                photo_3.hide()
+
+            }
+
+        } else {
+
+            $('.img-gallery').hide()
+
+        }
+
+    })
+
+    /** Slide multi img */
+    $('.img-gallery-grid > a').click((e) => {
+        e.preventDefault()
+        let target = e.target
+        $('#photo_principale').css('background-image', 'url(/images/' + target.getAttribute('href') + ')')
+
+    })
+
+    /** Share */
+    const shareData = {
+        title: 'Carefour',
+        text: 'Consulter le nouveau catalogue de Carefour Martinique',
+        url: location.href
+    }
+
+    const shareButton = document.querySelector('#share');
+    const shareDialog = document.querySelector('.share-dialog');
+    const closeButton = document.querySelector('.close-button');
+
+    shareButton.addEventListener('click', event => {
+        if (navigator.share) {
+            navigator.share({
+                title: 'Carefour',
+                text: 'Consulter le nouveau catalogue de Carefour Martinique',
+                url: location.href
+            }).then(() => {
+                console.log('Thanks for sharing!');
+            })
+                .catch(console.error);
+        } else {
+            $(".copy-link").attr('data-link', location.href)
+            $('.pen-url').val(location.href)
+            shareDialog.classList.add('is-open');
+        }
+    });
+    closeButton.addEventListener('click', event => {
+        shareDialog.classList.remove('is-open');
+    });
+    document.querySelector(".copy-link").addEventListener("click", copy);
+    $('.targets .button').click((e)=>{
+        e.preventDefault()
+        let target = e.target
+        let depLink = target.href
+        target.href = depLink + "https://catalogue.ls.gp"
+        target.click()
+    })
+
 });
+function copy() {
+    var copyText = document.querySelector(".pen-url");
+    copyText.select();
+    document.execCommand("copy");
+}
+

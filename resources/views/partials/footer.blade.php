@@ -28,28 +28,28 @@
             <ul role="list" class="list w-list-unstyled">
                 <li>
                     <div class="socials">
-                        <a href="https://www.facebook.com/CarrefourMartinique/" rel="nofollow"
+                        <a href="https://www.facebook.com/CarrefourMartinique/" rel="nofollow" target="_blank"
                            class="sn__size w-inline-block"><img src="images/facebook-with-circle.svg" loading="lazy"
                                                                 width="20" alt="">
                             <div class="sn__txt">SUIVEZ NOUS SUR FACEBOOK</div>
                         </a>
                         <a href="https://www.carrefour-martinique.com/contactez-nous" rel="nofollow"
-                           class="sn__size w-inline-block" rel="nofollow"><img src="images/mail-with-circle.svg"
+                           class="sn__size w-inline-block" rel="nofollow"><img src="images/mail-with-circle.svg" target="_blank"
                                                                                loading="lazy" width="20" alt="">
                             <div class="sn__txt">CONTACTEZ-NOUS</div>
                         </a>
                     </div>
                 </li>
                 <li class="list-item">
-                    <a href="https://www.carrefour-martinique.com/cgu" rel="nofollow"
+                    <a href="https://www.carrefour-martinique.com/cgu" rel="nofollow" target="_blank"
                        class="link-block-2 w-inline-block">
                         <div>Conditions générales d’utilisation</div>
                     </a>
-                    <a href="https://www.carrefour-martinique.com/politique-cookies" rel="nofollow"
+                    <a href="https://www.carrefour-martinique.com/politique-cookies" rel="nofollow" target="_blank"
                        class="link-block-2 w-inline-block">
                         <div class="ftr__infos--separate">Politique cookies</div>
                     </a>
-                    <a href="https://www.carrefour-martinique.com/politique-de-confidentialite" rel="nofollow"
+                    <a href="https://www.carrefour-martinique.com/politique-de-confidentialite" rel="nofollow" target="_blank"
                        class="link-block-2 w-inline-block">
                         <div>Politique de confidentialité</div>
                     </a>
