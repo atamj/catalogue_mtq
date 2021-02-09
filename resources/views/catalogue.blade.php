@@ -69,7 +69,11 @@
 <div class="section__wrapper">
 
     @foreach($sous_categories as $key => $sous_category)
-        <div id="{{$key}}" class="section-wrapper">
+        @if ($key == "")
+            <div id="{{$category}}" class="section-wrapper">
+        @else
+            <div id="{{$key}}" class="section-wrapper">
+        @endif
             <div class="cat__wrapper">
                 <div class="nav-section category-01">
                     <a href="#" class="arrow arrow-left w-inline-block"></a>
@@ -79,6 +83,9 @@
                 @if ($bombe->where('sous_categorie', $sous_category)->first())
 
                     <div class="spotlight spotlight__eveil">
+                        <h5 class="sub-category">
+                            {{$sous_category}}
+                        </h5>
                         <div class="spotlight--img"
                              style="background-image: url('{{$bombe->where('sous_categorie', $sous_category)->first()->photo_principale ? asset('images/'.$bombe->where('sous_categorie', $sous_category)->first()->photo_principale) : ""}}')"></div>
                         <div class="spotlight__container">
@@ -151,6 +158,7 @@
                         @foreach($products->where('sous_categorie', $sous_category)->where('bombe_1', '0') as $product)
                             <div id="w-node-643069de73f7-b30ad297" class="product article__02"
                                  style="background-image: url('{{$product->photo_principale ? asset('images/'.$product->photo_principale) : ""}}')">
+
                                 <div class="product-wrapper">
                                     <ul role="list" class="list-3 w-list-unstyled">
                                         <li class="p__brand">
@@ -198,13 +206,17 @@
                                                 class="p__ecopart {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}-txt">
                                                 ÉCOPART {{explode(',', $product->eco_part)[0] ?? "0"}}
                                                 €{{explode(',', $product->eco_part)[1] ?? "00"}}</div>
-                                            <div class="spotlight-02-bg"></div>
+                                            @if ($product->bombe_2 == '1')
+                                                <div class="spotlight-02-bg"></div>
+                                            @endif
                                         @else
                                             <div
                                                 class="p__ecopart {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}-txt">
                                                 ÉCOPART 0€00
                                             </div>
-                                            <div class="spotlight-02-bg"></div>
+                                            @if ($product->bombe_2 == '1')
+                                                <div class="spotlight-02-bg"></div>
+                                            @endif
                                         @endif
                                     </div>
                                     <div class="p__wrapper">

@@ -46,7 +46,7 @@
             <a href="{{url('equipement#siege-auto')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--green">Siège auto</div>
             </a>
-            <a href="{{url('equipement#poussettes')}}" class="ctg__link w-inline-block">
+            <a href="{{url('equipement#poussette')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--green">Poussettes</div>
             </a>
             <a href="{{url('equipement#lit')}}" class="ctg__link w-inline-block">
@@ -82,7 +82,7 @@
             <a data-w-id="ecfbe255-90d7-dc63-a8b7-bbde5cd9b65d" href="#" class="ctg__link close_menu w-inline-block">
                 <div class="ctg__link_txt"></div>
             </a>
-            <a href="{{url('textile')}}" class="ctg__link w-inline-block">
+            <a href="{{url('textile#textile')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--green">TEXTILE</div>
             </a>
         </div>
@@ -94,7 +94,7 @@
         <div data-w-id="c8f6ca3f-e9eb-085e-770b-b505a46bc94d" class="ctg__menu ctg__menu--bath">
             <a data-w-id="8c75a8a5-985e-7def-8afb-372d46c7a396" href="#"
                class="ctg__link close_menu w-inline-block"></a>
-            <a href="{{url('epicerie')}}" class="ctg__link w-inline-block">
+            <a href="{{url('epicerie#epicerie-bebe')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--yellow">Epicerie Bébé</div>
             </a>
         </div>
@@ -106,7 +106,7 @@
         <div data-w-id="16fb7820-59f5-8ce6-762d-3681184824a1" class="ctg__menu ctg__menu--gears">
             <a data-w-id="16fb7820-59f5-8ce6-762d-3681184824a2" href="#"
                class="ctg__link close_menu w-inline-block"></a>
-            <a href="{{url('hygiene#bebe')}}" class="ctg__link w-inline-block">
+            <a href="{{url('hygiene#hygiene-bebe')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--green">Hygiene bébé</div>
             </a>
             <a href="{{url('hygiene#hygiene')}}" class="ctg__link w-inline-block">
