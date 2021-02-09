@@ -35,14 +35,14 @@
                     <p class="paragraph" id="description_produit">Lorem ipsum dolor sit amet, consectetur adipiscing
                         elit. Suspendisse varius
                         enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.</p>
-                    <div class="img-gallery">
+                    <div class="img-gallery" style="display: none">
                         <div class="img-gallery-txt">Plus d&#x27;images</div>
                         <div class="w-layout-grid img-gallery-grid">
-                            <a id="" href="#" class="img_details_arrow arrow--left w-inline-block"></a>
-                            <a id="" href="#" class="link-block-8 w-inline-block"></a>
-                            <a id="" href="#" class="link-block-8 w-inline-block"></a>
-                            <a id="" href="#" class="link-block-8 w-inline-block"></a>
-                            <a id="" href="#" class="img_details_arrow arrow--right w-inline-block"></a>
+{{--                            <a id="" href="#" class="img_details_arrow arrow--left w-inline-block"></a>--}}
+                            <a id="photo_1" href="#" class="link-block-8 w-inline-block"></a>
+                            <a id="photo_2" href="#" class="link-block-8 w-inline-block"></a>
+                            <a id="photo_3"style="display: none" href="#" class="link-block-8 w-inline-block"></a>
+{{--                            <a id="" href="#" class="img_details_arrow arrow--right w-inline-block"></a>--}}
                         </div>
                     </div>
                     <div class="img_details_wrapper">
@@ -152,6 +152,8 @@
                                                  data-marque="{{$bombe->where('sous_categorie', $sous_category)->first()->marque}}"
                                                  data-ean="{{$bombe->where('sous_categorie', $sous_category)->first()->ean}}"
                                                  data-photo_principale="{{$bombe->where('sous_categorie', $sous_category)->first()->photo_principale}}"
+                                                 data-photo_2="{{$bombe->where('sous_categorie', $sous_category)->first()->photo_2}}"
+                                                 data-photo_3="{{$bombe->where('sous_categorie', $sous_category)->first()->photo_3}}"
                                             ></div>
                                         </a>
                                     </li>
@@ -186,7 +188,10 @@
                                                      data-eco_part="{{$product->eco_part}}"
                                                      data-marque="{{$product->marque}}"
                                                      data-ean="{{$product->ean}}"
-                                                     data-photo_principale="{{$product->photo_principale}}"></div>
+                                                     data-photo_principale="{{$product->photo_principale}}"
+                                                     data-photo_2="{{$product->photo_2}}"
+                                                     data-photo_3="{{$product->photo_3}}"
+                                                ></div>
                                             </a>
                                         </li>
                                     </ul>

@@ -6,3 +6,6 @@
 .p__price_cents.spotlight-02-txt{
     color: #5cb1b5;
 }
+.img-gallery-grid > a{
+    background-size: contain;
+}

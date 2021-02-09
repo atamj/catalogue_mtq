@@ -101,8 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
         sheet.post(email, postSuccess, postFail)
 
     })
+
+    /** Pop up fiche produit*/
     $(".p__more_infos").click((e)=>{
+
+        /**Product target */
         let target = e.target
+
+        /** Get products variable*/
         $('#designation').html(target.getAttribute('data-designation'))
         $('#description_produit').html(target.getAttribute('data-description_produit'))
         $('#prix_vente_1').html(target.getAttribute('data-prix_vente_1'))
@@ -111,6 +117,44 @@ document.addEventListener('DOMContentLoaded', () => {
         $('#marque').html(target.getAttribute('data-marque'))
         $('#ean').html(target.getAttribute('data-ean'))
         $('#photo_principale').css('background-image', 'url(/images/'+ target.getAttribute('data-photo_principale') + ')')
+
+        /** Multi img*/
+        if (target.getAttribute('data-photo_2')){
+
+            $('.img-gallery').show()
+            let photo_1 = $('#photo_1')
+            let photo_2 = $('#photo_2')
+            let photo_3 = $('#photo_3')
+            photo_1.attr('href',target.getAttribute('data-photo_principale'))
+            photo_1.css('background-image', 'url(/images/'+ target.getAttribute('data-photo_principale') + ')')
+            photo_2.attr('href', target.getAttribute('data-photo_2'))
+            photo_2.css('background-image', 'url(/images/'+ target.getAttribute('data-photo_2') + ')')
+
+            if (target.getAttribute('data-photo_3')){
+
+                photo_3.show()
+                photo_3.attr('href', target.getAttribute('data-photo_3'))
+                photo_3.css('background-image', 'url(/images/'+ target.getAttribute('data-photo_3') + ')')
+
+            }else{
+
+                photo_3.hide()
+
+            }
+
+        }else {
+
+            $('.img-gallery').hide()
+
+        }
+
+    })
+
+    /** Slide multi img */
+    $('.img-gallery-grid > a').click((e)=>{
+        e.preventDefault()
+        let target = e.target
+        $('#photo_principale').css('background-image', 'url(/images/'+ target.getAttribute('href') + ')')
 
     })
 
