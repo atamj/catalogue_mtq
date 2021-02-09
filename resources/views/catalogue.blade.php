@@ -35,6 +35,16 @@
                     <p class="paragraph" id="description_produit">Lorem ipsum dolor sit amet, consectetur adipiscing
                         elit. Suspendisse varius
                         enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.</p>
+                    <div class="img-gallery">
+                        <div class="img-gallery-txt">Plus d&#x27;images</div>
+                        <div class="w-layout-grid img-gallery-grid">
+                            <a id="" href="#" class="img_details_arrow arrow--left w-inline-block"></a>
+                            <a id="" href="#" class="link-block-8 w-inline-block"></a>
+                            <a id="" href="#" class="link-block-8 w-inline-block"></a>
+                            <a id="" href="#" class="link-block-8 w-inline-block"></a>
+                            <a id="" href="#" class="img_details_arrow arrow--right w-inline-block"></a>
+                        </div>
+                    </div>
                     <div class="img_details_wrapper">
                         <div class="img-share--wrapper">
                             <a href="#" class="link-block-11 w-inline-block">
@@ -83,9 +93,11 @@
                 @if ($bombe->where('sous_categorie', $sous_category)->first())
 
                     <div class="spotlight spotlight__eveil">
-                        <h5 class="sub-category">
-                            {{$sous_category}}
-                        </h5>
+                        @if ($sous_category)
+                            <h5 class="sub-category">
+                                {{$sous_category}}
+                            </h5>
+                        @endif
                         <div class="spotlight--img"
                              style="background-image: url('{{$bombe->where('sous_categorie', $sous_category)->first()->photo_principale ? asset('images/'.$bombe->where('sous_categorie', $sous_category)->first()->photo_principale) : ""}}')"></div>
                         <div class="spotlight__container">
