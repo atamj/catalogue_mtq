@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 });
 /** Events when form is submit with success */
-function postSuccess(message = "Merci! Votre inscription a été enregistré!") {
+function postSuccess(message = "Merci ! Votre inscription a bien été enregistrée.") {
 
     $(".w-form-done").html("<div>" + message + "</div>")
     /** Show success message */

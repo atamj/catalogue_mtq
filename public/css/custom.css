@@ -34,3 +34,11 @@ html{
 .product, .spotlight{
     cursor: pointer;
 }
+.sub-category{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: fit-content;
+    padding: 0.5em;
+}
