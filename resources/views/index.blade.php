@@ -34,7 +34,7 @@
 <div class="hero">
     <div class="categories">
         <div data-w-id="a33e95c8-212f-b6d9-7add-46fac327b305" class="ctg__title img_gears">
-            <div class="ctg__title--size bg--yellow">Equipement</div>
+            <div class="ctg__title--size bg--yellow">Équipement</div>
         </div>
         <div data-w-id="2877d8d1-2777-7bb4-3ce4-761949e2038e" class="ctg__menu ctg__menu--gears">
             <a data-w-id="Link Block 11" href="#" class="ctg__link close_menu w-inline-block">
@@ -47,7 +47,7 @@
                 <div class="ctg__link_txt link_text--green">Siège auto</div>
             </a>
             <a href="{{url('equipement#poussette')}}" class="ctg__link w-inline-block">
-                <div class="ctg__link_txt link_text--green">Poussettes</div>
+                <div class="ctg__link_txt link_text--green">Poussette</div>
             </a>
             <a href="{{url('equipement#lit')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--green">Lit bébé</div>
@@ -60,14 +60,14 @@
     </div>
     <div class="categories">
         <div data-w-id="e737e8ab-8ea7-a3fc-5439-b8442fdbf467" class="ctg__title img_bath">
-            <div class="ctg__title--size bg--green">Eveil et bain</div>
+            <div class="ctg__title--size bg--green">Éveil & bain</div>
         </div>
         <div data-w-id="e737e8ab-8ea7-a3fc-5439-b8442fdbf46a" class="ctg__menu ctg__menu--bath">
             <a data-w-id="e737e8ab-8ea7-a3fc-5439-b8442fdbf46b" href="#" class="ctg__link close_menu w-inline-block">
                 <div class="ctg__link_txt"></div>
             </a>
             <a href="{{url('eveil-bain#eveil')}}" class="ctg__link w-inline-block">
-                <div class="ctg__link_txt link_text--yellow">éveil</div>
+                <div class="ctg__link_txt link_text--yellow">Éveil</div>
             </a>
             <a href="{{url('eveil-bain#bain')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--yellow">Bain</div>
@@ -89,13 +89,13 @@
     </div>
     <div class="categories">
         <div data-w-id="c8f6ca3f-e9eb-085e-770b-b505a46bc94a" class="ctg__title img_food">
-            <div class="ctg__title--size bg--green">Epicerie bebe</div>
+            <div class="ctg__title--size bg--green">Épicerie bébé</div>
         </div>
         <div data-w-id="c8f6ca3f-e9eb-085e-770b-b505a46bc94d" class="ctg__menu ctg__menu--bath">
             <a data-w-id="8c75a8a5-985e-7def-8afb-372d46c7a396" href="#"
                class="ctg__link close_menu w-inline-block"></a>
             <a href="{{url('epicerie#epicerie-bebe')}}" class="ctg__link w-inline-block">
-                <div class="ctg__link_txt link_text--yellow">Epicerie Bébé</div>
+                <div class="ctg__link_txt link_text--yellow">Épicerie Bébé</div>
             </a>
         </div>
     </div>
@@ -107,7 +107,7 @@
             <a data-w-id="16fb7820-59f5-8ce6-762d-3681184824a2" href="#"
                class="ctg__link close_menu w-inline-block"></a>
             <a href="{{url('hygiene#hygiene-bebe')}}" class="ctg__link w-inline-block">
-                <div class="ctg__link_txt link_text--green">Hygiene bébé</div>
+                <div class="ctg__link_txt link_text--green">Hygiène bébé</div>
             </a>
             <a href="{{url('hygiene#hygiene')}}" class="ctg__link w-inline-block">
                 <div class="ctg__link_txt link_text--green">Hygiène</div>
