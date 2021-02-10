@@ -60,6 +60,7 @@ h3:hover {
     -ms-flex-align: center;
     align-items: center;
     text-decoration: none;
+    justify-content: flex-end;
 }
 .logo-full{
     width: 25%;
@@ -1837,6 +1838,7 @@ h3:hover {
 
 .event-link {
     /*position: absolute;*/
+    width: 50%;
     left: 0%;
     top: 0%;
     right: 0%;
@@ -2906,7 +2908,7 @@ h3:hover {
     }
 
     .event-link.w--current {
-        position: absolute;
+        /*position: absolute;*/
     }
 
     .logo-full {
