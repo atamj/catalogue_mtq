@@ -1856,7 +1856,7 @@ h3:hover {
 }
 
 .event-link.w--current {
-    position: absolute;
+    /*position: absolute;*/
 }
 
 .logo-short {
@@ -1872,7 +1872,7 @@ h3:hover {
     margin-top: 0px;
     margin-bottom: 0px;
     font-family: Clickerscript, sans-serif;
-    color: #05539c;
+    color: #A45F3F;
     text-align: center;
 }
 
@@ -2184,7 +2184,7 @@ h3:hover {
     }*/
 
     .event {
-        color: #a45f3f;
+        color: #A45F3F;
     }
 
     .arrow-wrapper {
