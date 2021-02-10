@@ -18,9 +18,9 @@
     @foreach($sous_categories as $key => $sous_category)
         @if ($key == "")
             <div id="{{$category}}" class="section-wrapper">
-                @else
-                    <div id="{{$key}}" class="section-wrapper">
-                        @endif
+        @else
+            <div id="{{$key}}" class="section-wrapper">
+        @endif
                         <div class="cat__wrapper">
                             <div class="nav-section category-01">
                                 <a href="#" class="arrow arrow-left w-inline-block"></a>

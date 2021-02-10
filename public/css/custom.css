@@ -42,3 +42,6 @@ html{
     width: fit-content;
     padding: 0.5em;
 }
+.detail__container{
+    margin: auto;
+}

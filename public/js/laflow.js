@@ -190,12 +190,15 @@ $(document).ready(function () {
 
         }
         const modal = $('.product_detail')
-        modal.css('opacity','1')
+        modal.css('opacity', '1')
         modal.show()
+        disabledScroll()
 
 
     })
-
+    $('.close_window').click(() => {
+        enabledScroll()
+    })
     /** Slide multi img */
     $('.img-gallery-grid > a').click((e) => {
         e.preventDefault()
@@ -243,6 +246,7 @@ $(document).ready(function () {
         target.click()
     })
 
+
 });
 
 function copy() {
@@ -251,3 +255,16 @@ function copy() {
     document.execCommand("copy");
 }
 
+window.addEventListener('scroll', (e) => {
+    let body = $('body')
+    if (body.attr('scroll') == 'on'){
+        window.scrollTo(0, 0);
+    }
+})
+
+function enabledScroll(){
+    $('body').attr('scroll', 'on')
+}
+function disabledScroll(){
+    $('body').attr('scroll', 'off')
+}
