@@ -1,7 +1,7 @@
 var total_sections = 0;
 var num_section = 0;
 var active_section = 1;
-var found_section="";
+var found_section = "";
 $(document).ready(function () {
 
     $("#next")
@@ -146,8 +146,7 @@ $(document).ready(function () {
 
 
     /** Pop up fiche produit*/
-    $(".p__more_infos").click((e) => {
-
+    $(".product, .spotlight").click((e) => {
         /**Product target */
         let target = e.target
 
@@ -190,6 +189,10 @@ $(document).ready(function () {
             $('.img-gallery').hide()
 
         }
+        const modal = $('.product_detail')
+        modal.css('opacity','1')
+        modal.show()
+
 
     })
 
@@ -232,7 +235,7 @@ $(document).ready(function () {
         shareDialog.classList.remove('is-open');
     });
     document.querySelector(".copy-link").addEventListener("click", copy);
-    $('.targets .button').click((e)=>{
+    $('.targets .button').click((e) => {
         e.preventDefault()
         let target = e.target
         let depLink = target.href
@@ -241,6 +244,7 @@ $(document).ready(function () {
     })
 
 });
+
 function copy() {
     var copyText = document.querySelector(".pen-url");
     copyText.select();

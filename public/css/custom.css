@@ -22,7 +22,7 @@
 .section__wrapper{
     overflow-x: hidden;
 }
-.arrow-wrapper{
+.arrow-wrapper, .product-wrapper, .spotlight .sub-category, .spotlight .spotlight--img, .spotlight .spotlight__container{
     pointer-events: none;
 }
 .arrows-wrapper{
@@ -30,4 +30,7 @@
 }
 html{
     overflow-x: hidden;
+}
+.product, .spotlight{
+    cursor: pointer;
 }

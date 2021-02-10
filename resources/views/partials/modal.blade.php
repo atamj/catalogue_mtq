@@ -1,0 +1,55 @@
+<div style="opacity:0;display:none" class="product_detail">
+    <div class="detail__container">
+        <div class="close_window_wrapper">
+            <a data-w-id="Link Block 15" href="#" class="close_window w-inline-block">
+                <div class="p__more_infos more_infos--detail">
+                    <div class="more_infos_cross cross--detail"></div>
+                </div>
+                <div>Fermer</div>
+            </a>
+        </div>
+        <div class="div-block-10">
+            <div class="p_img--big" id="photo_principale"></div>
+            <div class="p__details">
+                <div class="p__wrapper p_wrapper_details">
+                    <div class="p__title p_title--detail" id="designation">Produit<br></div>
+                    <p class="p__infos p_infos--details">Le range pyjama ours ou pingouin est
+                        idéal comme ami pour tous
+                        les bébés.Dès la naissance Composition : 100% polyester   </p>
+                    <div class="p__price_wrapper p_price_wrapper--detail">
+                        <div class="p__price_1st _1st--detail" id="prix_vente_1">00</div>
+                        <div class="p__price_cents" id="prix_vente_2">€99</div>
+                    </div>
+                    <div class="p__ecopart" id="eco_part">ÉCOPART 0€90</div>
+                    <div class="brand brand--detail" id="marque">MARQUE</div>
+                    <div class="text-block-12"><span class="ean ean--detail" id="ean">EAN: 3616181593223</span></div>
+                    <p class="paragraph" id="description_produit">Lorem ipsum dolor sit amet, consectetur adipiscing
+                        elit. Suspendisse varius
+                        enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.</p>
+                    <div class="img-gallery" style="display: none">
+                        <div class="img-gallery-txt">Plus d&#x27;images</div>
+                        <div class="w-layout-grid img-gallery-grid">
+                            {{--                            <a id="" href="#" class="img_details_arrow arrow--left w-inline-block"></a>--}}
+                            <a id="photo_1" href="#" class="link-block-8 w-inline-block"></a>
+                            <a id="photo_2" href="#" class="link-block-8 w-inline-block"></a>
+                            <a id="photo_3"style="display: none" href="#" class="link-block-8 w-inline-block"></a>
+                            {{--                            <a id="" href="#" class="img_details_arrow arrow--right w-inline-block"></a>--}}
+                        </div>
+                    </div>
+                    <div class="img_details_wrapper">
+                        <div class="img-share--wrapper">
+                            @include('partials.share')
+
+                            <a href="#" class="link-block-11 w-inline-block">
+                                <div class="share-bn__wrapper"><img src="images/share-icon.svg"
+                                                                    loading="lazy" alt="">
+                                </div>
+                                <div class="text-block-11" id="share">Partager</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

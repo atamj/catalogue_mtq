@@ -12,7 +12,7 @@ class GSheet {
         /** Prepare data*/
         const data = {
             email: email,
-            "Created at": (new Date()).toLocaleDateString(),
+            "Created at": new Date(),
         };
 
         /** Test il this email exist*/
