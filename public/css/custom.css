@@ -18,3 +18,16 @@
 /*    display: block;*/
 /*    opacity: 1;*/
 /*}*/
+/** Fix overflow */
+.section__wrapper{
+    overflow-x: hidden;
+}
+.arrow-wrapper{
+    pointer-events: none;
+}
+.arrows-wrapper{
+    pointer-events: all;
+}
+html{
+    overflow-x: hidden;
+}
