@@ -245,8 +245,6 @@ $(document).ready(function () {
         target.href = depLink + "https://catalogue.ls.gp"
         target.click()
     })
-
-
 });
 
 function copy() {
@@ -257,7 +255,7 @@ function copy() {
 
 window.addEventListener('scroll', (e) => {
     let body = $('body')
-    if (body.attr('scroll') == 'on'){
+    if (body.attr('scroll') == 'off'){
         window.scrollTo(0, 0);
     }
 })
