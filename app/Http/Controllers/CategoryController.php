@@ -70,6 +70,39 @@ class CategoryController extends Controller
         return view('show', compact('product'));
     }
 
+    public function catalogue()
+    {
+        /** Redirect to secure URL if app production*/
+        $this->secure();
+
+        /** Get products from GSheet or Session */
+        $this->getProducts();
+
+        /** Filter products by category based on  URL */
+        $products = $this->products;
+        /** Get product bombe 1*/
+        $bombe = $products->where('bombe_1', '1');
+
+        /** Get list of sub-categories for current products list */
+        $sous_cats = [];
+        foreach ($products as $product) {
+            if (!in_array($product->sous_categorie, $sous_cats)) {
+                $sous_cats[] = $product->sous_categorie;
+            }
+        }
+
+        /** Create an array key value for sub-categories for get slug in key*/
+        $sous_categories = [];
+        foreach ($sous_cats as $sous_category) {
+
+            $url = $this->stringToUrl($sous_category);
+            $sous_categories[$url] = $sous_category;
+
+        }
+        $category = "Cataloque";
+        return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories'));
+
+    }
     private function getProducts()
     {
         if (session()->has('products')) {

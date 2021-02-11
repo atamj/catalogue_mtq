@@ -17,10 +17,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-/** Catalogue, vue temporaire*/
-Route::get('/cata', function () {
-    return view('catalogue');
-});
+
+/** Full Catalogue */
+Route::get(
+    '/catalogue',
+    [CategoryController::class, 'catalogue']
+);
 
 /** Page catégorie*/
 Route::get(
@@ -32,3 +34,4 @@ Route::get(
     '/product/{id}',
     [CategoryController::class, 'show']
 );
+

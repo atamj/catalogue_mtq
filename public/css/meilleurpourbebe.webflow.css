@@ -221,7 +221,7 @@ h3:hover {
     display: flex;
     width: 80vw;
     height: 200px;
-    min-width: 1280px;
+    /*min-width: 1280px;*/
     margin-right: auto;
     margin-left: auto;
     -webkit-box-pack: justify;

@@ -25,7 +25,7 @@
             <div class="text-block-4">du 17 février au 7 mars</div>
         </li>
         <li class="nav__ctg_lnk">
-            <a href="{{url('/equipement#rehausseur')}}" class="link-block-6 w-inline-block">
+            <a href="{{url('/catalogue#rehausseur')}}" class="link-block-6 w-inline-block">
                 <div class="text-block-5">VOIR LE CATALOGUE</div>
             </a>
         </li>
