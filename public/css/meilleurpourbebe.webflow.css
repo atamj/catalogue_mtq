@@ -1680,9 +1680,9 @@ h3:hover {
     left: 50%;
     top: 0px;
     bottom: 80px;
-    z-index: 2;
+    z-index: 3;
     display: none;
-    width: 40px;
+    width: 100%;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -webkit-flex-direction: row;
