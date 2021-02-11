@@ -114,12 +114,13 @@ function postSuccess(message = "Merci ! Votre inscription a bien été enregistr
 
     /** Clear email input */
     $("input[type=email]").val("")
+    $("input[type=email]").hide()
 
     /** Remove loader */
     $('#loader').remove()
 
     /** Show sbmit button */
-    $('.w-button').show()
+    // $('.w-button').show()
 
 }
 
@@ -134,9 +135,10 @@ function postFail(error) {
 
     /** Remove loader */
     $('#loader').remove()
+    $("input[type=email]").hide()
 
     /** Show submit button*/
-    $('.w-button').show()
+    // $('.w-button').show()
 
     /** Show error in console*/
     console.log(error);

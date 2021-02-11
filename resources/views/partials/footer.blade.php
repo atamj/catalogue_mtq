@@ -12,13 +12,13 @@
                        placeholder="" id="email" required=""><input type="submit" value="Je veux le catalogue !"
                                                                     data-wait="Please wait..."
                                                                     class="submit-button w-button">
+                <div class="w-form-done">
+                    <div>Thank you! Your submission has been received!</div>
+                </div>
+                <div class="w-form-fail">
+                    <div>Oops! Something went wrong while submitting the form.</div>
+                </div>
             </form>
-            <div class="w-form-done">
-                <div>Thank you! Your submission has been received!</div>
-            </div>
-            <div class="w-form-fail">
-                <div>Oops! Something went wrong while submitting the form.</div>
-            </div>
         </div>
     </div>
     <div class="ftr__btm">
