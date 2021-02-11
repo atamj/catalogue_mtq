@@ -57,10 +57,17 @@ class CategoryController extends Controller
         return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories'));
     }
 
-    public function show($id)
+    public function show($ean)
     {
-        $product = $this->products->where('id', $id)->first();
-        dump($product);
+        $this->getProducts();
+        $product = $this->products->where('ean', $ean)->first();
+
+        $url = str_replace(" ", "-", $product->sous_category);
+        $url = str_replace("É", 'E', $url);
+        $url = str_replace("È", 'E', $url);
+        $url = strtolower($url);
+        $product->sous_category_url;
+        return view('show', compact('product'));
     }
 
     private function getProducts()
