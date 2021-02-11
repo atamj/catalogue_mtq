@@ -10,9 +10,7 @@ $(document).ready(function () {
     $("#prev")
         .removeClass("nav-active")
         .addClass("nav-inactive");
-
     $(".section-wrapper").each(function () {
-
         num_section++;
         $(this)
             .attr("data-num", num_section)
@@ -34,14 +32,11 @@ $(document).ready(function () {
         } else {
 
             $(this)
-                .css("display", "none")
                 .removeClass("active left right")
                 .addClass("inactive left right");
         }
 
     });
-
-    var initSections = setTimeout(initializeSections, 500);
 
     if (active_section > 1) {
         $("#prev")
@@ -88,14 +83,12 @@ $(document).ready(function () {
         if ($(".active").attr("data-num") == active_section) {
 
             $(".active")
-                .css("display", "block")
                 .removeClass("active left right")
                 .addClass("inactive right");
 
             $(".section-wrapper").each(function () {
                 if ($(this).attr("data-num") == (active_section - 1)) {
                     $(this)
-                        .css("display", "block")
                         .removeClass("inactive left right")
                         .addClass("active right");
                     $(this).find(".product").each(function () {
@@ -114,13 +107,6 @@ $(document).ready(function () {
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * Math.floor(max));
-    }
-
-    function initializeSections() {
-        $(".section-wrapper").each(function () {
-            $(this)
-                .css("display", "block");
-        });
     }
 
     function toggleArrows() {

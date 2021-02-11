@@ -15,6 +15,7 @@
     .active {
         transition: all .55s cubic-bezier(0, .98, .42, 1.01);
         opacity: 1;
+        display: block;
         /*transform: translateX(-100vw);*/
     }
 
@@ -29,6 +30,7 @@
     .inactive {
         transition: all .55s cubic-bezier(0, .98, .42, 1.01);
         opacity: 0;
+        display: none;
         /*transform: translateX(+100vw);*/
     }
 
