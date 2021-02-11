@@ -2,8 +2,8 @@
      style="background-image: url('{{$product->photo_principale ? asset('images/'.$product->photo_principale) : ""}}')"
      data-designation="{{$product->designation}}"
      data-description_produit="{{$product->description_produit}}"
-     data-prix_vente_1="{{$product->prix_vente_1}}"
-     data-prix_vente_2="{{$product->prix_vente_2}}"
+     data-prix_vente_1="{{explode(',', $product->prix_vente)[0]}}"
+     data-prix_vente_2="{{explode(',', $product->prix_vente)[1] ?? "00"}}"
      data-eco_part="{{$product->eco_part}}"
      data-marque="{{$product->marque}}"
      data-ean="{{$product->ean}}"
@@ -48,8 +48,8 @@
             @if ($product->eco_part)
                 <div
                     class="p__ecopart {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}-txt">
-                    ÉCOPART {{explode(',', $product->eco_part)[0] ?? "0"}}
-                    €{{explode(',', $product->eco_part)[1] ?? "00"}}</div>
+                    DONT {{explode(',', $product->eco_part)[0] ?? "0"}}€{{explode(',', $product->eco_part)[1] ?? "00"}} D'ÉCO-PART
+                    </div>
             @endif
             @if ($product->bombe_2 == '1')
                 <div class="spotlight-02-bg"></div>

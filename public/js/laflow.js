@@ -141,7 +141,7 @@ $(document).ready(function () {
         $('#description_produit').html(target.getAttribute('data-description_produit'))
         $('#prix_vente_1').html(target.getAttribute('data-prix_vente_1'))
         $('#prix_vente_2').html(target.getAttribute('data-prix_vente_2'))
-        $('#eco_part').html(target.getAttribute('data-eco_part'))
+        // $('#eco_part').html(target.getAttribute('data-eco_part'))
         $('#marque').html(target.getAttribute('data-marque'))
         $('#ean').html("EAN: " + target.getAttribute('data-ean'))
         $(".copy-link").attr('data-ean', target.getAttribute('data-ean'))

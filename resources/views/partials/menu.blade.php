@@ -17,4 +17,3 @@
         @endforeach
     </div>
 </div>
-{{--@include('partials.sticky-menu')--}}

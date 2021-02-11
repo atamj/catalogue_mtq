@@ -8,8 +8,8 @@
     <link href="{{asset('css/normalize.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/webflow.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/meilleurpourbebe.webflow.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/meilleurpourbebe-hover-corrige.webflow')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/stickymenu.webflow.css')}}" rel="stylesheet" type="text/css">
+{{--    <link href="{{asset('css/meilleurpourbebe-hover-corrige.webflow.css@')}}" rel="stylesheet" type="text/css">--}}
+{{--    <link href="{{asset('css/stickymenu.webflow.css')}}" rel="stylesheet" type="text/css">--}}
     <link href="{{asset('css/laflow.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/custom.css')}}" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>

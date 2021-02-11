@@ -27,9 +27,9 @@
                              id="prix_vente_1">{{explode(',', $product->prix_vente)[0]}}</div>
                         <div class="p__price_cents" id="prix_vente_2">€{{explode(',', $product->prix_vente)[1]}}</div>
                     </div>
-                    @if ($product->eco_part)
+                    {{--@if ($product->eco_part)
                         <div class="p__ecopart" id="eco_part">ÉCOPART {{$product->eco_part}}€</div>
-                    @endif
+                    @endif--}}
                     <div class="brand brand--detail" id="marque">{{$product->marque}}</div>
                     <div class="text-block-12"><span class="ean ean--detail" id="ean">EAN: {{$product->ean}}</span>
                     </div>

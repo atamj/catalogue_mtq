@@ -18,9 +18,9 @@
                         <div class="p__price_1st _1st--detail" id="prix_vente_1"></div>
                         <div class="p__price_cents" id="prix_vente_2"></div>
                     </div>
-                    <div class="p__ecopart" id="eco_part"></div>
+{{--                    <div class="p__ecopart" id="eco_part"></div>--}}
                     <div class="brand brand--detail" id="marque"></div>
-                    <div class="text-block-12"><span class="ean ean--detail" id="ean">EAN: 3616181593223</span></div>
+                    <div class="text-block-12"><span class="ean ean--detail" id="ean"></span></div>
                     <p class="paragraph" id="description_produit">Lorem ipsum dolor sit amet, consectetur adipiscing
                         elit. Suspendisse varius
                         enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.</p>

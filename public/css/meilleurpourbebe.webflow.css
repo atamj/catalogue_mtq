@@ -898,7 +898,8 @@ h3:hover {
 
 .ctg__return {
     margin-top: 10px;
-    font-family: Amaticsc, sans-serif;
+    font-family: Gilroy, sans-serif;
+    font-weight: 700;
     color: #5cb1b5;
     font-size: 20px;
     letter-spacing: 2px;
@@ -1155,7 +1156,8 @@ h3:hover {
     padding-left: 5px;
     font-family: Roboto, sans-serif;
     color: #fff;
-    font-size: 10px;
+    font-size: 8px;
+    letter-spacing: 0.25px;
     line-height: 10px;
     font-style: italic;
     font-weight: 400;
@@ -1303,7 +1305,7 @@ h3:hover {
     right: 0%;
     bottom: 0%;
     width: 100%;
-    height: 5px;
+    height: 3px;
     margin-top: 10px;
     border-radius: 5px;
     background-color: #ffdb28;
@@ -1374,7 +1376,7 @@ h3:hover {
     top: 0%;
     right: 0%;
     bottom: 0%;
-    z-index: 1001;
+    z-index: 999999;
     display: none;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
@@ -1628,8 +1630,8 @@ h3:hover {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    width: 30px;
-    height: 30px;
+    width: 100%;
+    height: 40px;
     margin-bottom: -30px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1643,12 +1645,13 @@ h3:hover {
     -webkit-box-align: center;
     -webkit-align-items: center;
     -ms-flex-align: center;
-    align-items: center;
+    align-items: flex-end;
+    padding-right: 15px;
     background-color: #ffdb28;
 }
 
 .lines {
-    width: 15px;
+    width: 20px;
     height: 3px;
     background-color: #5cb1b5;
 }
@@ -1658,7 +1661,7 @@ h3:hover {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    width: 15px;
+    width: 20px;
     height: 15px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1679,7 +1682,7 @@ h3:hover {
     bottom: 80px;
     z-index: 2;
     display: none;
-    width: 30px;
+    width: 40px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -webkit-flex-direction: row;
@@ -1690,7 +1693,7 @@ h3:hover {
 .menu_list {
     display: none;
     overflow: hidden;
-    width: 200px;
+    width: 100%!important;
     height: 0px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -2703,7 +2706,7 @@ h3:hover {
     }
 
     .p__ecopart.p_ecopart--spotlight {
-        font-size: 10px;
+        font-size: 8px;
         line-height: 10px;
     }
 
@@ -3693,6 +3696,12 @@ h3:hover {
     .menu {
         top: 0px;
         z-index: 50;
+        /*right: 10px;*/
+        /*margin-right: 10px;*/
+        /*margin-top: 10px;*/
+        /*top: 10px;*/
+        width:100%;
+        margin-bottom: 30px;
     }
 
     .img-spotlight {

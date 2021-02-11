@@ -7,8 +7,10 @@
 @include('partials.modal')
 {{-- End Modal --}}
 
-@include('partials.menu')
 @include('partials.banner')
+@include('partials.menu')
+
+{{--@include('partials.sticky-menu')--}}
 {{-- Arrow nav --}}
 @include('partials.slide-arrows')
 {{-- End Arrow nav--}}

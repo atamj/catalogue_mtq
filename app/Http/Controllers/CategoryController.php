@@ -21,10 +21,14 @@ class CategoryController extends Controller
     {
         /** Get products google sheet id */
         $this->csv = env('SHEET_ID');
+
     }
 
     public function index($category)
     {
+        /** Redirect to secure URL if app production*/
+        $this->secure();
+
         /** Get products from GSheet or Session */
         $this->getProducts();
 
@@ -46,10 +50,7 @@ class CategoryController extends Controller
         $sous_categories = [];
         foreach ($sous_cats as $sous_category) {
 
-            $url = str_replace(" ", "-", $sous_category);
-            $url = str_replace("É", 'E', $url);
-            $url = str_replace("È", 'E', $url);
-            $url = strtolower($url);
+            $url = $this->stringToUrl($sous_category);
             $sous_categories[$url] = $sous_category;
 
         }
@@ -59,14 +60,13 @@ class CategoryController extends Controller
 
     public function show($ean)
     {
+        /** Redirect to secure URL if app production*/
+        $this->secure();
+
         $this->getProducts();
         $product = $this->products->where('ean', $ean)->first();
-
-        $url = str_replace(" ", "-", $product->sous_category);
-        $url = str_replace("É", 'E', $url);
-        $url = str_replace("È", 'E', $url);
-        $url = strtolower($url);
-        $product->sous_category_url;
+        $url = $this->stringToUrl($product->sous_category);
+        $product->sous_category_url = $url;
         return view('show', compact('product'));
     }
 
@@ -146,10 +146,7 @@ class CategoryController extends Controller
                 $this->subcategories[] = $product->sous_categorie;
             }
             $sous_category = $product->sous_categorie;
-            $sous_categorie_url = str_replace(" ", "-", $sous_category);
-            $sous_categorie_url = str_replace("É", 'E', $sous_categorie_url);
-            $sous_categorie_url = str_replace("È", 'E', $sous_categorie_url);
-            $sous_categorie_url = strtolower($sous_categorie_url);
+            $sous_categorie_url = $this->stringToUrl($sous_category);
             $product->sous_categorie_url = $sous_categorie_url;
 
             $this->products[] = $product;
@@ -251,5 +248,17 @@ class CategoryController extends Controller
             $product->id = $key + 1;
         }
     }
-
+    private function secure()
+    {
+        if (!request()->secure() && env('APP_ENV') === 'production') {
+            return redirect()->secure(request()->getRequestUri());
+        }
+    }
+    private function stringToUrl($string)
+    {
+        $url = str_replace(" ", "-", $string);
+        $url = str_replace("É", 'E', $url);
+        $url = str_replace("È", 'E', $url);
+        return strtolower($url);
+    }
 }
