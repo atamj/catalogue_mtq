@@ -45,3 +45,8 @@ html{
 .detail__container{
     margin: auto;
 }
+.items-wrapper{
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+
