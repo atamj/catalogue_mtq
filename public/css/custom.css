@@ -19,6 +19,9 @@
 /*    opacity: 1;*/
 /*}*/
 /** Fix overflow */
+*{
+    scroll-behavior: smooth;
+}
 .section__wrapper{
     overflow-x: hidden;
 }
@@ -45,3 +48,6 @@ html{
     margin: auto;
 }
 
+.menu_list.active{
+    display: flex;
+}

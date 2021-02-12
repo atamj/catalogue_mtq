@@ -1376,7 +1376,7 @@ h3:hover {
     top: 0%;
     right: 0%;
     bottom: 0%;
-    z-index: 999999;
+    z-index: 0;
     display: none;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
@@ -1395,7 +1395,7 @@ h3:hover {
     font-size: 50px;
 }
 .product_detail .p__cross_bar{
-    width: 16%;
+    width: 80px;
     height: 4px;
 }
 .detail__container {
@@ -2110,10 +2110,22 @@ h3:hover {
 
     .ctg__menu.ctg__menu--gears {
         display: none;
+        opacity: 0;
+        transition: opacity 0.2s;
+        transition-timing-function: linear;
     }
-
     .ctg__menu.ctg__menu--bath {
         display: none;
+        opacity: 0;
+        transition: opacity 0.2s;
+        transition-timing-function: linear;
+
+    }
+    .ctg__menu.ctg__menu--gears:hover, .ctg__menu.ctg__menu--bath:hover{
+        opacity: 1;
+    }
+    .categories:hover > .ctg__menu.ctg__menu--gears, .categories:hover > .ctg__menu.ctg__menu--bath{
+        display: flex;
     }
 
     .ctg__epicerie {
