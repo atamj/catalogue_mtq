@@ -9,13 +9,15 @@
             <a href="https://www.carrefour-martinique.com/" rel="nofollow" class="logo-full w-inline-block"><img
                     src="{{asset('images/logo-jai_choisi_color.svg')}}" loading="lazy" height="60" width="150" alt=""
                     class="logo"></a>
-            <a href="#" class="logo-short w-inline-block"><img src="{{asset('images/logo-short.svg')}}" loading="lazy" width="50"
+            <a href="#" class="logo-short w-inline-block"><img src="{{asset('images/logo-short.svg')}}" loading="lazy"
+                                                               width="50"
                                                                alt=""></a>
             <a href="{{url('/')}}" aria-current="page" class="event-link w-nav-brand w--current">
                 <h1 class="event">Avec Carrefour, <span class="text-span-4">je choisis le meilleur pour bébé</span></h1>
             </a>
-            <a href="#" class="download_catalogue w-inline-block"><img src="{{asset('images/arrow-down-circle-outline.svg')}}"
-                                                                       loading="lazy" alt="" class="image">
+            <a href="#" class="download_catalogue w-inline-block"><img
+                    src="{{asset('images/arrow-down-circle-outline.svg')}}"
+                    loading="lazy" alt="" class="image">
                 <div class="text-block-2">Télécharger le catalogue</div>
             </a>
         </div>
@@ -32,7 +34,24 @@
     </ul>
 </div>
 <div class="hero">
-    <div class="categories">
+    @foreach($menu as $category_url => $category)
+        <div class="categories">
+            <div data-w-id="a33e95c8-212f-b6d9-7add-46fac327b305" class="ctg__title img_{{$category->img}}">
+                <div class="ctg__title--size bg--{{$category->bg}}">{{$category->string}}</div>
+            </div>
+            <div data-w-id="2877d8d1-2777-7bb4-3ce4-761949e2038e" class="ctg__menu ctg__menu--{{$category->menu}}">
+                <a data-w-id="Link Block 11" href="#" class="ctg__link close_menu w-inline-block">
+                    <div class="ctg__link_txt"></div>
+                </a>
+                @foreach($category->sous_categories as $sous_category_url => $sous_category)
+                    <a href="{{url($category_url.'#'.$sous_category_url)}}" class="ctg__link w-inline-block">
+                        <div class="ctg__link_txt link_text--{{$category->txt}}">{{$sous_category}}</div>
+                    </a>
+                @endforeach
+            </div>
+        </div>
+    @endforeach
+    {{--<div class="categories">
         <div data-w-id="a33e95c8-212f-b6d9-7add-46fac327b305" class="ctg__title img_gears">
             <div class="ctg__title--size bg--yellow">Équipement</div>
         </div>
@@ -113,7 +132,7 @@
                 <div class="ctg__link_txt link_text--green">Hygiène</div>
             </a>
         </div>
-    </div>
+    </div>--}}
 </div>
 @include('partials.footer')
 </body>

@@ -4,18 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 
 class CategoryController extends Controller
 {
     public $csv;
-    public $isGoogleSheet;
     private $data = [];
     public $products = [];
-    public $categories = [];
-    public $subcategories = [];
-    public $filtered;
     public $keys;
 
     public function __construct()
@@ -27,9 +24,9 @@ class CategoryController extends Controller
 
     public function index($category)
     {
+
         /** Redirect to secure URL if app production*/
         $this->secure();
-
         /** Get products from GSheet or Session */
         $this->getProducts();
 
@@ -40,22 +37,11 @@ class CategoryController extends Controller
         $bombe = $products->where('bombe_1', '1');
 
         /** Get list of sub-categories for current products list */
-        $sous_cats = [];
-        foreach ($products as $product) {
-            if (!in_array($product->sous_categorie, $sous_cats)) {
-                $sous_cats[] = $product->sous_categorie;
-            }
-        }
+        $sous_categories = Product::getSubCategories($products);
 
-        /** Create an array key value for sub-categories for get slug in key*/
-        $sous_categories = [];
-        foreach ($sous_cats as $sous_category) {
-
-            $url = $this->stringToUrl($sous_category);
-            $sous_categories[$url] = $sous_category;
-
-        }
+        /** Get Category string */
         $category = $products->first()->categorie;
+
         return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories'));
     }
 
@@ -64,13 +50,18 @@ class CategoryController extends Controller
         /** Redirect to secure URL if app production*/
         $this->secure();
 
+        /** Get all product stored to $this->products */
         $this->getProducts();
+
+        /** Filter product by ean*/
         $product = $this->products->where('ean', $ean)->first();
-        $url = $this->stringToUrl($product->sous_category);
-        $product->sous_category_url = $url;
+
         return view('show', compact('product'));
     }
 
+    /**
+     * Get full catalogue
+    */
     public function catalogue()
     {
         /** Redirect to secure URL if app production*/
@@ -85,50 +76,84 @@ class CategoryController extends Controller
         $bombe = $products->where('bombe_1', '1');
 
         /** Get list of sub-categories for current products list */
-        $sous_cats = [];
-        foreach ($products as $product) {
-            if (!in_array($product->sous_categorie, $sous_cats)) {
-                $sous_cats[] = $product->sous_categorie;
-            }
-        }
+        $sous_categories = Product::getSubCategories($products);
 
-        /** Create an array key value for sub-categories for get slug in key*/
-        $sous_categories = [];
-        foreach ($sous_cats as $sous_category) {
-
-            $url = $this->stringToUrl($sous_category);
-            $sous_categories[$url] = $sous_category;
-
-        }
         $category = "Cataloque";
         return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories'));
 
     }
+
+    /**
+     * Get or update products
+     */
     private function getProducts()
     {
-        if (session()->has('products')) {
-            $this->products = session('products');
-        } else {
+        /** If have news data */
+        if (Storage::exists('data.csv')) {
 
-            if (Storage::exists('data.json')) {
-                $products = json_decode(Storage::get('data.json'));
+            /** Reset session*/
+            session()->forget('products');
+
+            /** Get all products in BD to delete*/
+            $products = Product::all();
+
+            /** List IDS to delete*/
+            $idsToDelete = [];
+            foreach ($products as $product) {
+                $idsToDelete[] = $product->id;
+            }
+            /** Delete list*/
+            Product::destroy($idsToDelete);
+
+            /** Get formated data from CSV */
+            $this->formatData();
+
+            /** Delete CSV*/
+            Storage::delete('data.csv');
+
+            /** Put data in session for optimisation*/
+            session()->put('products', $this->products);
+
+        } else {
+            /** If session existe get products from session else get product from BD*/
+            if (session()->has('products') && count(session('products')) > 0) {
+
+                /** Get product from session */
+                $this->products = session('products');
+
+            } else {
+
+                /** Reset session*/
+                session()->forget('products');
+
+                /** Reset $this->products*/
                 $this->products = [];
+
+                /** Get products from BD*/
+                $products = Product::all();
+
+                /** Format et save products in $this->products*/
                 foreach ($products as $item) {
+
+                    $item = json_decode($item->data);
                     $product = new Product();
                     foreach ($item as $key => $value) {
+
                         $product->$key = $value;
+
                     }
+
                     $this->products[] = $product;
+
                 }
+
+                /** Convert $this->products to laravel collection*/
                 $this->products = collect($this->products);
-            } else {
-                $this->getData();
-                $this->formatData();
-                $this->addId();
+
+                /** Put products in session*/
+                session()->put('products', $this->products);
+
             }
-
-
-            session()->put('products', $this->products);
 
         }
 
@@ -139,15 +164,21 @@ class CategoryController extends Controller
      */
     private function getData()
     {
+
         /** Google Sheet URL*/
         $urlGoogleSheet = "https://docs.google.com/spreadsheets/d/" . $this->csv . "/gviz/tq?tqx=out:csv";
 
         if (Storage::exists('data.csv')) {
+
             $csv = Storage::get('data.csv');
+
         } else {
+
             /** Get CSV GoogleSheet content*/
             $csv = file_get_contents($urlGoogleSheet);
+
         }
+
         /** Convert CSV to Array*/
         $this->data = str_getcsv($csv, "\r\n");
         foreach ($this->data as &$row) $row = str_getcsv($row, ",");
@@ -159,34 +190,32 @@ class CategoryController extends Controller
      */
     private function formatData()
     {
+
+        /** Get data to CSV & convert to array*/
+        $this->getData();
+
         /** Delete & get first column data*/
         $firstCol = array_splice($this->data, 0, 1);
 
+        /** Format title to key*/
         $this->formatTitle($firstCol);
 
         /** Create array to contains product*/
         foreach ($this->data as $key => $tabs) {
 
             $product = new Product();
-            $product->keys = $this->keys;
+
             foreach ($tabs as $i => $val) {
+
                 $title = $this->keys[$i];
                 $product->$title = $val;
+
             }
-            if (!in_array($product->categorie, $this->categories) && $product->categorie) {
-                $this->categories[] = $product->categorie;
-            }
-            if (!in_array($product->sous_categorie, $this->subcategories) && $product->sous_categorie) {
-                $this->subcategories[] = $product->sous_categorie;
-            }
-            $sous_category = $product->sous_categorie;
-            $sous_categorie_url = $this->stringToUrl($sous_category);
-            $product->sous_categorie_url = $sous_categorie_url;
 
             $this->products[] = $product;
+            Product::create(['data' => json_encode($product)]);
 
         }
-        Storage::put('data.json', json_encode($this->products));
         $this->products = collect($this->products);
     }
 
@@ -197,105 +226,40 @@ class CategoryController extends Controller
      */
     private function formatTitle($firstCol)
     {
+
         /** Convert to string*/
         $firstColString = implode(';', $firstCol[0]);
 
         /** Cleaning first column */
+        $firstColString = $this->stringToUrl($firstColString);
 
-        /** Remove space */
-        $firstColString = str_replace(" ", "_", $firstColString);
-        /** Remove ° */
-        $firstColString = str_replace("°", "", $firstColString);
-        /** Remove é */
-        $firstColString = str_replace("é", "e", $firstColString);
-        /** Remove è*/
-        $firstColString = str_replace("è", "e", $firstColString);
-        /** Remove ê*/
-        $firstColString = str_replace("ê", "e", $firstColString);
-        /** Convert Uppercase to lower */
-        $firstColString = strtolower($firstColString);
-
-        /** Format fist column to use for key*/
+        /** Convert to Array*/
         $this->keys = explode(';', $firstColString);
-    }
-
-    /**
-     * Filter products
-     *
-     * @param $key
-     * @param string $operator
-     * @param $content
-     * @return array
-     */
-    public function where($key, $operator = '==', $content)
-    {
-        $this->filtered = [];
-        foreach ($this->products as $product) {
-
-            switch ($operator) {
-
-                case '<':
-                    if ($product->$key < $content) {
-
-                        $this->filtered[] = $product;
-
-                    }
-                    break;
-                case '<=':
-                    if ($product->$key <= $content) {
-
-                        $this->filtered[] = $product;
-
-                    }
-                    break;
-                case '>':
-                    if ($product->$key > $content) {
-
-                        $this->filtered[] = $product;
-
-                    }
-                    break;
-                case '>=':
-                    if ($product->$key >= $content) {
-
-                        $this->filtered[] = $product;
-
-                    }
-                    break;
-                default:
-                    if ($product->$key == $content) {
-
-                        $this->filtered[] = $product;
-
-                    }
-
-            }
-
-        }
-        return $this->filtered;
 
     }
 
-    private function addId()
-    {
-        foreach ($this->products as $key => $product) {
-            $product->id = $key + 1;
-        }
-    }
+    /** Secure url*/
     private function secure()
     {
+
         if (!request()->secure() && env('APP_ENV') === 'production') {
+
             return redirect()->secure(request()->getRequestUri());
             /*URL::forceScheme('https');*/
 
         }
 
     }
+
+    /** Convert string to URL*/
     private function stringToUrl($string)
     {
+
         $url = str_replace(" ", "-", $string);
-        $url = str_replace("É", 'E', $url);
-        $url = str_replace("È", 'E', $url);
+        $url = str_replace(["°", "&"], "", $url);
+        $url = str_replace(["É", "È", "è", "é", "ê", "Ê", "ë", "Ë"], 'e', $url);
         return strtolower($url);
+
     }
+
 }

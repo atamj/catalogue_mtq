@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 /** Home*/
 Route::get('/', function () {
-    return view('index');
+    $menu = json_decode(\Illuminate\Support\Facades\Storage::get('menu.json'));
+    return view('index', compact('menu'));
 });
 
 /** Full Catalogue */

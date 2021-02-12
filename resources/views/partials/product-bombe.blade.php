@@ -11,7 +11,7 @@
      data-photo_3="{{$product->photo_3}}">
     @if ($sous_category)
         <h5 class="sub-category">
-            {{$sous_category}}
+            {{$product->sous_categorie}}
         </h5>
     @endif
     <div class="spotlight--img"
