@@ -10,7 +10,6 @@
 @include('partials.banner')
 @include('partials.menu')
 
-{{--@include('partials.sticky-menu')--}}
 {{-- Arrow nav --}}
 @include('partials.slide-arrows')
 {{-- End Arrow nav--}}
@@ -19,7 +18,7 @@
 
     @foreach($sous_categories as $key => $sous_category)
         @if ($key == "")
-            <div id="{{$category}}" class="section-wrapper">
+            <div id="{{$category_url ?? $category}}" class="section-wrapper">
                 @else
                     <div id="{{$key}}" class="section-wrapper">
                         @endif
@@ -41,15 +40,6 @@
                                     @endforeach
                                 </div>
                             </div>
-                            {{--Vertical indicator--}}
-                            @if (count($products->where('sous_categorie', $sous_category)) > 5)
-                                <div class="vertical-scroll">
-                                    <a href="#" class="arrow w-inline-block"></a>
-                                    <div class="div-block-7"></div>
-                                    <a href="#" class="arrow down w-inline-block"></a>
-                                </div>
-                            @endif
-                            {{--End Vertical indicator--}}
                         </div>
                     </div>
                     @endforeach

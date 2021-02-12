@@ -140,12 +140,19 @@ $(document).ready(function () {
         $('#designation').html(target.getAttribute('data-designation'))
         $('#description_produit').html(target.getAttribute('data-description_produit'))
         $('#prix_vente_1').html(target.getAttribute('data-prix_vente_1'))
-        $('#prix_vente_2').html(target.getAttribute('data-prix_vente_2'))
+        $('#prix_vente_2').html("€" + target.getAttribute('data-prix_vente_2'))
+        $('#prix_barre_1').html(target.getAttribute('data-prix_barre_1'))
+        $('#prix_barre_2').html("€" + target.getAttribute('data-prix_barre_2'))
+        if (target.getAttribute('data-prix_barre_1') != "0"){
+            $(".product_detail .p__old_price").show()
+        }else{
+            $(".product_detail .p__old_price").hide()
+        }
         // $('#eco_part').html(target.getAttribute('data-eco_part'))
         $('#marque').html(target.getAttribute('data-marque'))
-        $('#ean').html("EAN: " + target.getAttribute('data-ean'))
+        // $('#ean').html("EAN: " + target.getAttribute('data-ean'))
         $(".copy-link").attr('data-ean', target.getAttribute('data-ean'))
-        $("#share-email").attr('href', $("#share-email").attr('href') + "/" + target.getAttribute('data-ean'), )
+        $("#share-email").attr('href', $("#share-email").attr('data-href') + "/" + target.getAttribute('data-ean'), )
         $('#photo_principale').css('background-image', 'url(/images/' + target.getAttribute('data-photo_principale') + ')')
 
         /** Multi img*/
@@ -202,7 +209,7 @@ $(document).ready(function () {
     const closeButton = document.querySelector('.close-button');
 
     shareButton.addEventListener('click', event => {
-        let url = $('.pen-url').val() + "/" + $(".copy-link").attr('data-ean')
+        let url = $(".pen-url").attr('data-value') + "/" + $(".copy-link").attr('data-ean')
         if (navigator.share) {
             navigator.share({
                 title: 'Carefour',
@@ -217,10 +224,12 @@ $(document).ready(function () {
 
             $('.pen-url').val(url)
             let shareFb = $('#share-fb')
-            let fbDeeplink = shareFb.attr('href') + url
+            let fbShareUrl = "https://www.facebook.com/sharer/sharer.php?u="
+            let fbDeeplink = fbShareUrl + url
             shareFb.attr('href', fbDeeplink)
             let shareWa = $('#share-wa')
-            let waDeeplink = shareWa.attr('href') + url
+            let waShareUrl = "https://wa.me/?text="
+            let waDeeplink = waShareUrl + url
             shareWa.attr('href', waDeeplink)
             shareDialog.classList.add('is-open');
         }

@@ -39,10 +39,11 @@ class CategoryController extends Controller
         /** Get list of sub-categories for current products list */
         $sous_categories = Product::getSubCategories($products);
 
-        /** Get Category string */
+        /** Get Category string & category_url*/
+        $category_url = $category;
         $category = $products->first()->categorie;
 
-        return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories'));
+        return view('catalogue', compact('products', 'bombe', 'category', 'category_url', 'sous_categories'));
     }
 
     public function show($ean)

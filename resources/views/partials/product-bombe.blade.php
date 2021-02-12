@@ -3,6 +3,8 @@
      data-description_produit="{{$product->description_produit}}"
      data-prix_vente_1="{{explode(',', $product->prix_vente)[0]}}"
      data-prix_vente_2="{{explode(',', $product->prix_vente)[1] ?? "00"}}"
+     data-prix_barre_1="{{explode(',', $product->prix_barre)[0]}}"
+     data-prix_barre_2="{{explode(',', $product->prix_barre)[1] ?? "00"}}"
      data-eco_part="{{$product->eco_part}}"
      data-marque="{{$product->marque}}"
      data-ean="{{$product->ean}}"

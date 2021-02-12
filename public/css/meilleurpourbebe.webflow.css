@@ -1391,7 +1391,13 @@ h3:hover {
     background-position: 20% 20%;
     background-size: cover;
 }
-
+.product_detail .p__price_1st.price_1st--old{
+    font-size: 50px;
+}
+.product_detail .p__cross_bar{
+    width: 16%;
+    height: 4px;
+}
 .detail__container {
     display: -webkit-box;
     display: -webkit-flex;

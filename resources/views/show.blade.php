@@ -19,9 +19,21 @@
             <div class="p__details">
                 <div class="p__wrapper p_wrapper_details">
                     <div class="p__title p_title--detail" id="designation">{{$product->designation}}<br></div>
-                    <p class="p__infos p_infos--details">Le range pyjama ours ou pingouin est
-                        idéal comme ami pour tous
-                        les bébés.Dès la naissance Composition : 100% polyester   </p>
+                    <p class="p__infos p_infos--details"></p>
+                    @if ($product->prix_barre)
+                        <div class="p__old_price">
+                            <div class="p__old_price_wrapper">
+                                <div
+                                    class="p__price_1st price_1st--old">{{explode(',', $product->prix_barre)[0]}}</div>
+                                <div class="p__price_2nd">
+                                    <div class="p__price_cents price_cents--old">
+                                        €{{explode(',', $product->prix_barre)[1] ?? "00"}}</div>
+                                </div>
+                            </div>
+                            <div
+                                class="p__cross_bar"></div>
+                        </div>
+                    @endif
                     <div class="p__price_wrapper p_price_wrapper--detail">
                         <div class="p__price_1st _1st--detail"
                              id="prix_vente_1">{{explode(',', $product->prix_vente)[0]}}</div>
@@ -31,8 +43,7 @@
                         <div class="p__ecopart" id="eco_part">ÉCOPART {{$product->eco_part}}€</div>
                     @endif--}}
                     <div class="brand brand--detail" id="marque">{{$product->marque}}</div>
-                    <div class="text-block-12"><span class="ean ean--detail" id="ean">EAN: {{$product->ean}}</span>
-                    </div>
+{{--                    <div class="text-block-12"><span class="ean ean--detail" id="ean">EAN: {{$product->ean}}</span></div>--}}
                     <p class="paragraph" id="description_produit">{{$product->description_produit}}</p>
                     <div class="img-gallery" style="display: none">
                         <div class="img-gallery-txt">Plus d&#x27;images</div>

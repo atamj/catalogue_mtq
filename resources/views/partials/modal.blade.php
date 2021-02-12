@@ -14,16 +14,26 @@
                 <div class="p__wrapper p_wrapper_details">
                     <div class="p__title p_title--detail" id="designation"><br></div>
                     <p class="p__infos p_infos--details"></p>
+
+                    <div class="p__old_price" style="display: none">
+                        <div class="p__old_price_wrapper">
+                            <div
+                                class="p__price_1st price_1st--old" id="prix_barre_1"></div>
+                            <div class="p__price_2nd">
+                                <div class="p__price_cents price_cents--old" id="prix_barre_2"></div>
+                            </div>
+                        </div>
+                        <div
+                            class="p__cross_bar"></div>
+                    </div>
                     <div class="p__price_wrapper p_price_wrapper--detail">
                         <div class="p__price_1st _1st--detail" id="prix_vente_1"></div>
                         <div class="p__price_cents" id="prix_vente_2"></div>
                     </div>
 {{--                    <div class="p__ecopart" id="eco_part"></div>--}}
                     <div class="brand brand--detail" id="marque"></div>
-                    <div class="text-block-12"><span class="ean ean--detail" id="ean"></span></div>
-                    <p class="paragraph" id="description_produit">Lorem ipsum dolor sit amet, consectetur adipiscing
-                        elit. Suspendisse varius
-                        enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.</p>
+{{--                    <div class="text-block-12"><span class="ean ean--detail" id="ean"></span></div>--}}
+                    <p class="paragraph" id="description_produit"></p>
                     <div class="img-gallery" style="display: none">
                         <div class="img-gallery-txt">Plus d&#x27;images</div>
                         <div class="w-layout-grid img-gallery-grid">
