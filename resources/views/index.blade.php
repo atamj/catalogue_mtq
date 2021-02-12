@@ -36,5 +36,6 @@
     @endforeach
 </div>
 @include('partials.footer')
+    <script src="{{asset('js/webflow.js')}}"></script>
 </body>
 </html>

@@ -62,7 +62,8 @@ h3:hover {
     text-decoration: none;
     justify-content: flex-end;
 }
-.logo-full{
+
+.logo-full {
     width: 25%;
 }
 
@@ -502,18 +503,21 @@ h3:hover {
     background-size: cover;
     background-repeat: no-repeat;
 }
-.ctg__title.img_bath{
+
+.ctg__title.img_bath {
     background-image: url('../images/category-img-02.jpg');
     background-position: -50px 0px;
     background-size: cover;
     background-repeat: no-repeat;
 }
-.ctg__title.img_food{
+
+.ctg__title.img_food {
     background-image: url('../images/category-img-04.jpg');
     background-position: -50px 0px;
     background-size: cover;
     background-repeat: no-repeat;
 }
+
 .ctg__menu {
     position: absolute;
     left: 0%;
@@ -1391,13 +1395,16 @@ h3:hover {
     background-position: 20% 20%;
     background-size: cover;
 }
-.product_detail .p__price_1st.price_1st--old{
+
+.product_detail .p__price_1st.price_1st--old {
     font-size: 50px;
 }
-.product_detail .p__cross_bar{
+
+.product_detail .p__cross_bar {
     width: 80px;
     height: 4px;
 }
+
 .detail__container {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1699,7 +1706,7 @@ h3:hover {
 .menu_list {
     display: none;
     overflow: hidden;
-    width: 100%!important;
+    width: 100% !important;
     height: 0px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -2114,6 +2121,7 @@ h3:hover {
         transition: opacity 0.2s;
         transition-timing-function: linear;
     }
+
     .ctg__menu.ctg__menu--bath {
         display: none;
         opacity: 0;
@@ -2121,10 +2129,20 @@ h3:hover {
         transition-timing-function: linear;
 
     }
-    .ctg__menu.ctg__menu--gears:hover, .ctg__menu.ctg__menu--bath:hover{
+
+    .ctg__menu.ctg__menu--gears:hover, .ctg__menu.ctg__menu--bath:hover {
         opacity: 1;
     }
-    .categories:hover > .ctg__menu.ctg__menu--gears, .categories:hover > .ctg__menu.ctg__menu--bath{
+
+    .ctg__menu.ctg__menu--gears:active, .ctg__menu.ctg__menu--bath:active {
+        opacity: 1;
+    }
+
+    .categories:hover > .ctg__menu.ctg__menu--gears, .categories:hover > .ctg__menu.ctg__menu--bath {
+        display: flex;
+    }
+
+    .categories:active > .ctg__menu.ctg__menu--gears, .categories:active > .ctg__menu.ctg__menu--bath {
         display: flex;
     }
 
@@ -2205,7 +2223,6 @@ h3:hover {
     /*.spotlight-02-bg {
         display: none;
     }*/
-
     .event {
         color: #A45F3F;
     }
@@ -2336,11 +2353,13 @@ h3:hover {
         background-position: 50% 50%;
         background-size: auto;
     }
+
     .ctg__title.img_food {
         background-image: url('../images/category-img-04.jpg');
         background-position: 50% 50%;
         background-size: auto;
     }
+
     .nav__container {
         height: 100%;
         -webkit-box-orient: vertical;
@@ -3718,7 +3737,7 @@ h3:hover {
         /*margin-right: 10px;*/
         /*margin-top: 10px;*/
         /*top: 10px;*/
-        width:100%;
+        width: 100%;
         margin-bottom: 30px;
     }
 
@@ -3927,6 +3946,7 @@ h3:hover {
     font-style: normal;
     font-display: swap;
 }
+
 .sub-category {
     position: absolute;
     left: 0%;
