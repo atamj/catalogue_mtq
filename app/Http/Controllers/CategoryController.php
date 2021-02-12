@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\URL;
 
 class CategoryController extends Controller
 {
@@ -54,7 +55,7 @@ class CategoryController extends Controller
             $sous_categories[$url] = $sous_category;
 
         }
-
+        $category = $products->first()->categorie;
         return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories'));
     }
 
@@ -285,7 +286,10 @@ class CategoryController extends Controller
     {
         if (!request()->secure() && env('APP_ENV') === 'production') {
             return redirect()->secure(request()->getRequestUri());
+            /*URL::forceScheme('https');*/
+
         }
+
     }
     private function stringToUrl($string)
     {
