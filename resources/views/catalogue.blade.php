@@ -32,7 +32,6 @@
                                 <a href="#" class="arrow arrow-left w-inline-block"></a>
                                 <a href="#" class="arrow arrow--right w-inline-block"></a>
                             </div>
-                            <link rel="stylesheet" href="{{asset('css/vertical-scrolling-nav.webflow.css')}}">
                             {{-- Produit Bombe--}}
                             @if ($bombe->where('sous_categorie', $sous_category)->first())
                                 @include('partials.product-bombe', ['product'=>$bombe->where('sous_categorie', $sous_category)->first()])
