@@ -10,23 +10,23 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         /** If CSV don't exist create it*/
-        if (!Storage::exists('contact.csv')){
+        if (!Storage::exists('public/contact.csv')){
             /** Create first row contain keys */
-            Storage::put('contact.csv', "email;Created at");
+            Storage::put('public/contact.csv', "email;Created at");
 
             /** Save new line in CSV*/
-            Storage::append('contact.csv',implode(';', $request->toArray()));
+            Storage::append('public/contact.csv',implode(';', $request->toArray()));
 
             /** Format content to save in json*/
             $content = json_encode([$request->toArray()]);
             /** Save json content*/
-            Storage::put('contact.json', $content);
+            Storage::put('public/contact.json', $content);
 
             return 'ok';
 
         }else{
             /** Get json list*/
-            $contactList =  json_decode(Storage::get('contact.json'));
+            $contactList =  json_decode(Storage::get('public/contact.json'));
             $exist = false;
             /** check if email exist*/
             $email  = $request->all()['email'];
@@ -44,9 +44,9 @@ class ContactController extends Controller
             /** Save email il is don't exist*/
             if (!$exist){
                 /** Save new line in CSV*/
-                Storage::append('contact.csv',implode(';', $request->toArray()));
+                Storage::append('public/contact.csv',implode(';', $request->toArray()));
                 $contactList[] = $request->toArray();
-                Storage::put("contact.json", json_encode($contactList));
+                Storage::put("public/contact.json", json_encode($contactList));
 
                 return 'ok';
             }else{
@@ -57,11 +57,6 @@ class ContactController extends Controller
     }
     public function get()
     {
-        if(Storage::exists('contact.csv')){
-            $contact = Storage::get('contact.csv');
-            return json_encode($contact);
-        }else{
-            return json_encode(["test"=> 'test']);
-        }
+        echo "<a href='".url(Storage::url('contact.csv'))."' download=''>Télécharger le CSV</a>";
     }
 }

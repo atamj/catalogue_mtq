@@ -25,9 +25,9 @@ Route::post('contact',
     [ContactController::class, 'store']
 );
 
-/*Route::get('contact',
+Route::get('contact18647659564849',
     [ContactController::class, 'get']
-);*/
+);
 
 /** Full Catalogue */
 Route::get(
