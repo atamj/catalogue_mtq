@@ -4,6 +4,9 @@ var active_section = 1;
 var found_section = "";
 $(document).ready(function () {
 
+    /** Show product after content is loaded */
+    $(".items-wrapper").show()
+
     $("#next")
         .removeClass("nav-active")
         .addClass("nav-inactive");
@@ -49,8 +52,8 @@ $(document).ready(function () {
             .addClass("nav-active");
     }
 
-    $("#next").click(function () {
-
+    $("#next").click(function (e) {
+        e.preventDefault()
         if ($(".active").attr("data-num") == active_section) {
 
             $(".active")
@@ -78,8 +81,8 @@ $(document).ready(function () {
         }
     });
 
-    $("#prev").click(function () {
-
+    $("#prev").click(function (e) {
+        e.preventDefault()
         if ($(".active").attr("data-num") == active_section) {
 
             $(".active")

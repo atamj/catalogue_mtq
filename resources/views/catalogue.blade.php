@@ -3,6 +3,11 @@
 <html data-wf-page="601d786ad06b3fd5b30ad297" data-wf-site="601d786ad06b3f2f840ad293">
 @include('partials.head', ['title'=> "Catalogue:".$category])
 <body>
+<script>
+    if (location.hash == ""){
+        location.href = "/"
+    }
+</script>
 {{-- Modal --}}
 @include('partials.modal')
 {{-- End Modal --}}
@@ -33,7 +38,7 @@
                                 @include('partials.product-bombe', ['product'=>$bombe->where('sous_categorie', $sous_category)->first()])
                             @endif
                             {{-- End Produit Bombe--}}
-                            <div class="items-wrapper">
+                            <div class="items-wrapper" style="display: none">
                                 <div class="w-layout-grid grid">
                                     @foreach($products->where('sous_categorie', $sous_category)->where('bombe_1', '0') as $product)
                                         @include('partials.product', ['product'=> $product])
@@ -44,12 +49,13 @@
                     </div>
                     @endforeach
             </div>
-@if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
-    @include('partials.footer-carrefour')
-@elseif(env('APP_URL') === "https://catalogue.euromarche-martinique.com")
-    @include('partials.footer-euro')
-@else
-    @include('partials.footer')
-@endif
+            @if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
+                @include('partials.footer-carrefour')
+            @elseif(env('APP_URL') === "https://catalogue.euromarche-martinique.com")
+                @include('partials.footer-euro')
+            @else
+                @include('partials.footer')
+            @endif
+
 </body>
 </html>
