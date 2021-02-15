@@ -146,16 +146,16 @@ $(document).ready(function () {
         $('#prix_vente_2').html("€" + target.getAttribute('data-prix_vente_2'))
         $('#prix_barre_1').html(target.getAttribute('data-prix_barre_1'))
         $('#prix_barre_2').html("€" + target.getAttribute('data-prix_barre_2'))
-        if (target.getAttribute('data-prix_barre_1') != "0"){
+        if (target.getAttribute('data-prix_barre_1') != "0") {
             $(".product_detail .p__old_price").show()
-        }else{
+        } else {
             $(".product_detail .p__old_price").hide()
         }
         // $('#eco_part').html(target.getAttribute('data-eco_part'))
         $('#marque').html(target.getAttribute('data-marque'))
         // $('#ean').html("EAN: " + target.getAttribute('data-ean'))
         $(".copy-link").attr('data-ean', target.getAttribute('data-ean'))
-        $("#share-email").attr('href', $("#share-email").attr('data-href') + "/" + target.getAttribute('data-ean'), )
+        $("#share-email").attr('href', $("#share-email").attr('data-href') + "/" + target.getAttribute('data-ean'),)
         $('#photo_principale').css('background-image', 'url(/images/' + target.getAttribute('data-photo_principale') + ')')
 
         /** Multi img*/
@@ -217,37 +217,43 @@ $(document).ready(function () {
     const shareButton = document.querySelector('#share');
     const shareDialog = document.querySelector('.share-dialog');
     const closeButton = document.querySelector('.close-button');
+    if (shareButton) {
+        shareButton.addEventListener('click', event => {
+            let url = $(".pen-url").attr('data-value') + "/" + $(".copy-link").attr('data-ean')
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Carefour',
+                    text: 'Consulter le nouveau catalogue de Carefour Martinique',
+                    url: url
+                }).then(() => {
+                    console.log('Thanks for sharing!');
+                })
+                    .catch(console.error);
+            } else {
+                $(".copy-link").attr('data-link', location.href)
 
-    shareButton.addEventListener('click', event => {
-        let url = $(".pen-url").attr('data-value') + "/" + $(".copy-link").attr('data-ean')
-        if (navigator.share) {
-            navigator.share({
-                title: 'Carefour',
-                text: 'Consulter le nouveau catalogue de Carefour Martinique',
-                url: url
-            }).then(() => {
-                console.log('Thanks for sharing!');
-            })
-                .catch(console.error);
-        } else {
-            $(".copy-link").attr('data-link', location.href)
-
-            $('.pen-url').val(url)
-            let shareFb = $('#share-fb')
-            let fbShareUrl = "https://www.facebook.com/sharer/sharer.php?u="
-            let fbDeeplink = fbShareUrl + url
-            shareFb.attr('href', fbDeeplink)
-            let shareWa = $('#share-wa')
-            let waShareUrl = "https://wa.me/?text="
-            let waDeeplink = waShareUrl + url
-            shareWa.attr('href', waDeeplink)
-            shareDialog.classList.add('is-open');
-        }
-    });
-    closeButton.addEventListener('click', event => {
-        shareDialog.classList.remove('is-open');
-    });
-    document.querySelector(".copy-link").addEventListener("click", copy);
+                $('.pen-url').val(url)
+                let shareFb = $('#share-fb')
+                let fbShareUrl = "https://www.facebook.com/sharer/sharer.php?u="
+                let fbDeeplink = fbShareUrl + url
+                shareFb.attr('href', fbDeeplink)
+                let shareWa = $('#share-wa')
+                let waShareUrl = "https://wa.me/?text="
+                let waDeeplink = waShareUrl + url
+                shareWa.attr('href', waDeeplink)
+                shareDialog.classList.add('is-open');
+            }
+        });
+    }
+    if (closeButton) {
+        closeButton.addEventListener('click', event => {
+            shareDialog.classList.remove('is-open');
+        });
+    }
+    let copyLink = document.querySelector(".copy-link")
+    if (copyLink) {
+        copyLink.addEventListener("click", copy);
+    }
     /*$('#share-fb').click((e) => {
         e.preventDefault()
         let url = $('.pen-url').val() + "/" + $(".copy-link").attr('data-ean')
@@ -256,14 +262,14 @@ $(document).ready(function () {
         target.href = depLink + url
         target.click()
     })*/
-    $(".menu_btn").click((e)=>{
+    $(".menu_btn").click((e) => {
         e.preventDefault()
-        if (!$('.menu_list').hasClass('active')){
+        if (!$('.menu_list').hasClass('active')) {
 
             $('.menu_list').addClass('active')
         }
     })
-    $(".link-block-15").click(()=>{
+    $(".link-block-15").click(() => {
         $('.menu_list').removeClass('active')
     })
     $(".product_detail").hover(disabledScroll())
@@ -278,14 +284,15 @@ function copy() {
 
 window.addEventListener('scroll', (e) => {
     let body = $('body')
-    if (body.attr('scroll') == 'off'){
+    if (body.attr('scroll') == 'off') {
         window.scrollTo(0, 0);
     }
 })
 
-function enabledScroll(){
+function enabledScroll() {
     $('body').attr('scroll', 'on')
 }
-function disabledScroll(){
+
+function disabledScroll() {
     $('body').attr('scroll', 'off')
 }

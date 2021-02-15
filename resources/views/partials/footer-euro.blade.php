@@ -2,7 +2,7 @@
     <div class="ftr__top" style="background-image: url('{{asset('/images/cover-euromarche.png')}}');">
         <div class="form w-form">
             <form method="POST"
-                  action="{{env('SHEET_API_URL')}}"
+                  action="{{url('contact')}}"
                   id="email-form" name="email-form" data-name="Email Form" class="form__wrapper">
                 <h5 class="heading-2">Notre catalogue et bien plus !</h5>
                 <p class="txt__basic">Inscrivez vous &amp; recevez notre dernier catalogue et nos bonnes affaires en

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,15 @@ Route::get('/', function () {
     $menu = json_decode(\Illuminate\Support\Facades\Storage::get('menu.json'));
     return view('index', compact('menu'));
 });
+
+/** Store Contact */
+Route::post('contact',
+    [ContactController::class, 'store']
+);
+
+/*Route::get('contact',
+    [ContactController::class, 'get']
+);*/
 
 /** Full Catalogue */
 Route::get(

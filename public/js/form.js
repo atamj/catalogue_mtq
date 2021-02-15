@@ -15,66 +15,30 @@ class GSheet {
             "Created at": new Date(),
         };
 
-        /** Test il this email exist*/
-        fetch(this.url)
-            .then((response) => response.json())
-            .then((res) => {
-
-                let exist = false
-                /** Check in each lines if this mail exist */
-                res.forEach((elm) => {
-
-                    if (elm['email'] == email) {
-                        exist = true
-                        success('Vous êtes déjà inscrit')
-                    }
-
-                })
-                /** Post email */
-                if (!exist) {
-                    /** Post */
-                    fetch(this.url, {
-                        method: "POST",
-                        mode: "cors",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(data),
-                    })
-                        .then((r) => r.json())
-                        .then((data) => {
-
-                            /** Success function*/
-                            success()
-
-                        })
-                        .catch((error) => {
-                            /** Error function*/
-                            fail(error)
-                        });
+        /** Post */
+        $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+        })
+        $.ajax({
+            method: "POST",
+            url: $("#email-form").attr("action"),
+            data: data
+        })
+            .done((data) => {
+                if (data == "ok"){
+                    postSuccess()
+                }else {
+                    postSuccess("Vous êtes déjà inscrit")
                 }
-
             })
-            .catch((error) => {
-                console.error(error)
+            .fail((error) => {
+                fail(error)
             });
-
     }
 
     /**
      * Get content in Sheet
      * */
-    /*get() {
-        fetch(this.url)
-            .then((response) => response.json())
-            .then((data) => {
-                return data;
-            })
-            .catch((error) => {
-                return false
-                console.error(error)
-            });
-    }*/
 }
 
 /** Connect to GSheet API */
@@ -102,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
 });
+
 /** Events when form is submit with success */
 function postSuccess(message = "Merci ! Votre inscription a bien été enregistrée.") {
 
@@ -144,12 +109,3 @@ function postFail(error) {
     console.log(error);
 }
 
-/** Events when get request have success*/
-function getSuccess(data) {
-    console.log(data)
-}
-
-/** Envents when get request have error*/
-function getError(error) {
-    console.error(error)
-}
