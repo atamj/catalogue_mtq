@@ -5,7 +5,7 @@
     <meta content="{{$title}}" property="twitter:title">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Webflow" name="generator">
-    @if (env('APP_URL=https://catalogue.carrefour-martinique.com'))
+    @if (env('APP_URL' === "https://catalogue.carrefour-martinique.com"))
         <!-- Global site tag (gtag.js) - Google Analytics -->
             <script async src="https://www.googletagmanager.com/gtag/js?id=G-SMNYFQX46B"></script>
             <script>
