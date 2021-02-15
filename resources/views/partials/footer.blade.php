@@ -61,7 +61,7 @@
                 </li>
             </ul>
             <div class="div-block-6">
-                <div class="text-block-3">@2021 Carrefour Martinique - Tous droits réservés</div>
+                <div class="text-block-3">{{"@" . date('Y')}} Carrefour Martinique - Tous droits réservés</div>
                 <div class="text-block-3">Avec<span class="text-span-3">❤</span> par<a
                         href="https://www.latitudesud.gp/" class="link"> latitudesud</a>
                 </div>

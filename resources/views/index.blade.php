@@ -13,7 +13,7 @@
     @endif
     <ul role="list" class="nav__center w-list-unstyled">
         <li class="nav__snd_title">
-            <div class="text-block-4">du 17 février au 7 mars</div>
+            <div class="text-block-4">du 19 février au 7 mars</div>
         </li>
         <li class="nav__ctg_lnk">
             <a href="{{url('/catalogue#rehausseur')}}" class="link-block-6 w-inline-block">

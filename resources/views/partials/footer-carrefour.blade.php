@@ -1,6 +1,6 @@
 <div class="footer">
-    <div class="ftr__top">
-        <div class="form w-form">
+    <div class="ftr__top" style="background-image: url('{{asset('/images/cover.png')}}');">
+        <div class="form w-form" >
             <form method="POST"
                   action="{{env('SHEET_API_URL')}}"
                   id="email-form" name="email-form" data-name="Email Form" class="form__wrapper">
@@ -61,7 +61,7 @@
                 </li>
             </ul>
             <div class="div-block-6">
-                <div class="text-block-3">@2021 Carrefour Martinique - Tous droits réservés</div>
+                <div class="text-block-3">{{"@" . date('Y')}} Carrefour Martinique - Tous droits réservés</div>
                 <div class="text-block-3">Avec<span class="text-span-3">❤</span> par<a
                         href="https://www.latitudesud.gp/" class="link"> latitudesud</a>
                 </div>

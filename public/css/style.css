@@ -1896,6 +1896,10 @@ h3:hover {
     color: #A45F3F;
     text-align: center;
 }
+.event.euro{
+    font-family: Amaticsc, sans-serif;
+    color: #5cb1b5;
+}
 
 .arrow-wrapper {
     position: absolute;

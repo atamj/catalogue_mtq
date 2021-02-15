@@ -1,5 +1,5 @@
 <div class="footer">
-    <div class="ftr__top">
+    <div class="ftr__top" style="background-image: url('{{asset('/images/cover-euromarche.png')}}');">
         <div class="form w-form">
             <form method="POST"
                   action="{{env('SHEET_API_URL')}}"
@@ -30,13 +30,13 @@
             <ul role="list" class="list w-list-unstyled">
                 <li>
                     <div class="socials">
-                        <a href="https://www.facebook.com/CarrefourMartinique/" rel="nofollow" target="_blank"
+                        <a href="https://www.facebook.com/euromarchemartinique/" rel="nofollow" target="_blank"
                            class="sn__size w-inline-block"><img src="{{asset('images/facebook-with-circle.svg')}}"
                                                                 loading="lazy"
                                                                 width="20" alt="">
                             <div class="sn__txt">SUIVEZ NOUS SUR FACEBOOK</div>
                         </a>
-                        <a href="https://www.carrefour-martinique.com/contactez-nous" rel="nofollow"
+                        <a href="https://www.euromarche-martinique.com/contact-magasin" rel="nofollow"
                            class="sn__size w-inline-block" rel="nofollow"><img
                                 src="{{asset('images/mail-with-circle.svg')}}" target="_blank"
                                 loading="lazy" width="20" alt="">
@@ -45,23 +45,14 @@
                     </div>
                 </li>
                 <li class="list-item">
-                    <a href="https://www.carrefour-martinique.com/cgu" rel="nofollow" target="_blank"
+                    <a href="https://www.euromarche-martinique.com/mentions-legales" rel="nofollow" target="_blank"
                        class="link-block-2 w-inline-block">
-                        <div>Conditions générales d’utilisation</div>
-                    </a>
-                    <a href="https://www.carrefour-martinique.com/politique-cookies" rel="nofollow" target="_blank"
-                       class="link-block-2 w-inline-block">
-                        <div class="ftr__infos--separate">Politique cookies</div>
-                    </a>
-                    <a href="https://www.carrefour-martinique.com/politique-de-confidentialite" rel="nofollow"
-                       target="_blank"
-                       class="link-block-2 w-inline-block">
-                        <div>Politique de confidentialité</div>
+                        <div>Mentions légales</div>
                     </a>
                 </li>
             </ul>
             <div class="div-block-6">
-                <div class="text-block-3">@2021 Carrefour Martinique - Tous droits réservés</div>
+                <div class="text-block-3">{{"@" . date('Y')}}  Euromarché Martinique - Tous droits réservés</div>
                 <div class="text-block-3">Avec<span class="text-span-3">❤</span> par<a
                         href="https://www.latitudesud.gp/" class="link"> latitudesud</a>
                 </div>
