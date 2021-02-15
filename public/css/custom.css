@@ -51,3 +51,8 @@ html{
 .menu_list.active{
     display: flex;
 }
+.product_detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

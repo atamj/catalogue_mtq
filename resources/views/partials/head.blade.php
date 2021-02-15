@@ -5,6 +5,17 @@
     <meta content="{{$title}}" property="twitter:title">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Webflow" name="generator">
+    @if (env('APP_URL=https://catalogue.carrefour-martinique.com'))
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-SMNYFQX46B"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-SMNYFQX46B');
+            </script>
+    @endif
     <link href="{{asset('css/normalize.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/webflow.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/meilleurpourbebe.webflow.css')}}" rel="stylesheet" type="text/css">
