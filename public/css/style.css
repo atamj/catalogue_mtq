@@ -60,11 +60,12 @@ h3:hover {
     -ms-flex-align: center;
     align-items: center;
     text-decoration: none;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 .logo-full {
     width: 25%;
+    text-align: center;
 }
 
 .image {
@@ -1879,6 +1880,7 @@ h3:hover {
 
 .logo-short {
     display: none;
+    text-align: center;
 }
 
 .event {

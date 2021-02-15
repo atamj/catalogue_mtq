@@ -4,7 +4,13 @@
 @include('partials.head', ['title'=> "Le meilleur pour bebe"])
 <body>
 <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="nav w-nav">
-    @include('partials.header')
+    @if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
+        @include('partials.header-carrefour')
+    @elseif(env('APP_URL') === "https://catalogue.euromarche-martinique.com")
+        @include('partials.header-euro')
+    @else
+        @include('partials.header')
+    @endif
     <ul role="list" class="nav__center w-list-unstyled">
         <li class="nav__snd_title">
             <div class="text-block-4">du 17 février au 7 mars</div>
@@ -35,7 +41,13 @@
         </div>
     @endforeach
 </div>
-@include('partials.footer')
+@if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
+    @include('partials.footer-carrefour')
+@elseif(env('APP_URL') === "https://catalogue.euromarche-martinique.com")
+    @include('partials.footer-euro')
+@else
+    @include('partials.footer')
+@endif
     <script src="{{asset('js/webflow.js')}}"></script>
 </body>
 </html>

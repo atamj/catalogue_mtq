@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="ftr__btm">
-        <div class="ftr__wrapper"><img src="{{asset('images/logo-jai_choisi_white.svg')}}" loading="lazy" height="85"
+        <div class="ftr__wrapper"><img src="{{asset('images/euromarche-symbol-white.svg')}}" loading="lazy" height="85"
                                        width="200"
                                        alt="" class="image-2"><img
                 src="{{asset('images/logo-jai_choisi_color_full.svg')}}"

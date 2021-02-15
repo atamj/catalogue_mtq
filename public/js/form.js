@@ -78,10 +78,10 @@ class GSheet {
 }
 
 /** Connect to GSheet API */
-let url = 'https://sheet.best/api/sheets/c9e142cb-9528-4ecf-9838-ad9e46267af5'
-let sheet = new GSheet(url)
-
 document.addEventListener('DOMContentLoaded', () => {
+
+    let url = $("#email-form").attr('action')
+    let sheet = new GSheet(url)
 
     /** Get form */
     var form = $('#email-form')

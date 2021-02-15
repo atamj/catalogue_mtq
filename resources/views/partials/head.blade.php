@@ -5,21 +5,27 @@
     <meta content="{{$title}}" property="twitter:title">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Webflow" name="generator">
-    @if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-SMNYFQX46B"></script>
-            <script>
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
+@if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-SMNYFQX46B"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
-                gtag('config', 'G-SMNYFQX46B');
-            </script>
-    @endif
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+
+            gtag('config', 'G-SMNYFQX46B');
+        </script>
+{{--    @elseif (env("APP_URL") === "https://catalogue.euromarche-martinique.com ")--}}
+
+@endif
     <link href="{{asset('css/normalize.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/webflow.css')}}" rel="stylesheet" type="text/css">
-    <link href="{{asset('css/meilleurpourbebe.webflow.css')}}" rel="stylesheet" type="text/css">
-{{--    <link href="{{asset('css/meilleurpourbebe-hover-corrige.webflow.css@')}}" rel="stylesheet" type="text/css">--}}
+    <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css">
+    {{--    <link href="{{asset('css/meilleurpourbebe-hover-corrige.webflow.css@')}}" rel="stylesheet" type="text/css">--}}
     <link href="{{asset('css/laflow.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/custom.css')}}" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>

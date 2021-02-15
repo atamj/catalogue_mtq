@@ -1,8 +1,8 @@
 <div class="nav_conrainer__wrapper">
-    <a data-w-id="Link Block 11" href="https://www.carrefour-martinique.com/" rel="nofollow"
-       class="logo-full w-inline-block"><img src="{{asset('images/logo-jai_choisi_color.svg')}}" loading="lazy"
-                                             height="60" width="150" alt="" class="logo"></a>
-    <a href="https://www.carrefour-martinique.com/" rel="nofollow" class="logo-short w-inline-block"><img src="{{asset('images/logo-short.svg')}}" loading="lazy" width="50"
+    <a data-w-id="Link Block 11" href="https://euromarche-martinique.com" rel="nofollow"
+       class="logo-full w-inline-block"><img src="{{asset('images/eurpmarche-logo.png')}}" loading="lazy"
+                                             height="auto" width="150" alt="" class="logo"></a>
+    <a href="https://euromarche-martinique.com" rel="nofollow" class="logo-short w-inline-block"><img src="{{asset('images/euromarche-symbol-color.svg')}}" loading="lazy" width="50"
                                                                                                           alt=""></a>
     <a href="{{url('/')}}" class="event-link w-nav-brand">
         <h1 class="event">Avec Carrefour, <span class="text-span-4">je choisis le meilleur pour bébé</span>

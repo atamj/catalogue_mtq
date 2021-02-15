@@ -44,6 +44,12 @@
                     </div>
                     @endforeach
             </div>
-@include('partials.footer')
+@if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
+    @include('partials.footer-carrefour')
+@elseif(env('APP_URL') === "https://catalogue.euromarche-martinique.com")
+    @include('partials.footer-euro')
+@else
+    @include('partials.footer')
+@endif
 </body>
 </html>

@@ -1,6 +1,12 @@
 <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="nav w-nav">
     <div class="nav__container">
-        @include('partials.header')
+        @if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
+            @include('partials.header-carrefour')
+        @elseif(env('APP_URL') === "https://catalogue.euromarche-martinique.com")
+            @include('partials.header-euro')
+        @else
+            @include('partials.header')
+        @endif
     </div>
     <div class="nav_center__wrapper">
         <ul role="list" class="nav__center--products w-list-unstyled">
