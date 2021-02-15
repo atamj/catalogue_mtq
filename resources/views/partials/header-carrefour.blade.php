@@ -8,7 +8,7 @@
         <h1 class="event">Avec Carrefour, <span class="text-span-4">je choisis le meilleur pour bébé</span>
         </h1>
     </a>
-    <a href="#" onclick="print()" class="download_catalogue w-inline-block"><img src="{{asset('images/arrow-down-circle-outline.svg')}}"
+    <a href="{{asset('storage/catalogue.pdf')}}" download="catalogue.pdf" class="download_catalogue w-inline-block"><img src="{{asset('images/arrow-down-circle-outline.svg')}}"
                                                                                  loading="lazy" alt="" class="image">
         <div class="text-block-2">Télécharger le catalogue</div>
     </a>

@@ -7,7 +7,7 @@
     <a href="{{url('/')}}" class="event-link w-nav-brand">
         <h1 class="event euro">Tout pour bébé... <span class="text-span-4">à petits prix</span></h1>
     </a>
-    <a href="#" onclick="print()" class="download_catalogue w-inline-block"><img src="{{asset('images/arrow-down-circle-outline.svg')}}"
+    <a href="{{asset('storage/catalogue.pdf')}}" download="catalogue.pdf" class="download_catalogue w-inline-block"><img src="{{asset('images/arrow-down-circle-outline.svg')}}"
                                                                                  loading="lazy" alt="" class="image">
         <div class="text-block-2">Télécharger le catalogue</div>
     </a>

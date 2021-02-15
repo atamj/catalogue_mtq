@@ -19,8 +19,19 @@
 
             gtag('config', 'G-SMNYFQX46B');
         </script>
-{{--    @elseif (env("APP_URL") === "https://catalogue.euromarche-martinique.com ")--}}
+@elseif (env("APP_URL") === "https://catalogue.euromarche-martinique.com ")
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YEK3QZ041Y"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            gtag('js', new Date());
+            gtag('config', 'G-YEK3QZ041Y');
+        </script>
 @endif
     <link href="{{asset('css/normalize.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/webflow.css')}}" rel="stylesheet" type="text/css">
