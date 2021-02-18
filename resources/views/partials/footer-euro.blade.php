@@ -26,7 +26,7 @@
                                        width="200"
                                        alt="" class="image-2"><img
                 src="{{asset('images/euromarche-symbol-white.svg')}}"
-                loading="lazy" width="300" alt="" class="image-3">
+                loading="lazy" width="100" alt="" class="image-3">
             <ul role="list" class="list w-list-unstyled">
                 <li>
                     <div class="socials">
