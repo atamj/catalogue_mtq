@@ -25,7 +25,7 @@
         <div class="ftr__wrapper"><img src="{{asset('images/euromarche-symbol-white.svg')}}" loading="lazy" height="85"
                                        width="200"
                                        alt="" class="image-2"><img
-                src="{{asset('images/logo-jai_choisi_color_full.svg')}}"
+                src="{{asset('images/euromarche-symbol-white.svg')}}"
                 loading="lazy" width="300" alt="" class="image-3">
             <ul role="list" class="list w-list-unstyled">
                 <li>

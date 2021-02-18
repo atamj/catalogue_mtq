@@ -1,7 +1,7 @@
 <!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
 <!--  Last Published: Fri Feb 05 2021 19:18:40 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="601d786ad06b3fd5b30ad297" data-wf-site="601d786ad06b3f2f840ad293">
-@include('partials.head', ['title'=> "Catalogue:".$category])
+@include('partials.head', ['title'=> env('TILE')])
 <body>
 <script>
     if (location.hash == ""){

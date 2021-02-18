@@ -1,7 +1,7 @@
 <!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
 <!--  Last Published: Fri Feb 05 2021 18:12:15 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="601d786ad06b3f9b2b0ad294" data-wf-site="601d786ad06b3f2f840ad293">
-@include('partials.head', ['title'=> "Le meilleur pour bebe"])
+@include('partials.head', ['title'=> env("TILE")])
 <body>
 <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="nav w-nav">
     @if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
