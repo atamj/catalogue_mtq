@@ -254,14 +254,7 @@ $(document).ready(function () {
     if (copyLink) {
         copyLink.addEventListener("click", copy);
     }
-    /*$('#share-fb').click((e) => {
-        e.preventDefault()
-        let url = $('.pen-url').val() + "/" + $(".copy-link").attr('data-ean')
-        let target = e.target
-        let depLink = target.href
-        target.href = depLink + url
-        target.click()
-    })*/
+
     $(".menu_btn").click((e) => {
         e.preventDefault()
         if (!$('.menu_list').hasClass('active')) {
@@ -274,6 +267,16 @@ $(document).ready(function () {
     })
     $(".product_detail").hover(disabledScroll())
     $(".section__wrapper").hover(enabledScroll())
+
+    /** Home menu mobile */
+    $(".ctg__title").click((e)=>{
+        let cible = e.target.closest('.categories').children[1]
+        cible.style.display = "flex"
+    })
+    $(".ctg__link").click((e)=>{
+        let cible = e.target.closest(".ctg__menu")
+        cible.style.display = ""
+    })
 });
 
 function copy() {

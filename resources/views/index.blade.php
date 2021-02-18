@@ -48,6 +48,6 @@
 @else
     @include('partials.footer')
 @endif
-    <script src="{{asset('js/webflow.js')}}"></script>
+{{--    <script src="{{asset('js/webflow.js')}}"></script>--}}
 </body>
 </html>
