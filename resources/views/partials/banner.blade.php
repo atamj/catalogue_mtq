@@ -14,7 +14,7 @@
                 <div class="ctg__title_display">{{$category}}</div>
             </li>
             <li class="nav__ctg_lnk comeback">
-                <a href="{{url('/')}}" class="link-block-6 w-inline-block">
+                <a href="{{url('/'.$ope)}}" class="link-block-6 w-inline-block">
                     <div class="ctg__return">Retour</div>
                 </a>
             </li>

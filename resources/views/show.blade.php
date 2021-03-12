@@ -2,10 +2,10 @@
 <html lang="fr">
 @include('partials.head',['title'=> "Catalogue:".$product->designation])
 <body>
-<div class="product_detail" style="display: block">
+<div class="product_detail" style="display: block;background-image: url('{{asset('storage/' . $product->ope . '/images/autres/bg-show.svg')}}');">
     <div class="detail__container">
         <div class="close_window_wrapper">
-            <a data-w-id="Link Block 15" href="{{url($product->categorie_url.'#'.$product->sous_categorie_url)}}"
+            <a data-w-id="Link Block 15" href="{{url($product->ope.'/'.$product->categorie_url.'#'.$product->sous_categorie_url)}}"
                class="close_window w-inline-block">
                 <div class="p__more_infos more_infos--detail">
                     <div class="more_infos_cross cross--detail"></div>
@@ -52,11 +52,11 @@
                                style="background-image: url('{{asset('images/'.$product->photo_principale)}}')"></a>
                             @if ($product->photo_2)
                                 <a id="photo_2" href="#" class="link-block-8 w-inline-block"
-                                   style="background-image: url('{{asset('images/'.$product->photo_2)}}')"></a>
+                                   style="background-image: url('{{asset('storage/'.$product->ope.'/images/'.$product->photo_2)}}')"></a>
                             @endif
                             @if ($product->photo_3)
                                 <a id="photo_3" style="display: none" href="#" class="link-block-8 w-inline-block"
-                                   style="background-image: url('{{asset('images/'.$product->photo_3)}}')"></a>
+                                   style="background-image: url('{{asset('storage/'. $product->ope .'/images/'.$product->photo_3)}}')"></a>
                             @endif
                         </div>
                     </div>

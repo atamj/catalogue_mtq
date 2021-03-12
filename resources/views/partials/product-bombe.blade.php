@@ -1,4 +1,4 @@
-<div class="spotlight spotlight__eveil"
+<div class="spotlight spotlight__eveil" style="background-image: linear-gradient(180deg, transparent, #fff), url('{{asset('storage/'.$ope.'/images/spotlight/bg.jpg')}}');"
      data-designation="{{$product->designation}}"
      data-description_produit="{{$product->description_produit}}"
      data-prix_vente_1="{{explode(',', $product->prix_vente)[0]}}"
@@ -17,7 +17,7 @@
         </h5>
     @endif
     <div class="spotlight--img"
-         style="background-image: url('{{$product->photo_principale ? asset('images/'.$product->photo_principale) : ""}}')"></div>
+         style="background-image: url('{{$product->photo_principale ? asset('storage/'.$ope.'/images/products/'.$product->photo_principale) : ""}}')"></div>
     <div class="spotlight__container">
         <div class="spotlight_price">
             @if ($product->prix_barre)

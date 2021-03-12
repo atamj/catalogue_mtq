@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
     public $table = 'product';
-    protected $fillable = ['data'];
+    protected $fillable = ['data', 'ope'];
     public static function getSubCategories($products)
     {
         /** Get list of sub-categories for current products list */
@@ -20,6 +20,13 @@ class Product extends Model
             }
         }
         return $sous_categories;
+    }
+    public function convertData()
+    {
+        $productData = json_decode($this->data);
+        foreach ($productData as $key => $value){
+            $this->$key = $value;
+        }
     }
 
 }

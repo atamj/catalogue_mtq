@@ -1,4 +1,4 @@
-<div style="opacity:0;display:none" class="product_detail">
+<div style="opacity:0;display:none; background-image: url('{{asset('storage/' . $ope . '/images/autres/bg-show.svg')}}');" class="product_detail">
     <div class="detail__container">
         <div class="close_window_wrapper">
             <a data-w-id="Link Block 15" href="#" class="close_window w-inline-block">
@@ -49,7 +49,7 @@
                             @include('partials.share')
 
                             <a href="#" class="link-block-11 w-inline-block">
-                                <div class="share-bn__wrapper"><img src="images/share-icon.svg"
+                                <div class="share-bn__wrapper"><img src="{{asset('icons/share-icon.svg')}}"
                                                                     loading="lazy" alt="">
                                 </div>
                                 <div class="text-block-11" id="share">Partager</div>

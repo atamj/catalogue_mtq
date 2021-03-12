@@ -16,7 +16,7 @@
             <div class="text-block-4">du 19 février au 7 mars</div>
         </li>
         <li class="nav__ctg_lnk">
-            <a href="{{url('/catalogue#rehausseur')}}" class="link-block-6 w-inline-block">
+            <a href="{{url('/'.$ope.'/catalogue#rehausseur')}}" class="link-block-6 w-inline-block">
                 <div class="text-block-5">VOIR LE CATALOGUE</div>
             </a>
         </li>
@@ -33,7 +33,7 @@
                     <div class="ctg__link_txt"></div>
                 </a>
                 @foreach($category->sous_categories as $sous_category_url => $sous_category)
-                    <a href="{{url($category_url.'#'.$sous_category_url)}}" class="ctg__link w-inline-block">
+                    <a href="{{url($ope."/".$category_url.'#'.$sous_category_url)}}" class="ctg__link w-inline-block">
                         <div class="ctg__link_txt link_text--{{$category->txt}}">{{$sous_category}}</div>
                     </a>
                 @endforeach

@@ -22,13 +22,13 @@ class CategoryController extends Controller
 
     }
 
-    public function index($category)
+    public function index($ope,$category)
     {
 
         /** Redirect to secure URL if app production*/
         $this->secure();
         /** Get products from GSheet or Session */
-        $this->getProducts();
+        $this->getProducts($ope);
 
         /** Filter products by category based on  URL */
         $products = $this->products->where('categorie_url', $category);
@@ -43,33 +43,33 @@ class CategoryController extends Controller
         $category_url = $category;
         $category = $products->first()->categorie;
 
-        return view('catalogue', compact('products', 'bombe', 'category', 'category_url', 'sous_categories'));
+        return view('catalogue', compact('products', 'bombe', 'category', 'category_url', 'sous_categories', 'ope'));
     }
 
-    public function show($ean)
+    public function show($ope,$ean)
     {
         /** Redirect to secure URL if app production*/
         $this->secure();
 
         /** Get all product stored to $this->products */
-        $this->getProducts();
+        $this->getProducts($ope);
 
         /** Filter product by ean*/
         $product = $this->products->where('ean', $ean)->first();
 
-        return view('show', compact('product'));
+        return view('show', compact('product', 'ope'));
     }
 
     /**
      * Get full catalogue
     */
-    public function catalogue()
+    public function catalogue($ope)
     {
         /** Redirect to secure URL if app production*/
         $this->secure();
 
         /** Get products from GSheet or Session */
-        $this->getProducts();
+        $this->getProducts($ope);
 
         /** Filter products by category based on  URL */
         $products = $this->products;
@@ -80,17 +80,17 @@ class CategoryController extends Controller
         $sous_categories = Product::getSubCategories($products);
 
         $category = "Cataloque";
-        return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories'));
+        return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories', 'ope'));
 
     }
 
     /**
      * Get or update products
      */
-    private function getProducts()
+    private function getProducts($ope)
     {
         /** If have news data */
-        if (Storage::exists('data.csv')) {
+        if (Storage::exists('public/'. $ope .'/data.csv')) {
 
             /** Reset session*/
             session()->forget('products');
@@ -101,19 +101,21 @@ class CategoryController extends Controller
             /** List IDS to delete*/
             $idsToDelete = [];
             foreach ($products as $product) {
-                $idsToDelete[] = $product->id;
+                if ($product->ope == $ope){
+                    $idsToDelete[] = $product->id;
+                }
             }
             /** Delete list*/
             Product::destroy($idsToDelete);
 
             /** Get formated data from CSV */
-            $this->formatData();
+            $this->formatData($ope);
 
             /** Delete CSV*/
-            Storage::delete('data.csv');
+            Storage::delete('public/'. $ope .'/data.csv');
 
             /** Put data in session for optimisation*/
-            session()->put('products', $this->products);
+//            session()->put('products', $this->products);
 
         } else {
             /** If session existe get products from session else get product from BD*/
@@ -121,6 +123,8 @@ class CategoryController extends Controller
 
                 /** Get product from session */
                 $this->products = session('products');
+                /*test*/
+                session()->forget('products');
 
             } else {
 
@@ -131,13 +135,14 @@ class CategoryController extends Controller
                 $this->products = [];
 
                 /** Get products from BD*/
-                $products = Product::all();
+                $products = Product::where('ope', $ope)->get();
 
                 /** Format et save products in $this->products*/
                 foreach ($products as $item) {
 
-                    $item = json_decode($item->data);
                     $product = new Product();
+                    $product->ope = $item->ope;
+                    $item = json_decode($item->data);
                     foreach ($item as $key => $value) {
 
                         $product->$key = $value;
@@ -152,7 +157,7 @@ class CategoryController extends Controller
                 $this->products = collect($this->products);
 
                 /** Put products in session*/
-                session()->put('products', $this->products);
+//                session()->put('products', $this->products);
 
             }
 
@@ -163,15 +168,15 @@ class CategoryController extends Controller
     /**
      * Get data from sheet
      */
-    private function getData()
+    private function getData($ope)
     {
 
         /** Google Sheet URL*/
         $urlGoogleSheet = "https://docs.google.com/spreadsheets/d/" . $this->csv . "/gviz/tq?tqx=out:csv";
 
-        if (Storage::exists('data.csv')) {
+        if (Storage::exists('public/'. $ope .'/data.csv')) {
 
-            $csv = Storage::get('data.csv');
+            $csv = Storage::get('public/'. $ope .'/data.csv');
 
         } else {
 
@@ -189,11 +194,11 @@ class CategoryController extends Controller
     /**
      * Format data to obj
      */
-    private function formatData()
+    private function formatData($ope)
     {
 
         /** Get data to CSV & convert to array*/
-        $this->getData();
+        $this->getData($ope);
 
         /** Delete & get first column data*/
         $firstCol = array_splice($this->data, 0, 1);
@@ -214,7 +219,7 @@ class CategoryController extends Controller
             }
 
             $this->products[] = $product;
-            Product::create(['data' => json_encode($product)]);
+            Product::create(['data' => json_encode($product), 'ope'=> $ope]);
 
         }
         $this->products = collect($this->products);

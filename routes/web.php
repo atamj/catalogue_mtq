@@ -1,7 +1,12 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\OperationController;
+use App\Http\Controllers\ProductController;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,35 +19,60 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+
+Route::resources([
+    'admin/operation'   => OperationController::class,
+    'admin/product'     => ProductController::class,
+    'admin/client'      => ClientController::class,
+]);
+
+/*Route::get('/admin/seed', function (){
+
+    DB::table('users')->insert([
+        'name' => 'admin',
+        'email' =>'guru@latitudesud.gp',
+        'password' => Hash::make('p1]Q[Bf4]=4B&SXBH^*'),
+        'admin' => 1,
+    ]);
+
+});*/
+
 /** Home*/
-Route::get('/', function () {
-    $menu = json_decode(\Illuminate\Support\Facades\Storage::get('menu.json'));
-    return view('index', compact('menu'));
+Route::get('/', function (){
+
+});
+
+Route::get('/{ope}', function ($ope) {
+    $menu = json_decode(\Illuminate\Support\Facades\Storage::get('public/'.$ope.'/menu.json'));
+    return view('index', compact('menu', 'ope'));
 });
 
 /** Store Contact */
-Route::post('contact',
+Route::post('{ope}/contact',
     [ContactController::class, 'store']
 );
 
-Route::get('contact18647659564849',
+Route::get('{ope}/contact18647659564849',
     [ContactController::class, 'get']
 );
 
 /** Full Catalogue */
 Route::get(
-    '/catalogue',
+    '/{ope}/catalogue',
     [CategoryController::class, 'catalogue']
 );
 
 /** Page catégorie*/
 Route::get(
-    '/{category}',
+    '/{ope}/{category}',
     [CategoryController::class, 'index']
 );
 /** Show*/
 Route::get(
-    '/product/{id}',
+    '{ope}/product/{id}',
     [CategoryController::class, 'show']
 );
 

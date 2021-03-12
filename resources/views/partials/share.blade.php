@@ -129,7 +129,7 @@
                 <span>WhatsApp</span>
             </a>
 
-            <a id="share-email" class="button" data-href="mailto:?subject=Catalogue&body={{url("/product")}}" href="">
+            <a id="share-email" class="button" data-href="mailto:?subject=Catalogue&body={{url($ope."/product")}}" href="">
                 <svg>
                     <use href="#email"></use>
                 </svg>
@@ -137,7 +137,7 @@
             </a>
         </div>
         <div class="link">
-            <input type="text" class="pen-url" data-value="{{url('/product')}}" value=""/>
+            <input type="text" class="pen-url" data-value="{{url($ope.'/product')}}" value=""/>
             <button class="copy-link">Copier</button>
         </div>
     </div>
