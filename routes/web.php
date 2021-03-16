@@ -21,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
+Route::get('/', function (){phpinfo();
+});
 Route::get('/home', function () {
     return redirect('/admin');
 });
@@ -43,6 +45,7 @@ Route::get('/admin/seed', function (){
             'password' => Hash::make('p1]Q[Bf4]=4B&SXBH^*'),
             'admin' => 1,
         ]);
+        return redirect('/login');
     }else{
         return redirect('/login');
     }

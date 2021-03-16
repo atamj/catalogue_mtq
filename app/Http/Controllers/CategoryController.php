@@ -90,46 +90,46 @@ class CategoryController extends Controller
     private function getProducts($ope)
     {
         /** If have news data */
-        if (Storage::exists('public/'. $ope .'/data.csv')) {
-
-            /** Reset session*/
-            session()->forget('products');
-
-            /** Get all products in BD to delete*/
-            $products = Product::all();
-
-            /** List IDS to delete*/
-            $idsToDelete = [];
-            foreach ($products as $product) {
-                if ($product->ope == $ope){
-                    $idsToDelete[] = $product->id;
-                }
-            }
-            /** Delete list*/
-            Product::destroy($idsToDelete);
-
-            /** Get formated data from CSV */
-            $this->formatData($ope);
-
-            /** Delete CSV*/
-            Storage::delete('public/'. $ope .'/data.csv');
-
-            /** Put data in session for optimisation*/
-//            session()->put('products', $this->products);
-
-        } else {
-            /** If session existe get products from session else get product from BD*/
-            if (session()->has('products') && count(session('products')) > 0) {
-
-                /** Get product from session */
-                $this->products = session('products');
-                /*test*/
-                session()->forget('products');
-
-            } else {
-
-                /** Reset session*/
-                session()->forget('products');
+//        if (Storage::exists('public/'. $ope .'/data.csv')) {
+//
+//            /** Reset session*/
+//            session()->forget('products');
+//
+//            /** Get all products in BD to delete*/
+//            $products = Product::all();
+//
+//            /** List IDS to delete*/
+//            $idsToDelete = [];
+//            foreach ($products as $product) {
+//                if ($product->ope == $ope){
+//                    $idsToDelete[] = $product->id;
+//                }
+//            }
+//            /** Delete list*/
+//            Product::destroy($idsToDelete);
+//
+//            /** Get formated data from CSV */
+//            $this->formatData($ope);
+//
+//            /** Delete CSV*/
+//            Storage::delete('public/'. $ope .'/data.csv');
+//
+//            /** Put data in session for optimisation*/
+////            session()->put('products', $this->products);
+//
+//        } else {
+//            /** If session existe get products from session else get product from BD*/
+//            if (session()->has('products') && count(session('products')) > 0) {
+//
+//                /** Get product from session */
+//                $this->products = session('products');
+//                /*test*/
+//                session()->forget('products');
+//
+//            } else {
+//
+//                /** Reset session*/
+//                session()->forget('products');
 
                 /** Reset $this->products*/
                 $this->products = [];
@@ -159,90 +159,90 @@ class CategoryController extends Controller
                 /** Put products in session*/
 //                session()->put('products', $this->products);
 
-            }
+//            }
 
-        }
-
-    }
-
-    /**
-     * Get data from sheet
-     */
-    private function getData($ope)
-    {
-
-        /** Google Sheet URL*/
-        $urlGoogleSheet = "https://docs.google.com/spreadsheets/d/" . $this->csv . "/gviz/tq?tqx=out:csv";
-
-        if (Storage::exists('public/'. $ope .'/data.csv')) {
-
-            $csv = Storage::get('public/'. $ope .'/data.csv');
-
-        } else {
-
-            /** Get CSV GoogleSheet content*/
-            $csv = file_get_contents($urlGoogleSheet);
-
-        }
-
-        /** Convert CSV to Array*/
-        $this->data = str_getcsv($csv, "\r\n");
-        foreach ($this->data as &$row) $row = str_getcsv($row, ",");
+//        }
 
     }
 
-    /**
-     * Format data to obj
-     */
-    private function formatData($ope)
-    {
+//    /**
+//     * Get data from sheet
+//     */
+//    private function getData($ope)
+//    {
+//
+//        /** Google Sheet URL*/
+//        $urlGoogleSheet = "https://docs.google.com/spreadsheets/d/" . $this->csv . "/gviz/tq?tqx=out:csv";
+//
+//        if (Storage::exists('public/'. $ope .'/data.csv')) {
+//
+//            $csv = Storage::get('public/'. $ope .'/data.csv');
+//
+//        } else {
+//
+//            /** Get CSV GoogleSheet content*/
+//            $csv = file_get_contents($urlGoogleSheet);
+//
+//        }
+//
+//        /** Convert CSV to Array*/
+//        $this->data = str_getcsv($csv, "\r\n");
+//        foreach ($this->data as &$row) $row = str_getcsv($row, ",");
+//
+//    }
 
-        /** Get data to CSV & convert to array*/
-        $this->getData($ope);
+//    /**
+//     * Format data to obj
+//     */
+//    private function formatData($ope)
+//    {
+//
+//        /** Get data to CSV & convert to array*/
+//        $this->getData($ope);
+//
+//        /** Delete & get first column data*/
+//        $firstCol = array_splice($this->data, 0, 1);
+//
+//        /** Format title to key*/
+//        $this->formatTitle($firstCol);
+//
+//        /** Create array to contains product*/
+//        foreach ($this->data as $key => $tabs) {
+//
+//            $product = new Product();
+//
+//            foreach ($tabs as $i => $val) {
+//
+//                $title = $this->keys[$i];
+//                $product->$title = $val;
+//
+//            }
+//
+//            $this->products[] = $product;
+//            Product::create(['data' => json_encode($product), 'ope'=> $ope]);
+//
+//        }
+//        $this->products = collect($this->products);
+//    }
 
-        /** Delete & get first column data*/
-        $firstCol = array_splice($this->data, 0, 1);
-
-        /** Format title to key*/
-        $this->formatTitle($firstCol);
-
-        /** Create array to contains product*/
-        foreach ($this->data as $key => $tabs) {
-
-            $product = new Product();
-
-            foreach ($tabs as $i => $val) {
-
-                $title = $this->keys[$i];
-                $product->$title = $val;
-
-            }
-
-            $this->products[] = $product;
-            Product::create(['data' => json_encode($product), 'ope'=> $ope]);
-
-        }
-        $this->products = collect($this->products);
-    }
-
-    /**
-     * Format titles sheet to keys
-     * @param $firstCol
-     * @return false|string[]
-     */
-    private function formatTitle($firstCol)
-    {
-
-        /** Convert to string*/
-        $firstColString = implode(';', $firstCol[0]);
-
-        /** Cleaning first column */
-        $firstColString = $this->stringToUrl($firstColString);
-
-        /** Convert to Array*/
-        $this->keys = explode(';', $firstColString);
-
-    }
+//    /**
+//     * Format titles sheet to keys
+//     * @param $firstCol
+//     * @return false|string[]
+//     */
+//    private function formatTitle($firstCol)
+//    {
+//
+//        /** Convert to string*/
+//        $firstColString = implode(';', $firstCol[0]);
+//
+//        /** Cleaning first column */
+//        $firstColString = $this->stringToUrl($firstColString);
+//
+//        /** Convert to Array*/
+//        $this->keys = explode(';', $firstColString);
+//
+//    }
 
     /** Secure url*/
     private function secure()
@@ -257,15 +257,15 @@ class CategoryController extends Controller
 
     }
 
-    /** Convert string to URL*/
-    private function stringToUrl($string)
-    {
-
-        $url = str_replace(" ", "-", $string);
-        $url = str_replace(["°", "&"], "", $url);
-        $url = str_replace(["É", "È", "è", "é", "ê", "Ê", "ë", "Ë"], 'e', $url);
-        return strtolower($url);
-
-    }
+//    /** Convert string to URL*/
+//    private function stringToUrl($string)
+//    {
+//
+//        $url = str_replace(" ", "-", $string);
+//        $url = str_replace(["°", "&"], "", $url);
+//        $url = str_replace(["É", "È", "è", "é", "ê", "Ê", "ë", "Ë"], 'e', $url);
+//        return strtolower($url);
+//
+//    }
 
 }

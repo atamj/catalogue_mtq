@@ -27,7 +27,7 @@
                             <input type="hidden" name="operation" value="{{$operation->shortname}}">
                             <button class="btn btn-danger" type="submit">Écraser</button>
                         </form>
-<!--                        <h2 class="text-danger">Uploader un zip d'images</h2>
+                        <h2 class="text-danger">Uploader un zip d'images</h2>
                         <form method="POST" action="{{url('/admin/product')}}" enctype="multipart/form-data">
                             @csrf()
                             <div class="mb-3">
@@ -37,7 +37,7 @@
                             </div>
                             <input type="hidden" name="operation" value="{{$operation->shortname}}">
                             <button class="btn btn-primary" type="submit">Uploader</button>
-                        </form>-->
+                        </form>
                         <h2 class="mt-4">Liste des produits</h2>
                     <!--                            <ul>
                                 <li><a href="{{url('admin/product', $operation->shortname)}}">Voir la liste des produits</a></li>

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Operation;
 use App\Models\Product;
+use App\Models\SubCategory;
+use Composer\Package\Archiver\ZipArchiver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use function React\Promise\all;
@@ -65,11 +69,18 @@ class ProductController extends Controller
             /** Delete CSV*/
             Storage::delete('public/' . $request->operation . '/data.csv');
         }
-        /*if ($request->has('zip')){
-            dump($request->hasFile('zip'));
-            $request->file('zip')->store('/');
-            dd($request->file('zip'));
-        }*/
+
+        if ($request->has('zip')){
+            $request->file('zip')->storeAs('public/'.$request->operation.'/images', 'products.zip' );
+            $zip = new \ZipArchive();
+            if ($zip->open(storage_path('app/public/'.$request->operation.'/images/products.zip')) === TRUE) {
+                $zip->extractTo(storage_path('app/public/'.$request->operation.'/images/'));
+                $zip->close();
+            } else {
+                return back()->with('status', 'échec');
+
+            }
+        }
         return back()->with('status', 'success');
     }
 
@@ -93,7 +104,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $productData = json_decode($product->data);
-        foreach ($productData as $key => $value){
+        foreach ($productData as $key => $value) {
             $product->$key = $value;
         }
         return view('products.edit', compact('product'));
@@ -111,61 +122,62 @@ class ProductController extends Controller
         /** Convert json data */
         $product->convertData();
 
-        if ($request->hasFile('photo_principale')){
+        if ($request->hasFile('photo_principale')) {
 
-            if (Storage::exists('public/' . $product->ope . "/images/products/". $product->photo_principale )){
+            if (Storage::exists('public/' . $product->ope . "/images/products/" . $product->photo_principale)) {
 
-                Storage::delete('public/' . $product->ope . "/images/products/". $product->photo_principale );
+                Storage::delete('public/' . $product->ope . "/images/products/" . $product->photo_principale);
 
             }
 
-            $request->file('photo_principale')->storeAs('public/' . $product->ope . "/images/products", $product->photo_principale );
+            $request->file('photo_principale')->storeAs('public/' . $product->ope . "/images/products", $product->photo_principale);
 
         }
 
-        if ($request->hasFile('photo_1')){
+        if ($request->hasFile('photo_1')) {
 
-            if ($product->photo_1 != ""){
+            if ($product->photo_1 != "") {
 
-                if (Storage::exists('public/' . $product->ope . "/images/products/". $product->photo_1 )){
+                if (Storage::exists('public/' . $product->ope . "/images/products/" . $product->photo_1)) {
 
-                    Storage::delete('public/' . $product->ope . "/images/products/". $product->photo_1 );
+                    Storage::delete('public/' . $product->ope . "/images/products/" . $product->photo_1);
 
                 }
 
-                $request->file('photo_1')->storeAs('public/' . $product->ope . "/images/products", $product->photo_1 );
+                $request->file('photo_1')->storeAs('public/' . $product->ope . "/images/products", $product->photo_1);
 
-            }else{
+            } else {
 
                 $product->photo_1 = $request->file('photo_1')->getClientOriginalName();
                 $product->save();
-                $request->file('photo_1')->storeAs('public/' . $product->ope . "/images/products", $product->photo_1 );
+                $request->file('photo_1')->storeAs('public/' . $product->ope . "/images/products", $product->photo_1);
 
             }
 
         }
 
-        if ($request->hasFile('photo_2')){
+        if ($request->hasFile('photo_2')) {
 
-            if ($product->photo_2 != ""){
+            if ($product->photo_2 != "") {
 
-                if (Storage::exists('public/' . $product->ope . "/images/products/". $product->photo_2 )){
+                if (Storage::exists('public/' . $product->ope . "/images/products/" . $product->photo_2)) {
 
-                    Storage::delete('public/' . $product->ope . "/images/products/". $product->photo_2 );
+                    Storage::delete('public/' . $product->ope . "/images/products/" . $product->photo_2);
 
                 }
 
-                $request->file('photo_2')->storeAs('public/' . $product->ope . "/images/products", $product->photo_2 );
+                $request->file('photo_2')->storeAs('public/' . $product->ope . "/images/products", $product->photo_2);
 
-            }else{
+            } else {
 
                 $product->photo_2 = $request->file('photo_2')->getClientOriginalName();
                 $product->save();
-                $request->file('photo_2')->storeAs('public/' . $product->ope . "/images/products", $product->photo_2 );
+                $request->file('photo_2')->storeAs('public/' . $product->ope . "/images/products", $product->photo_2);
 
             }
 
         }
+
 
         return back()->with('status', "Success");
 
@@ -213,7 +225,7 @@ class ProductController extends Controller
 
         /** Format title to key*/
         $keys = $this->formatTitle($firstCol);
-
+        $operation = Operation::where('shortname', $ope)->first();
         /** Create array to contains product*/
         foreach ($data as $key => $tabs) {
 
@@ -225,8 +237,40 @@ class ProductController extends Controller
                 $product->$title = $val;
 
             }
+            $category = Category::where('url', $product->categorie_url)->first();
+            if (!$category) {
+                $category = Category::create([
+                    'operation_id' => $operation->id,
+                    'name' => $product->categorie,
+                    'url' => $product->categorie_url
+                ]);
+            }
+            if ($product->sous_categorie_url) {
+                $subCategory = SubCategory::where('url', $product->sous_categorie_url)->first();
+                if (!$subCategory) {
+                    $subCategory = SubCategory::create([
+                        'category_id' => $category->id,
+                        'name' => $product->sous_categorie,
+                        'url' => $product->sous_categorie_url,
+                    ]);
+                }
 
-            Product::create(['data' => json_encode($product), 'ope' => $ope]);
+                Product::create([
+                    'data' => json_encode($product),
+                    'operation_id' => $operation->id,
+                    'category_id' => $category->id,
+                    'subcategory_id' => $subCategory->id,
+                ]);
+
+            } else {
+
+                Product::create([
+                    'data' => json_encode($product),
+                    'operation_id' => $operation->id,
+                    'category_id' => $category->id,
+                ]);
+
+            }
 
         }
     }

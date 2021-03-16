@@ -116,6 +116,7 @@ class ClientController extends Controller
     {
         $client = Client::find($client_id);
         $pivot = $client->operations->find($operation_id)->pivot;
+        $pivot = $pivot->find($pivot->id);
         $operation = $client->operations->find($operation_id);
         return view('clients.edit-pivot', compact('pivot', 'operation', 'client'));
     }
@@ -154,11 +155,39 @@ class ClientController extends Controller
     public function updatePivot(Request $request, $client_id)
     {
         $client = Client::find($client_id);
+        $operation = $client->operations()->wherePivot('id', $request->get('pivot_id'))->first();
         $client->operations()->newPivotStatement()->where('id', $request->all()['pivot_id'])->update([
-            'title' => $request->get('title'),
-            'css'   => $request->get('css'),
-            'js'    => $request->get('js')
+            'title'         => $request->get('title'),
+            'title_color'   => $request->get('title_color'),
+            'header_bgc'   => $request->get('header_bgc'),
+            'header_color'   => $request->get('header_color'),
+            'footer_top_bgc'   => $request->get('footer_top_bgc'),
+            'footer_top_color'   => $request->get('footer_top_color'),
+            'footer_top_btn_bgc'   => $request->get('footer_top_btn_bgc'),
+            'footer_top_btn_color'   => $request->get('footer_top_btn_color'),
+            'footer_top_btn_radius'   => $request->get('footer_top_btn_radius'),
+            'footer_top_input_radius'   => $request->get('footer_top_input_radius'),
+            'footer_bottom_bgc'   => $request->get('footer_bottom_bgc'),
+            'footer_bottom_color'   => $request->get('footer_bottom_color'),
+            'primary_color'   => $request->get('primary_color'),
+            'secondary_color'   => $request->get('secondary_color'),
+            'css'           => $request->get('css'),
+            'js'            => $request->get('js')
         ]);
+        if ($request->hasFile('header_bgi')){
+            $request->file('header_bgi')->storeAs('public/'.$operation->shortname.'/images/header_bgi/'.$client->id, $request->file('header_bgi')->getClientOriginalName());
+            $client->operations()->newPivotStatement()->where('id', $request->all()['pivot_id'])->update(['header_bgi'  => $request->file('header_bgi')->getClientOriginalName()]);
+        }
+
+        if ($request->hasFile('footer_top_bgi')){
+            $request->file('footer_top_bgi')->storeAs('public/'.$operation->shortname.'/images/footer_top_bgi/'.$client->id, $request->file('footer_top_bgi')->getClientOriginalName());
+            $client->operations()->newPivotStatement()->where('id', $request->all()['pivot_id'])->update(['footer_top_bgi'  => $request->file('footer_top_bgi')->getClientOriginalName()]);
+        }
+        if ($request->hasFile('footer_bottom_bgi')){
+            $request->file('footer_bottom_bgi')->storeAs('public/'.$operation->shortname.'/images/footer_bottom_bgi/'.$client->id, $request->file('footer_bottom_bgi')->getClientOriginalName());
+            $client->operations()->newPivotStatement()->where('id', $request->all()['pivot_id'])->update(['footer_bottom_bgi'  => $request->file('footer_bottom_bgi')->getClientOriginalName()]);
+        }
+
         return back()->with('status', 'success');
     }
 

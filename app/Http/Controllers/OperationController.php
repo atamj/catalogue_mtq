@@ -55,7 +55,7 @@ class OperationController extends Controller
      */
     public function show(Operation $operation)
     {
-        $products = Product::where('ope', $operation->shortname)->get();
+        $products = Product::where('operation_id', $operation->id)->get();
         foreach ($products as $product){
             $productData = json_decode($product->data);
             foreach ($productData as $key => $value){

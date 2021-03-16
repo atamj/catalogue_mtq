@@ -16,6 +16,10 @@ class Operation extends Model
     ];
     public function clients()
     {
-        return $this->belongsToMany(Client::class);
+        return $this->belongsToMany(Client::class, 'operation_client');
+    }
+    public function categories()
+    {
+        return$this->belongsToMany(Category::class);
     }
 }

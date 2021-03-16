@@ -50,9 +50,8 @@
                                         @if (($key == "photo_principale" ||  $key == "photo_2" || $key == "photo_3") && $key != "")
                                             <td>
                                                 @if ($value != "")
-
                                                     <img width="50px" height="50px"
-                                                         src="{{asset('storage/'.$product->ope.'/images/products/'.$value)}}"
+                                                         src="{{asset('storage/'.$product->operation()->first()->shortname.'/images/products/'.$value)}}"
                                                          alt="$value"> {{$value}}
 
                                                 @else

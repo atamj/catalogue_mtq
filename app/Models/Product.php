@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
     public $table = 'product';
-    protected $fillable = ['data', 'ope'];
+    protected $fillable = ['data', 'operation_id', 'category_id', 'sub_category_id'];
     public static function getSubCategories($products)
     {
         /** Get list of sub-categories for current products list */
@@ -27,6 +27,17 @@ class Product extends Model
         foreach ($productData as $key => $value){
             $this->$key = $value;
         }
+    }
+    public function operation(){
+        return $this->belongsTo(Operation::class);
+    }
+    public function category()
+    {
+        return $this->hasOne(Category::class);
+    }
+    public function subcategory()
+    {
+        return $this->hasOne(SubCategory::class);
     }
 
 }
