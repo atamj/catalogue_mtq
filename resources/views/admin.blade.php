@@ -51,11 +51,11 @@
                                 <input type="text" class="form-control" id="title" name="title" aria-describedby="titleHelp" required>
                                 <div id="titleHelp" class="form-text">Correspond au titre de l'opération</div>
                             </div>
-                            <div class="mb-3">
+<!--                            <div class="mb-3">
                                 <label for="client" class="form-label">Clients</label>
                                 <input type="text" class="form-control" id="client" name="client" aria-describedby="clientHelp">
                                 <div id="clientHelp" class="form-text">IDs des clients qui on accès a cette campagne séparer par une virgule et sans espace</div>
-                            </div>
+                            </div>-->
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form>
                 </div>

@@ -23,7 +23,7 @@ class CreateClientsTable extends Migration
             $table->string('facebook_link')->nullable();
             $table->string('contact_link')->nullable();
             $table->string('conditions_link')->nullable();
-            $table->string('coockies_link')->nullable();
+            $table->string('cookies_link')->nullable();
             $table->string('confidentialite_link')->nullable();
             $table->timestamps();
         });

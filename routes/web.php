@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
+Route::get('/home', function () {
+    return redirect('/admin');
+});
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
 Route::resources([
@@ -28,17 +31,23 @@ Route::resources([
     'admin/product'     => ProductController::class,
     'admin/client'      => ClientController::class,
 ]);
+Route::get('admin/client-operation/{client_id}/{operation_id}', [ClientController::class, 'editPivot']);
+Route::put('admin/client-operation/{client_id}', [ClientController::class, 'updatePivot']);
+Route::get('/admin/seed', function (){
 
-/*Route::get('/admin/seed', function (){
+    $users = \App\Models\User::all();
+    if (count($users) == 0){
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'email' =>'guru@latitudesud.gp',
+            'password' => Hash::make('p1]Q[Bf4]=4B&SXBH^*'),
+            'admin' => 1,
+        ]);
+    }else{
+        return redirect('/login');
+    }
 
-    DB::table('users')->insert([
-        'name' => 'admin',
-        'email' =>'guru@latitudesud.gp',
-        'password' => Hash::make('p1]Q[Bf4]=4B&SXBH^*'),
-        'admin' => 1,
-    ]);
-
-});*/
+});
 
 /** Home*/
 Route::get('/', function (){

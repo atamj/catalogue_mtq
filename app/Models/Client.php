@@ -21,4 +21,8 @@ class Client extends Model
         'cookies_link',
         'confidentialite_link'
     ];
+    public function operations()
+    {
+        return $this->belongsToMany(Operation::class, 'operation_client')->withPivot('id','title', 'css', 'js');
+    }
 }

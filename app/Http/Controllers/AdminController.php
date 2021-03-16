@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Operation;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -26,7 +27,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $operations = Operation::all();
+        if (Auth::user()->admin){
+            $operations = Operation::all();
+        }else{
+            $operations = Auth::user()->operations();
+        }
         return view('admin', compact('operations'));
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOperationsTable extends Migration
+class CreateUserClientTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateOperationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('operations', function (Blueprint $table) {
+        Schema::create('user_client', function (Blueprint $table) {
             $table->id();
-            $table->string('shortname')->unique();
-            $table->date('start');
-            $table->date('end');
-            $table->string('title');
+            $table->integer('user_id')->unsigned();
+            $table->integer('client_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateOperationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operations');
+        Schema::dropIfExists('user_client');
     }
 }

@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Operation extends Model
+class OperationClient extends Model
 {
     use HasFactory;
+    public $table = "operation_client";
     public $fillable = [
-        'shortname',
-        'start',
-        'end',
+        'operation_id',
+        'client_id',
         'title',
+        'css',
+        'js',
     ];
-    public function clients()
-    {
-        return $this->belongsToMany(Client::class);
-    }
 }
