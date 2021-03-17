@@ -10,21 +10,23 @@ use Illuminate\Support\Facades\URL;
 
 class CategoryController extends Controller
 {
-    public $csv;
-    private $data = [];
+//    public $csv;
+//    private $data = [];
     public $products = [];
     public $keys;
 
-    public function __construct()
-    {
-        /** Get products google sheet id */
-        $this->csv = env('SHEET_ID');
-
-    }
+//    public function __construct()
+//    {
+//        /** Get products google sheet id */
+//        $this->csv = env('SHEET_ID');
+//
+//    }
 
     public function index($ope,$category)
     {
-
+//        if (env("APP_VERSION") == "2"){
+//            dd(\url()->current());
+//        }
         /** Redirect to secure URL if app production*/
         $this->secure();
         /** Get products from GSheet or Session */

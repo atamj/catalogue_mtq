@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Operation;
 use App\Models\Product;
+use http\Url;
 use Illuminate\Http\Request;
 
 class OperationController extends Controller
@@ -16,10 +17,10 @@ class OperationController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
+     * Home catalogue avec menu
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($ope)
     {
         //
     }
@@ -37,7 +38,7 @@ class OperationController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -50,15 +51,15 @@ class OperationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Operation  $operation
+     * @param \App\Models\Operation $operation
      * @return \Illuminate\Http\Response
      */
     public function show(Operation $operation)
     {
         $products = Product::where('operation_id', $operation->id)->get();
-        foreach ($products as $product){
+        foreach ($products as $product) {
             $productData = json_decode($product->data);
-            foreach ($productData as $key => $value){
+            foreach ($productData as $key => $value) {
                 $product->$key = $value;
             }
         }
@@ -68,7 +69,7 @@ class OperationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Operation  $operation
+     * @param \App\Models\Operation $operation
      * @return \Illuminate\Http\Response
      */
     public function edit(Operation $operation)
@@ -79,8 +80,8 @@ class OperationController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Operation  $operation
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Operation $operation
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Operation $operation)
@@ -91,7 +92,7 @@ class OperationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Operation  $operation
+     * @param \App\Models\Operation $operation
      * @return \Illuminate\Http\Response
      */
     public function destroy(Operation $operation)

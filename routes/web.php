@@ -58,8 +58,42 @@ Route::get('/', function (){
 });
 
 Route::get('/{ope}', function ($ope) {
-    $menu = json_decode(\Illuminate\Support\Facades\Storage::get('public/'.$ope.'/menu.json'));
-    return view('index', compact('menu', 'ope'));
+
+    /**
+     * Catalogue V2
+     */
+    if (env("APP_VERSION") == "2") {
+
+        /** Récupère les info de l'opération selon l'url*/
+        $operation = \App\Models\Operation::where('shortname', $ope)->first();
+
+        /** On récupère l'url de base pour identifier le client*/
+        $client_url = \request()->server->get('HTTP_HOST');
+
+        /** Local*/
+        if (env("APP_ENV") == 'local'){
+
+            /** On récupère les info client selon l'url*/
+            $client = $operation->clients()->where('url', env('APP_URL'))->first();
+
+        }
+        /** Production*/
+        else{
+
+            /** On récupère les info client selon l'url*/
+            $client = $operation->clients()->where('url', $client_url)->first();
+
+        }
+
+        /** On récupère toutes les catégories de cette opération*/
+        $categories = $operation->categories()->get();
+
+    } else {
+
+        $menu = json_decode(\Illuminate\Support\Facades\Storage::get('public/' . $ope . '/menu.json'));
+        return view('index', compact('menu', 'ope'));
+
+    }
 });
 
 /** Store Contact */
