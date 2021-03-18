@@ -147,6 +147,18 @@ class ClientController extends Controller
             $request->file('logo_footer')->storeAs('public/clients/'.$client->id.'/logo_footer/', $request->file('logo_footer')->getClientOriginalName());
             $client->logo_footer = $request->file('logo_footer')->getClientOriginalName();
         }
+        if ($request->hasFile('favicon')){
+            if (Storage::exists('public/clients/'.$client->id.'/favicon/favicon.png')){
+                Storage::delete('public/clients/'.$client->id.'/favicon/favicon.png');
+            }
+            $request->file('favicon')->storeAs('public/clients/'.$client->id.'/favicon/', 'favicon.png');
+        }
+        if ($request->hasFile('logo_short')){
+            if (Storage::exists('public/clients/'.$client->id.'/logo_short/logo_short.svg')){
+                Storage::delete('public/clients/'.$client->id.'/logo_short/logo_short.svg');
+            }
+            $request->file('logo_short')->storeAs('public/clients/'.$client->id.'/logo_short/', 'logo_short.svg');
+        }
         if ($request->hasFile('logo_header') || $request->hasFile('logo_footer')){
             $client->save();
         }
@@ -186,6 +198,18 @@ class ClientController extends Controller
         if ($request->hasFile('footer_bottom_bgi')){
             $request->file('footer_bottom_bgi')->storeAs('public/'.$operation->shortname.'/images/footer_bottom_bgi/'.$client->id, $request->file('footer_bottom_bgi')->getClientOriginalName());
             $client->operations()->newPivotStatement()->where('id', $request->all()['pivot_id'])->update(['footer_bottom_bgi'  => $request->file('footer_bottom_bgi')->getClientOriginalName()]);
+        }
+        if ($request->hasFile('catalogue')){
+            if (Storage::exists('public/'.$operation->shortname.'/catalogue/'.$client->id.'/catalogue.pdf')){
+                Storage::delete('public/'.$operation->shortname.'/catalogue/'.$client->id.'/catalogue.pdf');
+            }
+            $request->file('catalogue')->storeAs('public/'.$operation->shortname.'/catalogue/'.$client->id, 'catalogue.pdf');
+        }
+        if ($request->hasFile('cover')){
+            if (Storage::exists('public/'.$operation->shortname.'/images/covers/'.$client->id.'/cover.png')){
+                Storage::delete('public/'.$operation->shortname.'/images/covers/'.$client->id.'/cover.png');
+            }
+            $request->file('cover')->storeAs('public/'.$operation->shortname.'/images/covers/'.$client->id, 'cover.png');
         }
 
         return back()->with('status', 'success');

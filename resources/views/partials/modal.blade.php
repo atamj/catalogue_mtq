@@ -1,4 +1,6 @@
-<div style="opacity:0;display:none; background-image: url('{{asset('storage/' . $ope . '/images/autres/bg-show.svg')}}');" class="product_detail">
+<div style="opacity:0;display:none;
+    background-image: url('{{asset('storage/' . $operation->shortname . '/images/modal/modal.svg')}}');background-color: {{$pivot->primary_color}}F2;"
+     class="product_detail">
     <div class="detail__container">
         <div class="close_window_wrapper">
             <a data-w-id="Link Block 15" href="#" class="close_window w-inline-block">
@@ -30,9 +32,9 @@
                         <div class="p__price_1st _1st--detail" id="prix_vente_1"></div>
                         <div class="p__price_cents" id="prix_vente_2"></div>
                     </div>
-{{--                    <div class="p__ecopart" id="eco_part"></div>--}}
+                    {{--                    <div class="p__ecopart" id="eco_part"></div>--}}
                     <div class="brand brand--detail" id="marque"></div>
-{{--                    <div class="text-block-12"><span class="ean ean--detail" id="ean"></span></div>--}}
+                    {{--                    <div class="text-block-12"><span class="ean ean--detail" id="ean"></span></div>--}}
                     <p class="paragraph" id="description_produit"></p>
                     <div class="img-gallery" style="display: none">
                         <div class="img-gallery-txt">Plus d&#x27;images</div>
@@ -40,7 +42,7 @@
                             {{--                            <a id="" href="#" class="img_details_arrow arrow--left w-inline-block"></a>--}}
                             <a id="photo_1" href="#" class="link-block-8 w-inline-block"></a>
                             <a id="photo_2" href="#" class="link-block-8 w-inline-block"></a>
-                            <a id="photo_3"style="display: none" href="#" class="link-block-8 w-inline-block"></a>
+                            <a id="photo_3" style="display: none" href="#" class="link-block-8 w-inline-block"></a>
                             {{--                            <a id="" href="#" class="img_details_arrow arrow--right w-inline-block"></a>--}}
                         </div>
                     </div>

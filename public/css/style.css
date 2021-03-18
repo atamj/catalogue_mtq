@@ -1,3 +1,15 @@
+.bg_primary{
+    background-color: var(--primary)!important;
+}
+.txt_primary{
+    color: var(--primary)!important;
+}
+.bg_secondary{
+    background-color: var(--secondary)!important;
+}
+.txt_secondary{
+    color: var(--secondary)!important;
+}
 .w-layout-grid {
     display: -ms-grid;
     display: grid;
@@ -569,7 +581,15 @@ h3:hover {
     font-size: 25px;
     font-weight: 700;
 }
-
+.ctg__menu.bg_primary, .ctg__menu.bg_secondary{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    font-family: Amaticsc, sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+}
 .ctg__title--size {
     width: 150px;
     margin-bottom: 20px;

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Operation;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
@@ -15,18 +18,50 @@ class CategoryController extends Controller
     public $products = [];
     public $keys;
 
-//    public function __construct()
-//    {
-//        /** Get products google sheet id */
+    public function __construct()
+    {
+        /** Get products google sheet id */
 //        $this->csv = env('SHEET_ID');
-//
-//    }
+        setlocale(LC_ALL, 'fr_FR');
+
+    }
 
     public function index($ope,$category)
     {
-//        if (env("APP_VERSION") == "2"){
-//            dd(\url()->current());
-//        }
+        if (env("APP_VERSION") == "2") {
+
+            /** Récupère les info de l'opération selon l'url*/
+            $operation = Operation::where('shortname', $ope)->first();
+
+            /** On récupère l'url de base pour identifier le client*/
+            $client_url = \request()->server->get('HTTP_HOST');
+
+            /** Local*/
+            if (env("APP_ENV") == 'local') {
+
+                /** On récupère les info client selon l'url*/
+                $client = $operation->clients()->where('url', env('APP_URL'))->first();
+
+            } /** Production*/
+            else {
+
+                /** On récupère les info client selon l'url*/
+                $client = $operation->clients()->where('url', $client_url)->first();
+
+            }
+
+            /** On récupère toutes les catégories de cette opération*/
+            $category = Category::where('url', $category)->first();
+            $pivot = $client->operations->find($operation->id)->pivot;
+            $pivot = $pivot->find($pivot->id);
+            $products = $category->products()->get();
+            foreach ($products as $product) $product->convertData();
+            $bombe = $products->where('bombe_1', '1');
+            $sous_categories = $category->subCategories()->get();
+
+            return view('catalogue', compact('products', 'bombe', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
+
+        }else{
         /** Redirect to secure URL if app production*/
         $this->secure();
         /** Get products from GSheet or Session */
@@ -46,6 +81,7 @@ class CategoryController extends Controller
         $category = $products->first()->categorie;
 
         return view('catalogue', compact('products', 'bombe', 'category', 'category_url', 'sous_categories', 'ope'));
+        }
     }
 
     public function show($ope,$ean)

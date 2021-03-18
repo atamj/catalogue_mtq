@@ -1,5 +1,5 @@
 <div id="w-node-643069de73f7-b30ad297" class="product article__02"
-     style="background-image: url('{{$product->photo_principale ? asset('storage/'. $ope .'/images/products/'.$product->photo_principale) : ""}}')"
+     style="background-image: url('{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}')"
      data-designation="{{$product->designation}}"
      data-description_produit="{{$product->description_produit}}"
      data-prix_vente_1="{{explode(',', $product->prix_vente)[0]}}"

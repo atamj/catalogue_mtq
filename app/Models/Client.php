@@ -12,6 +12,7 @@ class Client extends Model
     public $fillable = [
         'name',
         'url',
+        'site',
         'gtag',
         'logo_header',
         'logo_footer',
@@ -19,7 +20,8 @@ class Client extends Model
         'contact_link',
         'conditions_link',
         'cookies_link',
-        'confidentialite_link'
+        'confidentialite_link',
+        'mentions',
     ];
     public function operations()
     {

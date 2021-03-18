@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->integer('operation_id')->unsigned();
             $table->string('name');
-            $table->string('url');
+            $table->string('url')->unique();
             $table->string('img')->nullable();
             $table->timestamps();
         });

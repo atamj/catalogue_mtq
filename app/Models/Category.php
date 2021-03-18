@@ -16,10 +16,15 @@ class Category extends Model
     ];
     public function operation()
     {
-        return $this->hasOne(Operation::class);
+        return $this->belongsTo(Operation::class);
     }
     public function subCategories()
     {
-        return$this->belongsToMany(SubCategory::class);
+        return $this->hasMany(SubCategory::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }

@@ -82,6 +82,10 @@
                             </div>
                             <hr>
                             <div class="mb-3">
+                                <label for="cover" class="form-label">Image de la couverture de catalogue <i>(png)</i></label>
+                                <input type="file" class="form-control" id="cover" name="cover" accept="image/png">
+                            </div>
+                            <div class="mb-3">
                                 <label for="footer_bottom_bgc" class="form-label">Couleur de fond du bas du footer</label>
                                 <input type="color" class="form-control" id="footer_bottom_bgc" name="footer_bottom_bgc"
                                        aria-describedby="footer_bottom_bgcHelp" value="{{$pivot->footer_bottom_bgc ?? "#5cb1b5"}}">
@@ -105,6 +109,11 @@
                                 <label for="secondary_color" class="form-label">Couleur secondaire</label>
                                 <input type="color" class="form-control" id="secondary_color" name="secondary_color"
                                        aria-describedby="secondary_colorHelp" value="{{$pivot->secondary_color ?? "#FFDB28"}}">
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <label for="catalogue" class="form-label">Catalogue pdf</label>
+                                <input type="file" class="form-control" id="catalogue" name="catalogue" accept=".pdf">
                             </div>
                             <hr>
                             <div class="form-floating mb-3">

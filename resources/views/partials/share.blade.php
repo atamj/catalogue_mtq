@@ -88,7 +88,7 @@
             margin-right: 0;
         }
 
-        .link {
+        .share-link {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -129,15 +129,15 @@
                 <span>WhatsApp</span>
             </a>
 
-            <a id="share-email" class="button" data-href="mailto:?subject=Catalogue&body={{url($ope."/product")}}" href="">
+            <a id="share-email" class="button" data-href="mailto:?subject=Catalogue&body={{url($operation->shortname."/product")}}" href="">
                 <svg>
                     <use href="#email"></use>
                 </svg>
                 <span>Email</span>
             </a>
         </div>
-        <div class="link">
-            <input type="text" class="pen-url" data-value="{{url($ope.'/product')}}" value=""/>
+        <div class="share-link">
+            <input type="text" class="pen-url" data-value="{{url($operation->shortname.'/product')}}" value=""/>
             <button class="copy-link">Copier</button>
         </div>
     </div>

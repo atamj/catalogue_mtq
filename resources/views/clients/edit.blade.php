@@ -30,6 +30,11 @@
                                 <div id="urlHelp"></div>
                             </div>
                             <div class="mb-3">
+                                <label for="site" class="form-label">Url du site client</label>
+                                <input type="text" id="site" name="site" class="form-control" value="{{$client->site ?? ""}}" aria-describedby="siteHelp" required>
+                                <div id="siteHelp"></div>
+                            </div>
+                            <div class="mb-3">
                                 <label for="gtag" class="form-label">Google tag <b>(Optionnel)</b></label>
                                 <input type="text" id="gtag" name="gtag" class="form-control"
                                        aria-describedby="gtagHelp" value="{{$client->gtag ?? ""}}">
@@ -46,6 +51,18 @@
                                 <input type="file" id="logo_footer" name="logo_footer" class="form-control"
                                        aria-describedby="logo_footerHelp" value="{{$client->logo_footer ?? ""}}">
                                 <div id="logo_footerHelp">Si non renseigné le logo du header sera pris</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="favicon" class="form-label">Favicon <b>(Optionnel)</b></label>
+                                <input type="file" id="favicon" name="favicon" class="form-control" accept=".png"
+                                       aria-describedby="faviconHelp">
+                                {{--                                <div id="logo_footerHelp">Si non renseigné le logo du header sera pris</div>--}}
+                            </div>
+                            <div class="mb-3">
+                                <label for="logo_short" class="form-label">Logo header mobile <b>(Optionnel)</b></label>
+                                <input type="file" id="logo_short" name="logo_short" class="form-control"
+                                       aria-describedby="logo_shortHelp" accept=".svg">
+                                {{--                                <div id="logo_shortHelp">Si non renseigné le logo du header sera pris</div>--}}
                             </div>
                             <div class="mb-3">
                                 <label for="facebook_link" class="form-label">Lien page facebook
@@ -82,6 +99,13 @@
                                        class="form-control" aria-describedby="confidentialite_linkHelp"
                                        value="{{$client->confidentialite_link ?? ""}}">
                                 <div id="confidentialite_linkHelp"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="mentions" class="form-label">Page mentions légales
+                                    <b>(Optionnel)</b></label>
+                                <input type="text" id="mentions" name="mentions"
+                                       class="form-control" aria-describedby="mentionsHelp" value="{{{$client->mentions ?? ""}}}">
+                                <div id="mentionsHelp">Lien de la page mentions légales</div>
                             </div>
                             @if (\Illuminate\Support\Facades\Auth::user()->admin)
                                 <div class="mb-3">

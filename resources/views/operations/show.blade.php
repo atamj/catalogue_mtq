@@ -6,7 +6,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Opération : {{$operation->title}}</div>
+                    <div class="card-header d-flex justify-content-between">
+                        <div>Opération : {{$operation->title}}</div>
+                        <div>
+                            <a href="{{url('admin/category?operation_id='.$operation->id)}}" class="btn btn-success">Gérer les catégories</a>
+                        </div>
+                    </div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
