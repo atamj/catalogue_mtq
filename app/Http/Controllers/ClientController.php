@@ -72,6 +72,12 @@ class ClientController extends Controller
             $request->file('logo_header')->storeAs('public/clients/'.$client->id.'/logo_header/', $request->file('logo_header')->getClientOriginalName());
             $client->logo_header = $request->file('logo_header')->getClientOriginalName();
         }
+        if ($request->hasFile('logo_short')){
+            if (Storage::exists('public/clients/'.$client->id.'/logo_short/logo_short.svg')){
+                Storage::delete('public/clients/'.$client->id.'/logo_short/logo_short.svg');
+            }
+            $request->file('logo_short')->storeAs('public/clients/'.$client->id.'/logo_short/logo_short.svg');
+        }
         if ($request->hasFile('logo_footer')){
             if (Storage::exists('public/clients/'.$client->id.'/logo_footer/'.$request->file('logo_footer')->getClientOriginalName())){
                 Storage::delete('public/clients/'.$client->id.'/logo_footer/'.$request->file('logo_footer')->getClientOriginalName());
@@ -130,7 +136,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        $client->update($request->except(['logo_header', 'logo_footer']));
+        $client->update($request->except(['logo_header', 'logo_footer', 'logo_short']));
         $client->operations()->sync($request->get('operation_id'));
 
         if ($request->hasFile('logo_header')){
@@ -139,6 +145,12 @@ class ClientController extends Controller
             }
             $request->file('logo_header')->storeAs('public/clients/'.$client->id.'/logo_header/', $request->file('logo_header')->getClientOriginalName());
             $client->logo_header = $request->file('logo_header')->getClientOriginalName();
+        }
+        if ($request->hasFile('logo_short')){
+            if (Storage::exists('public/clients/'.$client->id.'/logo_short/logo_short.svg')){
+                Storage::delete('public/clients/'.$client->id.'/logo_short/logo_short.svg');
+            }
+            $request->file('logo_short')->storeAs('public/clients/'.$client->id.'/logo_short/', 'logo_short.svg');
         }
         if ($request->hasFile('logo_footer')){
             if (Storage::exists('public/clients/'.$client->id.'/logo_footer/'.$request->file('logo_footer')->getClientOriginalName())){
@@ -152,12 +164,6 @@ class ClientController extends Controller
                 Storage::delete('public/clients/'.$client->id.'/favicon/favicon.png');
             }
             $request->file('favicon')->storeAs('public/clients/'.$client->id.'/favicon/', 'favicon.png');
-        }
-        if ($request->hasFile('logo_short')){
-            if (Storage::exists('public/clients/'.$client->id.'/logo_short/logo_short.svg')){
-                Storage::delete('public/clients/'.$client->id.'/logo_short/logo_short.svg');
-            }
-            $request->file('logo_short')->storeAs('public/clients/'.$client->id.'/logo_short/', 'logo_short.svg');
         }
         if ($request->hasFile('logo_header') || $request->hasFile('logo_footer')){
             $client->save();

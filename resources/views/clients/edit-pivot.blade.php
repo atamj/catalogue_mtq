@@ -82,8 +82,8 @@
                             </div>
                             <hr>
                             <div class="mb-3">
-                                <label for="cover" class="form-label">Image de la couverture de catalogue <i>(png)</i></label>
-                                <input type="file" class="form-control" id="cover" name="cover" accept="image/png">
+                                <label for="cover" class="form-label">Image de la couverture de catalogue</label>
+                                <input type="file" class="form-control" id="cover" name="cover" accept="image/*">
                             </div>
                             <div class="mb-3">
                                 <label for="footer_bottom_bgc" class="form-label">Couleur de fond du bas du footer</label>

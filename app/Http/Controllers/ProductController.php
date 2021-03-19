@@ -9,6 +9,7 @@ use App\Models\SubCategory;
 use Composer\Package\Archiver\ZipArchiver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use ZanySoft\Zip\Zip;
 use function React\Promise\all;
 
 class ProductController extends Controller
@@ -72,9 +73,14 @@ class ProductController extends Controller
 
         if ($request->has('zip')){
             $request->file('zip')->storeAs('public/'.$request->operation.'/images', 'products.zip' );
+            /*$is_valid = Zip::check(public_path('storage/'.$request->operation.'/images/products.zip'));
+            if ($is_valid){
+                $zip = Zip::open(public_path('storage/'.$request->operation.'/images/products.zip'));
+                $zip->extract(public_path('storage/'.$request->operation.'/images/products'));
+            }*/
             $zip = new \ZipArchive();
-            if ($zip->open(storage_path('app/public/'.$request->operation.'/images/products.zip')) === TRUE) {
-                $zip->extractTo(storage_path('app/public/'.$request->operation.'/images/'));
+            if ($zip->open(public_path('storage/'.$request->operation.'/images/products.zip')) === TRUE) {
+                $zip->extractTo(public_path('storage/'.$request->operation.'/images/products'));
                 $zip->close();
             } else {
                 return back()->with('status', 'échec');

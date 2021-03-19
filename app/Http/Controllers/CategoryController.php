@@ -26,7 +26,7 @@ class CategoryController extends Controller
 
     }
 
-    public function index($ope,$category)
+    public function index($ope, $category)
     {
         if (env("APP_VERSION") == "2") {
 
@@ -58,33 +58,36 @@ class CategoryController extends Controller
             foreach ($products as $product) $product->convertData();
             $bombe = $products->where('bombe_1', '1');
             $sous_categories = $category->subCategories()->get();
+            if ($operation->template == "default" || $operation->template == "" || !$operation->template) {
+                return view('catalogue', compact('products', 'bombe', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
+            } else {
+                return view('templates.catalogue-' . $operation->template, compact('products', 'bombe', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
+            }
 
-            return view('catalogue', compact('products', 'bombe', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
+        } else {
+            /** Redirect to secure URL if app production*/
+            $this->secure();
+            /** Get products from GSheet or Session */
+            $this->getProducts($ope);
 
-        }else{
-        /** Redirect to secure URL if app production*/
-        $this->secure();
-        /** Get products from GSheet or Session */
-        $this->getProducts($ope);
+            /** Filter products by category based on  URL */
+            $products = $this->products->where('categorie_url', $category);
 
-        /** Filter products by category based on  URL */
-        $products = $this->products->where('categorie_url', $category);
+            /** Get product bombe 1*/
+            $bombe = $products->where('bombe_1', '1');
 
-        /** Get product bombe 1*/
-        $bombe = $products->where('bombe_1', '1');
+            /** Get list of sub-categories for current products list */
+            $sous_categories = Product::getSubCategories($products);
 
-        /** Get list of sub-categories for current products list */
-        $sous_categories = Product::getSubCategories($products);
+            /** Get Category string & category_url*/
+            $category_url = $category;
+            $category = $products->first()->categorie;
 
-        /** Get Category string & category_url*/
-        $category_url = $category;
-        $category = $products->first()->categorie;
-
-        return view('catalogue', compact('products', 'bombe', 'category', 'category_url', 'sous_categories', 'ope'));
+            return view('catalogue', compact('products', 'bombe', 'category', 'category_url', 'sous_categories', 'ope'));
         }
     }
 
-    public function show($ope,$ean)
+    public function show($ope, $ean)
     {
         /** Redirect to secure URL if app production*/
         $this->secure();
@@ -100,7 +103,7 @@ class CategoryController extends Controller
 
     /**
      * Get full catalogue
-    */
+     */
     public function catalogue($ope)
     {
         /** Redirect to secure URL if app production*/
@@ -169,32 +172,32 @@ class CategoryController extends Controller
 //                /** Reset session*/
 //                session()->forget('products');
 
-                /** Reset $this->products*/
-                $this->products = [];
+        /** Reset $this->products*/
+        $this->products = [];
 
-                /** Get products from BD*/
-                $products = Product::where('ope', $ope)->get();
+        /** Get products from BD*/
+        $products = Product::where('ope', $ope)->get();
 
-                /** Format et save products in $this->products*/
-                foreach ($products as $item) {
+        /** Format et save products in $this->products*/
+        foreach ($products as $item) {
 
-                    $product = new Product();
-                    $product->ope = $item->ope;
-                    $item = json_decode($item->data);
-                    foreach ($item as $key => $value) {
+            $product = new Product();
+            $product->ope = $item->ope;
+            $item = json_decode($item->data);
+            foreach ($item as $key => $value) {
 
-                        $product->$key = $value;
+                $product->$key = $value;
 
-                    }
+            }
 
-                    $this->products[] = $product;
+            $this->products[] = $product;
 
-                }
+        }
 
-                /** Convert $this->products to laravel collection*/
-                $this->products = collect($this->products);
+        /** Convert $this->products to laravel collection*/
+        $this->products = collect($this->products);
 
-                /** Put products in session*/
+        /** Put products in session*/
 //                session()->put('products', $this->products);
 
 //            }

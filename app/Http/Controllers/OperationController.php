@@ -118,7 +118,8 @@ class OperationController extends Controller
      */
     public function update(Request $request, Operation $operation)
     {
-        //
+        $operation->update($request->all());
+        return back()->with('status', 'Success');
     }
 
     /**

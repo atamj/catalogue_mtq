@@ -19,6 +19,34 @@
                             </div>
                         @endif
                         <h1 class="text-center mb-4">Données de l'opération</h1>
+                            <form method="POST" action="{{url('/admin/operation', $operation->id)}}" enctype="multipart/form-data" class="mb-3">
+                                @csrf
+                                @method('PUT')
+                                <div class="mb-3">
+                                    <label for="shortname" class="form-label">Operation shortname (url)</label>
+                                    <input type="text" disabled class="form-control" id="shortname" name="shortname" value="{{$operation->shortname}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="title" class="form-label">Nom de l'opération <i>(ne sera pas afficher)</i></label>
+                                    <input type="text" class="form-control" id="title" name="title" value="{{$operation->title}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="start" class="form-label">Date de début</label>
+                                    <input type="date" class="form-control" id="start" name="start" value="{{date('Y-m-d', strtotime($operation->start) ?? "")}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="end" class="form-label">Date de fin</label>
+                                    <input type="date" class="form-control" id="end" name="end" value="{{date('Y-m-d', strtotime($operation->end) ?? "")}}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="template" class="form-label">Template à utiliser</label>
+                                    <select class="form-control" name="template">
+                                        <option name="default">Default</option>
+                                        <option name="v2" {{($operation->template == "v2") ? "selected" : ""}}>v2</option>
+                                    </select>
+                                </div>
+                                <input type="submit" class="btn btn-primary" value="Save">
+                            </form>
                         <h2 class="text-danger">Remplacer les produits par import csv</h2>
                         <form method="POST" action="{{url('/admin/product')}}" enctype="multipart/form-data">
                             @csrf()

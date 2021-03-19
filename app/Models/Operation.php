@@ -13,6 +13,7 @@ class Operation extends Model
         'start',
         'end',
         'title',
+        'template',
     ];
     public function clients()
     {

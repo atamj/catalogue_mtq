@@ -128,8 +128,11 @@ Route::get('/{ope}', function ($ope) {
         $categories = $operation->categories()->get();
         $pivot = $client->operations->find($operation->id)->pivot;
         $pivot = $pivot->find($pivot->id);
-
-        return view('index', compact('client', 'operation', 'categories', 'pivot'));
+        if ($operation->template ==  "default" || $operation->template == "" || !$operation->template){
+            return view('index', compact('client', 'operation', 'categories', 'pivot'));
+        }else{
+            return view('templates.index-'.$operation->template, compact('client', 'operation', 'categories', 'pivot'));
+        }
 
     } else {
 
