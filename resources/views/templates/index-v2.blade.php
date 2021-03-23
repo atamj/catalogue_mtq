@@ -2,15 +2,28 @@
 <!--  Last Published: Fri Feb 05 2021 18:12:15 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="601d786ad06b3f9b2b0ad294" data-wf-site="601d786ad06b3f2f840ad293">
 @include('partials.head-v2', ['title'=> $pivot->title])
-<body>
-<div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="nav w-nav">
+<body class="home">
+<div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="nav w-nav" style="{{$pivot->header_bgi ? "background-image: url(".asset('storage/'.$operation->shortname.'/images/header_bgi/'.$client->id.'/'.$pivot->header_bgi).")" : ""}}">
     @include('partials.header-v2')
 </div>
 <div class="hero">
+    <div class="voir-cata-container">
+        @if(count($categories) > 0)
+            <a class="voir-cata" href="{{url('/'.$operation->shortname.'/catalogue#'.($categories->first()->subCategories()->first() ? $categories->first()->subCategories()->first()->url : $categories->first()->url))}}">
+                VOIR TOUT LE CATALOGUE
+                <br><small>ou consulter nos rubriques</small>
+            </a>
+        @else
+            <a href="#" class="voir-cata">
+                VOIR TOUT LE CATALOGUE
+                <br><small>ou consulter nos rubriques</small>
+            </a>
+        @endif
+    </div>
     @foreach($categories as $category)
 
         <div class="categories">
-            @if($loop->even)
+            @if($loop->odd)
                 <div class="ctg__title img_gears"
                      style="background-image: url('{{asset('storage/'.$operation->shortname.'/images/categories/'.$category->img)}}')">
                     <div class="ctg__title--size bg--yellow bg_primary txt_secondary">{{$category->name}}</div>
@@ -29,10 +42,10 @@
                             </a>
                         @endforeach
                     @else
-                        <a href="{{url($operation->shortname."/".$category->url)}}"
+                        <a href="{{url($operation->shortname."/".$category->url.'#'.$category->url)}}"
                            class="ctg__link w-inline-block">
                             <div class="ctg__link_txt link_text--green txt_secondary">
-                                {{$category->name}}
+                                CONSULTER LA RUBRIQUE
                             </div>
                         </a>
                     @endif
@@ -56,10 +69,10 @@
                             </a>
                         @endforeach
                     @else
-                        <a href="{{url($operation->shortname."/".$category->url)}}"
+                        <a href="{{url($operation->shortname."/".$category->url."#".$category->url)}}"
                            class="ctg__link w-inline-block">
                             <div class="ctg__link_txt link_text--green txt_primary">
-                                {{$category->name}}
+                                CONSULTER LA RUBRIQUE
                             </div>
                         </a>
                     @endif

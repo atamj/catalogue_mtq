@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html>
-@if(env('APP_VERSION') == '2')
-    @include('partials.head', ['title'=> $pivot->title])
-@else
-    @include('partials.head', ['title'=> env("TILE")])
-@endif
-<body>
+@include('partials.head-v2', ['title'=> $pivot->title])
+<body class="catalogue {{$category->url}}">
 <script>
     if (location.hash == "") {
         location.href = "/".{{$operation->shortname}}
@@ -15,7 +11,7 @@
 @include('partials.modal')
 {{-- End Modal --}}
 
-@include('partials.banner')
+@include('partials.banner-v2')
 @include('partials.menu')
 
 {{-- Arrow nav --}}
@@ -23,40 +19,70 @@
 {{-- End Arrow nav--}}
 
 <div class="section__wrapper">
-    @foreach($sous_categories as $sous_category)
-{{--        @if ($key == "")--}}
-{{--            <div id="{{$category_url ?? $category}}" class="section-wrapper">--}}
-{{--        @else--}}
+    @if (count($sous_categories) != 0)
+        @foreach($sous_categories as $sous_category)
+            {{--        @if ($key == "")--}}
+            {{--            <div id="{{$category_url ?? $category}}" class="section-wrapper">--}}
+            {{--        @else--}}
             <div id="{{$sous_category->url}}" class="section-wrapper">
-{{--        @endif--}}
+                {{--        @endif--}}
+                <div class="cat__wrapper">
+                    <div class="nav-section category-01">
+                        <a href="#" class="arrow arrow-left w-inline-block"></a>
+                        <a href="#" class="arrow arrow--right w-inline-block"></a>
+                    </div>
+                    {{-- Produit Bombe--}}
+                    @if ($bombe)
+                        @include('partials.product-bombe-v2', ['product'=>$bombe])
+                    @endif
+                    {{-- End Produit Bombe--}}
+                    <div class="items-wrapper" style="display: none">
+                        <div class="w-layout-grid grid">
+                            @dd($products)
+                            @if (count($sous_categories) != 0)
+                                @foreach($products->where('sous_categorie_url', $sous_category->url)->where('bombe_1', '0') as $product)
+                                    @include('partials.product', ['product'=> $product])
+                                @endforeach
+                            @else
+                                @foreach($products as $product)
+                                    @if ($product->bombe_1 == '0')
+                                        @dump($product)
+                                        @include('partials.product', ['product'=> $product])
+                                    @endif
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    @else
+        <div id="{{$category->url}}" class="section-wrapper">
+            {{--        @endif--}}
             <div class="cat__wrapper">
                 <div class="nav-section category-01">
                     <a href="#" class="arrow arrow-left w-inline-block"></a>
                     <a href="#" class="arrow arrow--right w-inline-block"></a>
                 </div>
                 {{-- Produit Bombe--}}
-                @if ($bombe->where('sous_categorie_url', $sous_category->url)->first())
-                    @include('partials.product-bombe', ['product'=>$bombe->where('sous_categorie_url', $sous_category->url)->first()])
+                @if ($bombe)
+                    @include('partials.product-bombe-v2', ['product'=>$bombe])
                 @endif
                 {{-- End Produit Bombe--}}
                 <div class="items-wrapper" style="display: none">
                     <div class="w-layout-grid grid">
-                        @foreach($products->where('sous_categorie_url', $sous_category->url)->where('bombe_1', '0') as $product)
-                            @include('partials.product', ['product'=> $product])
+                        @foreach($products as $product)
+                            @if ($product->bombe_1 == '0')
+                                @include('partials.product-v2', ['product'=> $product])
+                            @endif
                         @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    @endforeach
+    @endif
 </div>
-@if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
-    @include('partials.footer-carrefour')
-@elseif(env('APP_URL') === "https://catalogue.euromarche-martinique.com")
-    @include('partials.footer-euro')
-@else
-    @include('partials.footer')
-@endif
-
+</div>
+@include('partials.footer-v2', ['page', 'catalogue'])
 </body>
 </html>

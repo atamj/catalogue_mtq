@@ -39,6 +39,10 @@
                                     <input type="date" class="form-control" id="end" name="end" value="{{date('Y-m-d', strtotime($operation->end) ?? "")}}">
                                 </div>
                                 <div class="mb-3">
+                                    <label for="bombe_bg" class="form-label">Background produit bombe 1</label>
+                                    <input type="file" class="form-control" id="bombe_bg" name="bombe_bg">
+                                </div>
+                                <div class="mb-3">
                                     <label for="template" class="form-label">Template à utiliser</label>
                                     <select class="form-control" name="template">
                                         <option name="default">Default</option>

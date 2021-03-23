@@ -243,7 +243,7 @@ class ProductController extends Controller
                 $product->$title = $val;
 
             }
-            $category = Category::where('url', $product->categorie_url)->first();
+            $category = Category::where('url', $product->categorie_url)->where('operation_id', $operation->id)->first();
             if (!$category) {
                 $category = Category::create([
                     'operation_id' => $operation->id,

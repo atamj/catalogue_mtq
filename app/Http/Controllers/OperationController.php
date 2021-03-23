@@ -118,7 +118,10 @@ class OperationController extends Controller
      */
     public function update(Request $request, Operation $operation)
     {
-        $operation->update($request->all());
+        $operation->update($request->except('bombe_bg'));
+        if ($request->hasFile('bombe_bg')){
+            $request->file('bombe_bg')->storeAs('public/'.$operation->shortname.'/images/bombe_bg/', 'bombe_bg.png');
+        }
         return back()->with('status', 'Success');
     }
 

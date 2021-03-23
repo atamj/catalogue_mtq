@@ -23,7 +23,10 @@
         :root {
             --primary: {{$pivot->primary_color}};
             --secondary: {{$pivot->secondary_color}};
-            --header_color: {{$pivot->header_color}}
+            --header_color: {{$pivot->header_color}};
+            --custom: #D8BF9C;
+            --bombe2: #634019;
+            --smartcash: #D92C7F;
         }
     </style>
     <link href="{{asset('css/normalize.css')}}" rel="stylesheet" type="text/css">

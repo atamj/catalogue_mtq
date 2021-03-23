@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 .bg_primary{
     background-color: var(--primary)!important;
 }
@@ -20,6 +23,7 @@
     grid-template-rows: auto auto;
     grid-row-gap: 16px;
     grid-column-gap: 16px;
+    width: 100%;
 }
 
 h3 {
@@ -101,6 +105,10 @@ h3:hover {
     position: relative;
     top: 0px;
     background-color: #fefefc;
+    background-position: center 45%;
+}
+.home .nav{
+    height: 567px;
 }
 
 .image-2 {
@@ -142,21 +150,12 @@ h3:hover {
 }
 
 .form__wrapper {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     width: 50%;
     height: 400px;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
     flex-direction: column;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
     justify-content: center;
+    align-items: center;
 }
 
 .form {
@@ -166,13 +165,7 @@ h3:hover {
     display: flex;
     margin-right: 15%;
     margin-bottom: 0px;
-    -webkit-box-pack: end;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
-    justify-content: flex-end;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
+    justify-content: center;
     align-items: center;
 }
 
@@ -194,9 +187,9 @@ h3:hover {
 }
 
 .text-field {
-    width: 100%;
+    width: 960px;
     height: 70px;
-    min-width: 50%;
+    max-width: 90vw;
     margin: 20px 0px 10px;
     padding-left: 30px;
     border-style: solid;
@@ -475,6 +468,7 @@ h3:hover {
 
 .categories {
     position: relative;
+    flex: 1;
 }
 
 .ctg__title {
@@ -590,18 +584,20 @@ h3:hover {
     font-weight: 700;
 }
 .ctg__title--size {
-    width: 150px;
-    margin-bottom: 20px;
+    width: 130px;
+    height: 130px;
+    margin-bottom: 80px;
     padding-top: 5px;
     padding-bottom: 5px;
-    border-radius: 15px;
+    border-radius: 50%;
     background-color: transparent;
     opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ctg__title--size.bg--yellow {
-    width: 175px;
-    border-radius: 20px;
     background-color: #ffdb28;
     font-family: Amaticsc, sans-serif;
     color: #5cb1b5;
@@ -775,40 +771,19 @@ h3:hover {
 .spotlight {
     position: -webkit-sticky;
     position: sticky;
-    top: 0px;
+    top: 0;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
     width: 50vw;
-    height: 100vh;
-    -webkit-box-pack: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: end;
-    -webkit-align-items: flex-end;
-    -ms-flex-align: end;
-    align-items: flex-end;
-    /*background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#fff)), url('../images/img-fond-01.jpg');*/
-    /*background-image: linear-gradient(180deg, transparent, #fff), url('../images/img-fond-01.jpg');*/
-    background-position: 0px 0px, 0px 0px;
-    background-size: auto, cover;
-    background-repeat: repeat, no-repeat;
-    text-align: center;
-}
-
-.spotlight.spotlight__eveil {
     height: 80vh;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
+    justify-content: center;
     align-items: center;
-    /*background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#fff)), url('../images/img-fond-01.jpg');*/
-    /*background-image: linear-gradient(180deg, transparent, #fff), url('../images/img-fond-01.jpg');*/
-    background-position: 0px 0px, 0px 0px;
-    background-size: auto, cover;
-    background-repeat: repeat, no-repeat;
+    text-align: center;
+    background-position: left;
+    background-size: 101%;
+    background-repeat: no-repeat;
 }
 
 .grid {
@@ -825,37 +800,12 @@ h3:hover {
 
 .product {
     position: relative;
-    width: 230px;
-    height: 250px;
-    margin: 15% 10%;
+    width: 380px;
+    height: 380px;
+    margin: auto;
     border: 1px none #000;
     background-color: transparent;
-}
-
-.product.article__02 {
-    background-image: url('../images/210114_2054_tapis-d-eveil.jpg');
-    background-position: 0% 0%;
-    background-size: 180px;
-    background-repeat: no-repeat;
-}
-
-.product.article__03 {
-    background-image: url('../images/210119_6313_veilleuse-murale_01.jpg');
-    background-position: 0% 0%;
-    background-size: 180px;
-    background-repeat: no-repeat;
-}
-
-.product.article__04 {
-    background-image: url('../images/201117_2845_fauteuil-club-licence.jpg');
-    background-position: 0% 0%;
-    background-size: 180px;
-    background-repeat: no-repeat;
-}
-
-.product.article__05 {
-    background-image: url('../images/201112_5929_mini-canape.jpg');
-    background-position: 0% 0%;
+    background-position: 20% 20%;
     background-size: 180px;
     background-repeat: no-repeat;
 }
@@ -960,13 +910,14 @@ h3:hover {
     right: 0%;
     bottom: 0%;
     padding-left: 0px;
-    color: #5cb1b5;
+    color: var(--custom);
     text-align: left;
 }
 
 .p__wrapper.p__wrapper--spotlight {
     position: relative;
     padding-left: 0px;
+    color: var(--primary);
 }
 
 .p__wrapper.p_wrapper_details {
@@ -974,6 +925,9 @@ h3:hover {
     color: #ffdb28;
 }
 
+.product .p__title{
+    font-family: Clickerscript;
+}
 .p__title {
     margin-top: 0px;
     margin-bottom: 5px;
@@ -984,18 +938,21 @@ h3:hover {
 }
 
 .p__title.p__title--spotlight {
-    font-size: 40px;
-    line-height: 40px;
+    font-size: 70px;
+    line-height: 0.9em;
+    letter-spacing: 0;
+    text-align: left;
 }
 
 .p__title.p_title--detail {
     font-size: 70px;
     line-height: 70px;
 }
-
-.p__infos {
+.p__infos:empty{
     display: none;
-    margin-bottom: 0px;
+}
+.p__infos {
+    margin-bottom: 0;
     font-family: Roboto, sans-serif;
     font-size: 12px;
     line-height: 12px;
@@ -1024,7 +981,6 @@ h3:hover {
 }
 
 .p__brand {
-    background-color: #ffdb28;
     padding: 0 10px;
     border-radius: 10px;
 }
@@ -1036,6 +992,7 @@ h3:hover {
     display: flex;
     width: 35px;
     height: 35px;
+    text-decoration: none;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
     -ms-flex-pack: center;
@@ -1076,8 +1033,8 @@ h3:hover {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    width: 130px;
-    height: 130px;
+    width: 179px;
+    height: 179px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -1092,7 +1049,10 @@ h3:hover {
     -ms-flex-align: center;
     align-items: center;
     border-radius: 65px;
-    background-color: #5cb1b5;
+    background-color: unset;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .p__price.spotlight-02 {
@@ -1101,16 +1061,15 @@ h3:hover {
 }
 
 .more_infos_cross {
-    width: 20px;
-    height: 20px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #5cb1b5;
-    border-radius: 10px;
-    background-image: url('../images/more-infos-buttons.svg');
-    background-position: 0px 0px;
-    background-size: cover;
-    -webkit-transition: height 100ms ease, width 100ms ease, -webkit-transform 200ms ease;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    background-color: var(--custom);
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: height 100ms ease, width 100ms ease, -webkit-transform 200ms ease;
     transition: transform 200ms ease, height 100ms ease, width 100ms ease;
     transition: transform 200ms ease, height 100ms ease, width 100ms ease, -webkit-transform 200ms ease;
@@ -1162,11 +1121,41 @@ h3:hover {
 .brand {
     padding-left: 0px;
     font-family: Roboto, sans-serif;
-    color: #5cb1b5;
+    color: var(--custom);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+}
+.product.bombe2 .brand, .product.bombe2 .p__old_price_wrapper, .product.bombe2 .p__price_wrapper, .product.bombe2 .p__wrapper{
+    color: var(--bombe2);
+}
+.product.bombe2 .more_infos_cross, .product.bombe2 .p__cross_bar.spotlight-02{
+    background-color: var(--bombe2);
+}
+.product.bombe2smartcash .p__old_price_wrapper{
+    color: #ffffff;
+    font-weight: 700;
+}
+.product.bombe2smartcash .p__old_price small{
+    color: #ffffff;
+}
+.product.bombe2smartcash .p__price_wrapper{
+    color: #FF9ACA;
+}
+.product.bombe2smartcash .brand, .product.bombe2smartcash .p__wrapper{
+    color: var(--smartcash);
+}
+.product.bombe2smartcash .more_infos_cross, .product.bombe2smartcash .p__cross_bar.spotlight-02{
+    background-color: var(--smartcash);
+}
+.p__wrapper--spotlight .brand{
+    color: var(--primary);
+    font-size: 31px;
+    font-family: Roboto, sans-serif;
+    line-height: 1.8em;
+    font-weight: 400;
+    letter-spacing: 0;
 }
 
 .brand.brand--detail {
@@ -1209,8 +1198,8 @@ h3:hover {
 }
 
 .p__price_1st.price_1st--old {
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 28px;
+    line-height: 28px;
 }
 
 .p__price_1st.price_1st--old._1st--spotlight {
@@ -1219,7 +1208,7 @@ h3:hover {
 }
 
 .p__price_1st.price_1st--spotlight {
-    color: #5cb1b5;
+    color: #ffffff;
     font-size: 80px;
     line-height: 80px;
 }
@@ -1230,7 +1219,7 @@ h3:hover {
 }
 
 .p__price_1st.spotlight-02-txt {
-    color: #5cb1b5;
+    /*color: #5cb1b5;*/
 }
 
 .p__price_2nd {
@@ -1248,17 +1237,19 @@ h3:hover {
     margin-top: 0px;
     font-size: 14px;
     line-height: 14px;
+    letter-spacing: 0;
 }
 
 .p__price_cents.price_cents--old.cents--spotlight {
     color: #fff;
-    font-size: 26px;
+    font-size: 31px;
+    line-height: 53px;
 }
 
 .p__price_cents.price_cents--spotlight {
-    color: #5cb1b5;
-    font-size: 40px;
-    line-height: 40px;
+    color: #ffffff;
+    font-size: 60px;
+    line-height: 93px;
 }
 
 .p__price_cents.spotkight-02-txt {
@@ -1272,8 +1263,8 @@ h3:hover {
     display: flex;
     margin-top: 10px;
     margin-bottom: 0px;
-    font-family: Gilroy, sans-serif;
-    color: #ffdb28;
+    font-family: Roboto, sans-serif;
+
     font-weight: 700;
 }
 
@@ -1282,6 +1273,8 @@ h3:hover {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    justify-content: center;
+    letter-spacing: -6px;
 }
 
 .p__price_wrapper.p_price_wrapper--detail {
@@ -1299,11 +1292,11 @@ h3:hover {
     margin-top: 10px;
     font-family: Gilroy, sans-serif;
     color: #ffdb28;
-    font-weight: 700;
+    font-weight: 300;
 }
 
 .p__old_price.old_price--spotlight {
-    margin-top: 60px;
+    margin-top: 83px;
 }
 
 .p__old_price.mask {
@@ -1315,6 +1308,7 @@ h3:hover {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    justify-content: center;
     width: 100%;
     color: #fff;
 }
@@ -1322,28 +1316,31 @@ h3:hover {
 .p__old_price_wrapper.old_price_wrapper--spotlight {
     color: #5cb1b5;
 }
-
+.product .p__cross_bar{
+    left: -14px;
+    top: 0;
+    right: 0%;
+    bottom: 0%;
+    width: 160%;
+    height: 1.5px;
+}
 .p__cross_bar {
     position: absolute;
-    left: 0%;
-    top: 0%;
+    left: 24%;
+    top: 29%;
     right: 0%;
     bottom: 0%;
     width: 100%;
     height: 3px;
     margin-top: 10px;
     border-radius: 5px;
-    background-color: #ffdb28;
-    -webkit-transform: rotate(-25deg);
-    -ms-transform: rotate(-25deg);
-    transform: rotate(-25deg);
-    color: #ffdb28;
+    -webkit-transform: rotate(-21deg);
+    transform: rotate(-21deg);
 }
 
 .p__cross_bar.cross_bar--spotlight {
-    width: 45%;
-    background-color: #5cb1b5;
-    color: #5cb1b5;
+    width: 51%;
+    background-color: #ffffff;
 }
 
 .p__cross_bar.spotlight-02 {
@@ -1353,38 +1350,32 @@ h3:hover {
 .spotlight_price {
     position: relative;
     display: block;
-    width: 220px;
-    height: 220px;
-    padding-bottom: 10px;
-    padding-left: 20px;
+    width: 304px;
+    height: 304px;
+    padding-bottom: 0;
+    padding-left: 0;
     -webkit-box-align: end;
     -webkit-align-items: flex-end;
     -ms-flex-align: end;
     align-items: flex-end;
     background-image: url('../images/sportlight-price.svg');
-    background-position: 0px 0px;
-    background-size: auto;
+    background-position: center;
+    background-size: contain;
     background-repeat: no-repeat;
     background-attachment: scroll;
 }
 
 .spotlight__container {
     position: absolute;
-    bottom: 20px;
+    bottom: 120px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    width: 100%;
+    width: 80%;
     padding-right: 40px;
     padding-left: 40px;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: end;
-    -webkit-align-items: flex-end;
-    -ms-flex-align: end;
+    justify-content: stretch;
     align-items: flex-end;
 }
 
@@ -1619,7 +1610,7 @@ h3:hover {
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    border-radius: 300px;
+    /*border-radius: 300px;*/
     background-color: #fff;
     background-image: none;
 }
@@ -1864,11 +1855,11 @@ h3:hover {
     border-color: rgba(0, 0, 0, 0.3);
 }
 
-.spotlight-02-bg {
+.spotlight-02-bg, .price-bg {
     position: absolute;
     width: 150px;
     height: 150px;
-    background-image: url('../images/sub-spotlight.svg');
+    /*background-image: url('../images/sub-spotlight.svg');*/
     background-position: 0px 0px;
     background-size: auto;
 }
@@ -2210,18 +2201,23 @@ h3:hover {
     }*/
 
     .p__title {
-        font-size: 22px;
-        line-height: 22px;
+        font-size: 36px;
+        line-height: 25px;
     }
 
     .p__price_1st.price_1st--old._1st--spotlight {
-        font-size: 40px;
-        line-height: 40px;
+        font-size: 77px;
+        line-height: 88px;
+        letter-spacing: 0;
     }
 
     .p__price_1st.price_1st--spotlight {
-        font-size: 70px;
+        font-size: 120px;
         line-height: 70px;
+        font-family: Roboto;
+        font-weight: 700;
+        font-size: 120px;
+        line-height: 140px;
     }
 
     .ctg__repas {
@@ -3788,7 +3784,7 @@ h3:hover {
         justify-content: space-between;
     }
 
-    .spotlight-02-bg {
+    .spotlight-02-bg, .price-bg {
         width: 140px;
         height: 140px;
     }

@@ -34,10 +34,20 @@
                                 <input type="color" class="form-control" id="header_bgc" name="header_bgc"
                                        aria-describedby="header_bgcHelp" value="{{$pivot->header_bgc ?? "#FFFFFF"}}">
                             </div>
-                            <div class="mb-3">
-                                <label for="header_bgi" class="form-label">Image de fond du header</label>
-                                <input type="file" class="form-control" id="header_bgi" name="header_bgi"
-                                       aria-describedby="header_bgiHelp" accept="image/*">
+                            <div class="mb-3 row">
+                                <div class="col-7">
+                                    <label for="header_bgi" class="form-label">
+                                        Image de fond du header
+                                    </label>
+                                    <input type="file" class="form-control" id="header_bgi" name="header_bgi"
+                                           aria-describedby="header_bgiHelp" accept="image/*">
+                                </div>
+                                @if ($pivot->header_bgi)
+                                    <div class="col-5">
+                                        <img width="100px" height="auto" src="{{asset('storage/'.$operation->shortname.'/images/header_bgi/'.$client->id.'/'.$pivot->header_bgi)}}" alt="header_bgi">
+                                        <label for="del_header_bgi" class="text-danger">Supprimer</label> <input type="checkbox" id="del_header_bgi" name="del_header_bgi" value="1">
+                                    </div>
+                                @endif
                             </div>
                             <div class="mb-3">
                                 <label for="header_color" class="form-label">Couleur de texte du header</label>
@@ -50,10 +60,18 @@
                                 <input type="color" class="form-control" id="footer_top_bgc" name="footer_top_bgc"
                                        aria-describedby="footer_top_bgcHelp" value="{{$pivot->footer_top_bgc ?? "#05539c"}}">
                             </div>
-                            <div class="mb-3">
-                                <label for="footer_top_bgi" class="form-label">Image de fond du haut footer</label>
-                                <input type="file" class="form-control" id="footer_top_bgi" name="footer_top_bgi"
-                                       aria-describedby="footer_top_bgiHelp" accept=".jpg, .jpeg, .png, .svg">
+                            <div class="mb-3 row">
+                                <div class="col-7">
+                                    <label for="footer_top_bgi" class="form-label">Image de fond du haut footer</label>
+                                    <input type="file" class="form-control" id="footer_top_bgi" name="footer_top_bgi"
+                                           aria-describedby="footer_top_bgiHelp" accept=".jpg, .jpeg, .png, .svg">
+                                </div>
+                                @if ($pivot->footer_top_bgi)
+                                    <div class="col-5">
+                                        <img width="100px" height="auto" src="{{asset('storage/'.$operation->shortname.'/images/footer_top_bgi/'.$client->id.'/'.$pivot->footer_top_bgi)}}" alt="footer_top_bgi">
+                                        <label for="del_footer_top_bgi" class="text-danger">Supprimer</label> <input type="checkbox" id="del_footer_top_bgi" name="del_footer_top_bgi" value="1">
+                                    </div>
+                                @endif
                             </div>
                             <div class="mb-3">
                                 <label for="footer_top_color" class="form-label">Couleur de texte du haut footer</label>

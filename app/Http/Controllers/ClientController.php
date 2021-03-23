@@ -174,6 +174,8 @@ class ClientController extends Controller
     {
         $client = Client::find($client_id);
         $operation = $client->operations()->wherePivot('id', $request->get('pivot_id'))->first();
+        $pivot = $client->operations->find($operation->id)->pivot;
+        $pivot = $pivot->find($pivot->id);
         $client->operations()->newPivotStatement()->where('id', $request->all()['pivot_id'])->update([
             'title'         => $request->get('title'),
             'title_color'   => $request->get('title_color'),
@@ -216,6 +218,16 @@ class ClientController extends Controller
                 Storage::delete('public/'.$operation->shortname.'/images/covers/'.$client->id.'/cover.png');
             }
             $request->file('cover')->storeAs('public/'.$operation->shortname.'/images/covers/'.$client->id, 'cover.png');
+        }
+        if ($request->has('del_header_bgi') && $request->get('del_header_bgi') == 1){
+            Storage::delete('public/'.$operation->shortname.'/images/header_bgi/'.$client->id.'/'.$pivot->header_bgi);
+            $client->operations()->newPivotStatement()->where('id', $pivot->id)->update(['header_bgi'  => null]);
+
+        }
+        if ($request->has('del_footer_top_bgi') && $request->get('del_footer_top_bgi') == 1){
+            Storage::delete('public/'.$operation->shortname.'/images/footer_top_bgi/'.$client->id.'/'.$pivot->footer_top_bgi);
+            $client->operations()->newPivotStatement()->where('id', $pivot->id)->update(['footer_top_bgi'  => null]);
+
         }
 
         return back()->with('status', 'success');

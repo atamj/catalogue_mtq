@@ -15,23 +15,36 @@
             </h1>
         </a>
         <div class="text-block-4 bg_primary txt-white">
-            du {{strftime('%d %B',strtotime($operation->start)) ?? "19 février"}}
-            au {{strftime('%d %B',strtotime($operation->end)) ?? "7 mars"}}</div>
+            {{$category->name}}
+        </div>
+        <div class="back">
+            <a href="{{url()->previous()}}">RETOUR A L’ACCUEIL</a>
+        </div>
 
     </div>
 
     <div class="header-right-content">
-{{--        <div class="separator">|</div>--}}
+        @if(isset($categories) && count($categories) > 0)
+            <a class="voir-cata" href="{{url('/'.$operation->shortname.'/catalogue#'.($categories->first()->subCategories()->first() ? $categories->first()->subCategories()->first()->url : $categories->first()->url))}}">
+                VOIR TOUT LE CATALOGUE
+            </a>
+        @else
+            <a href="#" class="voir-cata">
+                VOIR TOUT LE CATALOGUE
+            </a>
+        @endif
+        <div class="separator">|</div>
         <div>
             <a class="download-cata" href="{{asset('storage/'.$operation->shortname.'/catalogue/'.$client->id.'/catalogue.pdf')}}"
-               download="catalogue.pdf">Télécharger notre catalogue</a>
+               download="catalogue.pdf">Télécharger</a>
         </div>
     </div>
 </div>
 <div class="nav-mobile-active">
     <div class="text-block-4 bg_primary txt-white">
         du {{strftime('%d %B',strtotime($operation->start)) ?? "19 février"}}
-        au {{strftime('%d %B',strtotime($operation->end)) ?? "7 mars"}}</div>
+        au {{strftime('%d %B',strtotime($operation->end)) ?? "7 mars"}}
+    </div>
     <div>
         @if(isset($categories) && count($categories) > 0)
             <a class="voir-cata" href="{{url('/'.$operation->shortname.'/catalogue#'.($categories->first()->subCategories()->first() ? $categories->first()->subCategories()->first()->url : $categories->first()->url))}}">

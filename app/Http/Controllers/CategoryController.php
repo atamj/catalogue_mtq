@@ -51,17 +51,27 @@ class CategoryController extends Controller
             }
 
             /** On récupère toutes les catégories de cette opération*/
-            $category = Category::where('url', $category)->first();
+            $category = Category::where('url', $category)->where('operation_id', $operation->id)->first();
+            $categories = $operation->categories()->get();
             $pivot = $client->operations->find($operation->id)->pivot;
             $pivot = $pivot->find($pivot->id);
             $products = $category->products()->get();
-            foreach ($products as $product) $product->convertData();
-            $bombe = $products->where('bombe_1', '1');
+            $bombes = [];
+            foreach ($products as $product) {
+                $product->convertData();
+                if ($product->bombe = '1'){
+                    $bombes[] = $product;
+                }
+            }
             $sous_categories = $category->subCategories()->get();
+            $bombe = "";
+            if (count($sous_categories) == 0){
+                $bombe = $bombes[0];
+            }
             if ($operation->template == "default" || $operation->template == "" || !$operation->template) {
-                return view('catalogue', compact('products', 'bombe', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
+                return view('catalogue', compact('products', 'bombe', 'bombes', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
             } else {
-                return view('templates.catalogue-' . $operation->template, compact('products', 'bombe', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
+                return view('templates.catalogue-' . $operation->template, compact('products', 'bombe', 'category', 'categories', 'pivot', 'sous_categories', 'operation', 'client'));
             }
 
         } else {

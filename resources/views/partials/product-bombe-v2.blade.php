@@ -1,4 +1,5 @@
-<div class="spotlight spotlight__eveil" style="background-image: linear-gradient(180deg, transparent, #fff), url('{{asset('storage/'.$operation->shortname.'/images/spotlight/bg.jpg')}}');"
+<div class="spotlight spotlight__eveil"
+     style="background-image: url('{{asset('storage/'.$operation->shortname.'/images/bombe_bg/bombe_bg.png')}}');"
      data-designation="{{$product->designation}}"
      data-description_produit="{{$product->description_produit}}"
      data-prix_vente_1="{{explode(',', $product->prix_vente)[0]}}"
@@ -19,7 +20,8 @@
     <div class="spotlight--img"
          style="background-image: url('{{$product->photo_principale ? asset('storage/'.$operation->shortname.'/images/products/'.$product->photo_principale) : ""}}')"></div>
     <div class="spotlight__container">
-        <div class="spotlight_price">
+        <div class="spotlight_price"
+             style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/price_bombe1.svg')}});">
             @if ($product->prix_barre)
                 <div class="p__old_price old_price--spotlight">
                     <div class="p__old_price_wrapper old_price_wrapper--spotlight">
@@ -49,21 +51,13 @@
             </div>
         </div>
         <div class="p__wrapper p__wrapper--spotlight">
-            <ul role="list" class="list-3 w-list-unstyled">
-                <li class="p__brand">
-                    <div
-                        class="brand">{{$product->marque}}</div>
-                </li>
-                <li class="p__more_infos more_infos__wrapper more_infos--spotlight">
-                    <a href="#"
-                       class="p__more_infos w-inline-block">
-                        <div class="more_infos_cross"></div>
-                    </a>
-                </li>
-            </ul>
-            <div
-                class="p__title p__title--spotlight">{{$product->designation}}</div>
-            <p class="p__infos p__infos--spotlight">Divers coloris</p>
+
+            <div class="p__title p__title--spotlight">
+                {{$product->designation}}
+            </div>
+            <div class="brand">
+                {{$product->marque}}
+            </div>
         </div>
     </div>
 </div>
