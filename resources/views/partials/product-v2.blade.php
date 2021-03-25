@@ -1,5 +1,5 @@
 <div id="w-node-643069de73f7-b30ad297" class="product {{($product->bombe_2 == '1') ? "bombe2" : ""}}{{($product->smart_cash != "") ? "smartcash" : ""}}"
-     style="background-image: url('{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}')"
+{{--     style="background-image: url('{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}')"--}}
      data-designation="{{$product->designation}}"
      data-description_produit="{{$product->description_produit}}"
      data-prix_vente_1="{{explode(',', $product->prix_vente)[0]}}"
@@ -24,7 +24,8 @@
                 </a>
             </li>
         </ul>
-        @if ($product->bombe_2 == '1' && $product->smart_cash != "")
+        <img src="{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}" alt="">
+    @if ($product->bombe_2 == '1' && $product->smart_cash != "")
             {{--Bombe 2 + smartcash--}}
 
             <div class="p__price" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/price_smart_bombe.svg')}});">
@@ -70,7 +71,7 @@
                         <div>
                             <small>Prix cagnotte réduite</small>
                         </div>
-                    </div>
+                    </div>{{--p__old_price--}}
 
             @endif
 
@@ -80,39 +81,40 @@
                 <div
                     class="p__price_cents {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}-txt">
                     €{{explode(',', $product->prix_vente)[1] ?? "00"}}</div>
+            </div>{{--p__price_wrapper--}}
+            <div class="smartmention">
+                prix payé en caisse
             </div>
-            @if ($product->eco_part)
+                {{--Disabled ecopart--}}
+            @if ($product->eco_part && 0 == 1)
                 <div
                     class="p__ecopart {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}-txt">
                     DONT {{explode(',', $product->eco_part)[0] ?? "0"}}€{{explode(',', $product->eco_part)[1] ?? "00"}}
                     D'ÉCO-PART
-                </div>
+                </div>{{--p__ecopart--}}
             @endif
+                @if ($product->bombe_2 == '1' && $product->smart_cash != "")
+                    <div class="smartcash" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/smartcash_bombe.svg')}});">
+                        <p>
+                            -{{explode(',', $product->smart_cash)[0]}}<sup>€{{explode(',', $product->smart_cash)[1] ?? "00"}}</sup>
+                            <br>
+                            <span>EN SMART <i>Cash **</i></span>
+                        </p>
+                    </div>
+                @else
+                    <div class="smartcash" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/smartcash.svg')}});">
+                        <p>
+                            -{{explode(',', $product->smart_cash)[0]}}<sup>€{{explode(',', $product->smart_cash)[1] ?? "00"}}</sup>
+                            <br>
+                            <span>EN SMART <i>Cash **</i></span>
+                        </p>
+                    </div>
+                @endif
 
-{{--            @if ($product->bombe_2 == '1' && $product->smart_cash != "")--}}
-{{--                --}}{{--Bombe 2 + smartcash--}}
-
-{{--                <div class="price-bg" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/price_smart_bombe.svg')}});"></div>--}}
-
-{{--            @elseif ($product->bombe_2 == '1')--}}
-{{--                --}}{{--Bombe 2 --}}
-
-{{--                <div class="price-bg" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/price_bombe2.svg')}});"></div>--}}
-
-{{--            @elseif($product->smart_cash != "")--}}
-{{--                --}}{{--Smartcash --}}
-
-{{--                <div class="price-bg" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/price_smart.svg')}});"></div>--}}
-
-{{--            @else--}}
-{{--                --}}{{--Normale--}}
-{{--                <div class="price-bg" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/price.svg')}});"></div>--}}
-
-{{--            @endif--}}
-        </div>
+        </div>{{--p__price--}}
         <div class="p__wrapper">
             <div class="p__title">{{$product->designation}}</div>
             <p class="p__infos">{{$product->description_short}}</p>
-        </div>
-    </div>
-</div>
+        </div>{{--p__wrapper--}}
+    </div>{{--product-wrapper--}}
+</div>{{--product--}}

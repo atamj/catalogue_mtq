@@ -1024,6 +1024,7 @@ h3:hover {
 }
 
 .p__price {
+    color: var(--custom);
     position: absolute;
     left: auto;
     top: 70px;
@@ -1149,6 +1150,44 @@ h3:hover {
 .product.bombe2smartcash .more_infos_cross, .product.bombe2smartcash .p__cross_bar.spotlight-02{
     background-color: var(--smartcash);
 }
+.product .smartcash{
+    display: none;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: Gilroy, sans-serif;
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 37px;
+    height: 79.4px;
+    width: 127.04px;
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size: contain;
+    position: absolute;
+    bottom: -53px;
+    left: 0;
+    color: #ffffff;
+}
+.product.bombe2smartcash .smartcash, .product.smartcash .smartcash{
+    display: flex;
+}
+.product .smartcash p{
+    line-height: 0.5em;
+}
+.product .smartcash sup {
+    top: -0.3em;
+}
+.product .smartcash span {
+    font-size: 10px;
+    font-family: "DIN Condensed";
+    line-height: 13px;
+    font-weight: 400;
+}
+.product .smartcash span i {
+    font-size: 9px;
+    font-weight: 300;
+}
+
 .p__wrapper--spotlight .brand{
     color: var(--primary);
     font-size: 31px;
@@ -1157,7 +1196,14 @@ h3:hover {
     font-weight: 400;
     letter-spacing: 0;
 }
-
+.smartmention{
+    display: none;
+}
+.product.bombe2smartcash .smartmention, .product.smartcash .smartmention{
+    display: block;
+    color: #FF9ACA;
+    font-size: 9px;
+}
 .brand.brand--detail {
     margin-top: 20px;
     color: #fff;
@@ -1291,7 +1337,6 @@ h3:hover {
     display: block;
     margin-top: 10px;
     font-family: Gilroy, sans-serif;
-    color: #ffdb28;
     font-weight: 300;
 }
 
@@ -1310,13 +1355,13 @@ h3:hover {
     display: flex;
     justify-content: center;
     width: 100%;
-    color: #fff;
 }
 
 .p__old_price_wrapper.old_price_wrapper--spotlight {
     color: #5cb1b5;
 }
 .product .p__cross_bar{
+    background-color: var(--custom);
     left: -14px;
     top: 0;
     right: 0%;
@@ -1781,8 +1826,11 @@ h3:hover {
     z-index: 2;
     width: 100%;
     height: 100%;
+    text-align: center;
 }
-
+.product-wrapper > img{
+    height: 80%;
+}
 .arrow {
     width: 26px;
     height: 26px;
