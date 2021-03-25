@@ -2,6 +2,7 @@
 {{--     style="background-image: url('{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}')"--}}
      data-designation="{{$product->designation}}"
      data-description_produit="{{$product->description_produit}}"
+     data-description_short="{{$product->description_short}}"
      data-prix_vente_1="{{explode(',', $product->prix_vente)[0]}}"
      data-prix_vente_2="{{explode(',', $product->prix_vente)[1] ?? "00"}}"
      data-prix_barre_1="{{explode(',', $product->prix_barre)[0]}}"
@@ -9,9 +10,9 @@
      data-eco_part="{{$product->eco_part}}"
      data-marque="{{$product->marque}}"
      data-ean="{{$product->ean}}"
-     data-photo_principale="{{$product->photo_principale}}"
-     data-photo_2="{{$product->photo_2}}"
-     data-photo_3="{{$product->photo_3}}">
+     data-photo_principale="{{$product->photo_principale ?  asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_principale) : ""}}"
+     data-photo_2="{{$product->photo_2 ? asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_2) : ""}}"
+     data-photo_3="{{$product->photo_3 ? asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_3) : ""}}">
 
     <div class="product-wrapper">
         <ul role="list" class="list-3 w-list-unstyled">
@@ -28,7 +29,7 @@
     @if ($product->bombe_2 == '1' && $product->smart_cash != "")
             {{--Bombe 2 + smartcash--}}
 
-            <div class="p__price" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/price_smart_bombe.svg')}});">
+            <div class="p__price" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/price_smart.svg')}});">
 
         @elseif ($product->bombe_2 == '1')
             {{--Bombe 2 --}}
@@ -93,15 +94,7 @@
                     D'ÉCO-PART
                 </div>{{--p__ecopart--}}
             @endif
-                @if ($product->bombe_2 == '1' && $product->smart_cash != "")
-                    <div class="smartcash" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/smartcash_bombe.svg')}});">
-                        <p>
-                            -{{explode(',', $product->smart_cash)[0]}}<sup>€{{explode(',', $product->smart_cash)[1] ?? "00"}}</sup>
-                            <br>
-                            <span>EN SMART <i>Cash **</i></span>
-                        </p>
-                    </div>
-                @else
+                @if ($product->smart_cash != "")
                     <div class="smartcash" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/smartcash.svg')}});">
                         <p>
                             -{{explode(',', $product->smart_cash)[0]}}<sup>€{{explode(',', $product->smart_cash)[1] ?? "00"}}</sup>

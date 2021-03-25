@@ -142,6 +142,7 @@ $(document).ready(function () {
         /** Get products variable*/
         $('#designation').html(target.getAttribute('data-designation'))
         $('#description_produit').html(target.getAttribute('data-description_produit'))
+        $('#description_short').html(target.getAttribute('data-description_short'))
         $('#prix_vente_1').html(target.getAttribute('data-prix_vente_1'))
         $('#prix_vente_2').html("€" + target.getAttribute('data-prix_vente_2'))
         $('#prix_barre_1').html(target.getAttribute('data-prix_barre_1'))
@@ -156,7 +157,8 @@ $(document).ready(function () {
         // $('#ean').html("EAN: " + target.getAttribute('data-ean'))
         $(".copy-link").attr('data-ean', target.getAttribute('data-ean'))
         $("#share-email").attr('href', $("#share-email").attr('data-href') + "/" + target.getAttribute('data-ean'),)
-        $('#photo_principale').css('background-image', 'url(/images/' + target.getAttribute('data-photo_principale') + ')')
+        $('#photo_principale').css('background-image', 'url(' + target.getAttribute('data-photo_principale') + ')')
+        // $('#photo_principale').attr('src',target.getAttribute('data-photo_principale'))
 
         /** Multi img*/
         if (target.getAttribute('data-photo_2')) {
@@ -166,15 +168,15 @@ $(document).ready(function () {
             let photo_2 = $('#photo_2')
             let photo_3 = $('#photo_3')
             photo_1.attr('href', target.getAttribute('data-photo_principale'))
-            photo_1.css('background-image', 'url(/images/' + target.getAttribute('data-photo_principale') + ')')
+            photo_1.css('background-image', 'url(' + target.getAttribute('data-photo_principale') + ')')
             photo_2.attr('href', target.getAttribute('data-photo_2'))
-            photo_2.css('background-image', 'url(/images/' + target.getAttribute('data-photo_2') + ')')
+            photo_2.css('background-image', 'url(' + target.getAttribute('data-photo_2') + ')')
 
             if (target.getAttribute('data-photo_3')) {
 
                 photo_3.show()
                 photo_3.attr('href', target.getAttribute('data-photo_3'))
-                photo_3.css('background-image', 'url(/images/' + target.getAttribute('data-photo_3') + ')')
+                photo_3.css('background-image', 'url(' + target.getAttribute('data-photo_3') + ')')
 
             } else {
 
@@ -208,7 +210,7 @@ $(document).ready(function () {
     $('.img-gallery-grid > a').click((e) => {
         e.preventDefault()
         let target = e.target
-        $('#photo_principale').css('background-image', 'url(/images/' + target.getAttribute('href') + ')')
+        $('#photo_principale').css('background-image', 'url(' + target.getAttribute('href') + ')')
 
     })
 
@@ -265,7 +267,7 @@ $(document).ready(function () {
     $(".link-block-15").click(() => {
         $('.menu_list').removeClass('active')
     })
-    $(".product_detail").hover(disabledScroll())
+    // $(".product_detail").hover(disabledScroll())
     $(".section__wrapper").hover(enabledScroll())
 
     /** Home menu mobile */
@@ -293,9 +295,13 @@ window.addEventListener('scroll', (e) => {
 })
 
 function enabledScroll() {
-    $('body').attr('scroll', 'on')
+    // $('body').attr('scroll', 'on')
+    $('html').css('overflow', 'unset')
+
 }
 
 function disabledScroll() {
-    $('body').attr('scroll', 'off')
+    // $('body').attr('scroll', 'off')
+    $('body').css('overflow', 'hidden')
+
 }

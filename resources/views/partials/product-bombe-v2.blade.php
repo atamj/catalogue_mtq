@@ -12,9 +12,9 @@
      data-photo_principale="{{$product->photo_principale}}"
      data-photo_2="{{$product->photo_2}}"
      data-photo_3="{{$product->photo_3}}">
-    @if ( isset($sous_category) && $sous_category)
+    @if ( isset($sous_category) && $sous_category && count($product->subcategory()->get()) > 0)
         <h5 class="sub-category">
-            {{$product->subcategory()->name()}}
+            {{$product->subcategory()->name() ?? ""}}
         </h5>
     @endif
     <div class="spotlight--img"

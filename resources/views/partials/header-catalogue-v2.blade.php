@@ -15,10 +15,10 @@
             </h1>
         </a>
         <div class="text-block-4 bg_primary txt-white">
-            {{$category->name}}
+            {{$category->name ?? $category}}
         </div>
         <div class="back">
-            <a href="{{url()->previous()}}">RETOUR A L’ACCUEIL</a>
+            <a href="{{url('/')}}">RETOUR A L’ACCUEIL</a>
         </div>
 
     </div>
