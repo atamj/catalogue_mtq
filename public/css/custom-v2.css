@@ -3,7 +3,9 @@
     background-position: center;
     background-size: contain;
 }
-
+.spotlight--img{
+    background-size: 130%;
+}
 .p__price_cents.spotlight-02-txt {
     /*color: #5cb1b5;*/
 }

@@ -28,7 +28,7 @@
     grid-template-rows: auto auto;
     grid-row-gap: 16px;
     grid-column-gap: 16px;
-    width: 100%;
+    width: 80%;
 }
 
 h3 {
@@ -1323,13 +1323,13 @@ h3:hover {
 .p__price_cents.price_cents--old.cents--spotlight {
     color: #fff;
     font-size: 31px;
-    line-height: 53px;
+    line-height: 1.5em;
 }
 
 .p__price_cents.price_cents--spotlight {
     color: #ffffff;
     font-size: 60px;
-    line-height: 93px;
+    line-height: 1em;
 }
 
 .p__price_cents.spotkight-02-txt {
@@ -1516,7 +1516,7 @@ h3:hover {
     display: -ms-flexbox;
     display: flex;
     width: 1280px;
-    max-width: 1280px;
+    max-width: 90%;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
@@ -2326,7 +2326,8 @@ h3:hover {
     .spotlight--img {
         top: auto;
         width: 400px;
-        height: 400px;
+        height: 420px;
+        background-size: 130%;
     }
 
     /*.spotlight-02-bg {
@@ -2466,7 +2467,28 @@ h3:hover {
         width: 310px;
         height: 350px;
     }
-
+    .spotlight_price{
+        width: 224px;
+        height: 224px;
+    }
+    .p__price_1st.price_1st--spotlight{
+        font-size: 4rem;
+        line-height: 1.2em;
+        letter-spacing: 0.1em;
+    }
+    .p__price_cents.price_cents--spotlight{
+        font-size: 2rem;
+    }
+    .p__price_1st.price_1st--old._1st--spotlight{
+        font-size: 3rem;
+        line-height: 0.5em;
+    }
+    .p__cross_bar.cross_bar--spotlight{
+        top: -9%;
+    }
+    .p__price_cents.price_cents--old.cents--spotlight{
+        line-height: 0.5em;
+    }
 }
 @media screen and (max-width: 1024px){
     .w-layout-grid{
@@ -2475,6 +2497,10 @@ h3:hover {
     .product{
         min-width: 80%;
         margin-bottom: 30px;
+    }
+    .spotlight_price{
+        width: 244px;
+        height: 244px;
     }
 }
 @media screen and (max-width: 991px) {
@@ -3154,6 +3180,12 @@ h3:hover {
         font-size: 2vw;
     }
 }
+@media screen  and (min-width: 769px) and (max-width: 1024px){
+    .p_img--big{
+        width: 420px;
+        height: 420px;
+    }
+}
 @media screen and (max-width: 768px){
     .menu{
         position: absolute;
@@ -3179,8 +3211,8 @@ h3:hover {
         align-items: flex-start;
     }
     .spotlight_price{
-        width: 304px;
-        height: 304px;
+        width: 274px;
+        height: 274px;
     }
     .p__price_1st.price_1st--spotlight{
         font-size: 80px;
