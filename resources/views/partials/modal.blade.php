@@ -51,7 +51,7 @@
                         <div class="img-share--wrapper">
                             @include('partials.share')
 
-                            <a href="#" class="link-block-11 w-inline-block">
+                            <a href="#" class="link-block-11 w-inline-block" onclick="(e)=>e.preventDefault()">
                                 <div class="share-bn__wrapper"><img src="{{asset('icons/share-icon.svg')}}"
                                                                     loading="lazy" alt="">
                                 </div>

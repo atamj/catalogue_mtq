@@ -9,9 +9,9 @@
      data-eco_part="{{$product->eco_part}}"
      data-marque="{{$product->marque}}"
      data-ean="{{$product->ean}}"
-     data-photo_principale="{{$product->photo_principale}}"
-     data-photo_2="{{$product->photo_2}}"
-     data-photo_3="{{$product->photo_3}}">
+     data-photo_principale="{{$product->photo_principale ?  asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_principale) : ""}}"
+     data-photo_2="{{$product->photo_2 ? asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_2) : ""}}"
+     data-photo_3="{{$product->photo_3 ? asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_3) : ""}}">
     @if ( isset($sous_category) && $sous_category && count($product->subcategory()->get()) > 0)
         <h5 class="sub-category">
             {{$product->subcategory()->name() ?? ""}}

@@ -1,5 +1,5 @@
 <div id="w-node-643069de73f7-b30ad297" class="product {{($product->bombe_2 == '1') ? "bombe2" : ""}}{{($product->smart_cash != "") ? "smartcash" : ""}}"
-{{--     style="background-image: url('{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}')"--}}
+     style="background-image: url('{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}')"
      data-designation="{{$product->designation}}"
      data-description_produit="{{$product->description_produit}}"
      data-description_short="{{$product->description_short}}"
@@ -25,7 +25,7 @@
                 </a>
             </li>
         </ul>
-        <img src="{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}" alt="">
+{{--        <img src="{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}" alt="">--}}
     @if ($product->bombe_2 == '1' && $product->smart_cash != "")
             {{--Bombe 2 + smartcash--}}
 

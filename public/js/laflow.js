@@ -217,10 +217,15 @@ $(document).ready(function () {
     /** Share */
 
     const shareButton = document.querySelector('#share');
+    const shareWrapper = document.querySelector('.share-bn__wrapper');
+    if (shareWrapper){
+        shareWrapper.addEventListener('click', evt => evt.preventDefault())
+    }
     const shareDialog = document.querySelector('.share-dialog');
     const closeButton = document.querySelector('.close-button');
     if (shareButton) {
         shareButton.addEventListener('click', event => {
+            event.preventDefault()
             let url = $(".pen-url").attr('data-value') + "/" + $(".copy-link").attr('data-ean')
             if (navigator.share) {
                 navigator.share({
@@ -259,13 +264,16 @@ $(document).ready(function () {
 
     $(".menu_btn").click((e) => {
         e.preventDefault()
-        if (!$('.menu_list').hasClass('active')) {
+        $('.menu_list').toggleClass('active')
+        $('html').toggleClass('noscroll')
+        /*if (!$('.menu_list').hasClass('active')) {
 
             $('.menu_list').addClass('active')
-        }
+        }*/
     })
     $(".link-block-15").click(() => {
         $('.menu_list').removeClass('active')
+        $('html').removeClass('noscroll')
     })
     // $(".product_detail").hover(disabledScroll())
     $(".section__wrapper").hover(enabledScroll())
@@ -296,12 +304,14 @@ window.addEventListener('scroll', (e) => {
 
 function enabledScroll() {
     // $('body').attr('scroll', 'on')
-    $('html').css('overflow', 'unset')
+    // $('html').css('overflow', 'unset')
+    $('html').removeClass('noscroll')
 
 }
 
 function disabledScroll() {
     // $('body').attr('scroll', 'off')
-    $('body').css('overflow', 'hidden')
+    // $('body').css('overflow', 'hidden')
+    $('html').addClass('noscroll')
 
 }

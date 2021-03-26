@@ -6,7 +6,7 @@
     if (location.hash == "") {
         location.href = "/".{{$operation->shortname}}
     }
-    document.addEventListener('DOMContentLoaded', (e)=>{
+    document.addEventListener('DOMContentLoaded', (e) => {
         if (!location.hash) {
             location.href = "/".{{$operation->shortname}}
         }
@@ -17,7 +17,7 @@
 {{-- End Modal --}}
 
 @include('partials.banner-v2')
-@include('partials.menu')
+@include('partials.menu-v2')
 
 {{-- Arrow nav --}}
 @include('partials.slide-arrows')
@@ -59,6 +59,7 @@
                 </div>
             </div>
         @endforeach
+        {{--Cata entier--}}
     @elseif ($category == "Cataloque")
         @foreach($categories as $sous_category)
             {{--        @if ($key == "")--}}
@@ -72,27 +73,21 @@
                         <a href="#" class="arrow arrow--right w-inline-block"></a>
                     </div>
                     {{-- Produit Bombe--}}
-{{--                    @foreach($bombes as $bombe)--}}
-{{--                        @if ($bombe->category_id == $sous_category->id)--}}
-{{--                            @include('partials.product-bombe-v2', ['product'=> $bombe ])--}}
-{{--                        @endif--}}
-{{--                    @endforeach--}}
+                    {{--                    @foreach($bombes as $bombe)--}}
+                    {{--                        @if ($bombe->category_id == $sous_category->id)--}}
+                    {{--                            @include('partials.product-bombe-v2', ['product'=> $bombe ])--}}
+                    {{--                        @endif--}}
+                    {{--                    @endforeach--}}
                     @include('partials.product-bombe-v2', ['product'=> $sous_category->bombe() ])
 
                     {{-- End Produit Bombe--}}
                     <div class="items-wrapper" style="display: none">
                         <div class="w-layout-grid grid">
-                            @if (count($sous_categories) != 0)
-                                @foreach($products->where('sous_categorie_url', $sous_category->url)->where('bombe_1', '0') as $product)
-                                    @include('partials.product-v2', ['product'=> $product])
-                                @endforeach
-                            @else
-                                @foreach($products as $product)
-                                    @if ($product->bombe_1 == '0')
-                                        @include('partials.product-v2', ['product'=> $product])
-                                    @endif
-                                @endforeach
-                            @endif
+                            @foreach($products->where('category_id', $sous_category->id) as $product)
+                                @if (($product->convertData())->bombe_1 != '1')
+                                    @include('partials.product-v2', ['product'=> ($product)])
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -100,6 +95,7 @@
         @endforeach
 
     @else
+        {{--Cata par catégorie--}}
         <div id="{{$category->url}}" class="section-wrapper">
             {{--        @endif--}}
             <div class="cat__wrapper">
@@ -115,7 +111,7 @@
                 <div class="items-wrapper" style="display: none">
                     <div class="w-layout-grid grid">
                         @foreach($products as $product)
-                            @if ($product->bombe_1 == '0')
+                            @if ($product->bombe_1 != '1')
                                 @include('partials.product-v2', ['product'=> $product])
                             @endif
                         @endforeach

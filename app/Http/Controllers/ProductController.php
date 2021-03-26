@@ -51,18 +51,20 @@ class ProductController extends Controller
         if ($request->hasFile('csv')) {
             $request->file('csv')->storeAs('public/' . $request->operation, 'data.csv');
 
+            $operation = Operation::where('shortname', $request->operation)->first();
             /** Get all products in BD to delete*/
-            $products = Product::all();
+            $products = $operation->products()->get();
 
             /** List IDS to delete*/
-            $idsToDelete = [];
+//            $idsToDelete = [];
             foreach ($products as $product) {
-                if ($product->ope == $request->operation) {
-                    $idsToDelete[] = $product->id;
-                }
+//                if ($product->ope == $request->operation) {
+//                    $idsToDelete[] = $product->id;
+//                }
+                $product->delete();
             }
             /** Delete list*/
-            Product::destroy($idsToDelete);
+//            Product::destroy($idsToDelete);
 
             /** Get formated data from CSV */
             $this->formatData($request->operation);
