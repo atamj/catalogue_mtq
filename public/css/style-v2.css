@@ -1456,7 +1456,7 @@ h3:hover {
     width: 100%;
     padding-right: 40px;
     padding-left: 40px;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-end;
     flex-wrap: wrap;
 }
@@ -4238,6 +4238,9 @@ h3:hover {
     }
     .menu{
         top: 180px;
+    }
+    .spotlight_price{
+        width: 184px;
     }
 }
 #w-node-19117ec074d5-9672cf3e {
