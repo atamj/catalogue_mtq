@@ -20,7 +20,7 @@
 @include('partials.menu-v2')
 
 {{-- Arrow nav --}}
-@include('partials.slide-arrows')
+@include('partials.slide-arrows-v2')
 {{-- End Arrow nav--}}
 
 <div class="section__wrapper">

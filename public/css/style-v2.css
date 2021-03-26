@@ -2001,14 +2001,16 @@ h3:hover {
 
 .arrow-wrapper {
     position: absolute;
-    top: 40vh;
+    /*top: 40vh;*/
+    bottom: 20%;
     z-index: 5000;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    width: 100vw;
+    width: 180px;
     height: 80px;
+    right: 20px;
     margin-bottom: -80px;
     padding-bottom: 0px;
     -webkit-box-pack: justify;
@@ -2031,19 +2033,24 @@ h3:hover {
     bottom: 0%;
     width: 80px;
     height: 80px;
+    border: 2px solid var(--primary);
+    color: var(--primary);
     background-color: #ffdb28;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .arrows.arrow-right {
     background-color: transparent;
-    background-image: url('../images/arrows-green.svg');
+    /*background-image: url('../images/arrows-green.svg');*/
     background-position: 100% 50%;
     background-size: 160px;
 }
 
 .arrows.arrow-left {
     background-color: transparent;
-    background-image: url('../images/arrows-green.svg');
+    /*background-image: url('../images/arrows-green.svg');*/
     background-position: 0px 0px;
     background-size: 160px;
 }
@@ -2337,9 +2344,9 @@ h3:hover {
         color: #A45F3F;
     }
 
-    .arrow-wrapper {
+    /*.arrow-wrapper {
         top: 40%;
-    }
+    }*/
 
     .ctg__rehausseur {
         z-index: 17;
