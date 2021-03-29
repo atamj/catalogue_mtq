@@ -60,6 +60,5 @@ html{
     overflow-y: hidden!important;
 }
 .in_iframe{
-    margin-top: 210px;
-    margin-bottom: 110px;
+    padding: 210px 0 110px;
 }
