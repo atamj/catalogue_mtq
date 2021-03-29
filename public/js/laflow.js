@@ -4,6 +4,8 @@ var active_section = 1;
 var found_section = "";
 $(document).ready(function () {
 
+    checkIframe()
+
     /** Show product after content is loaded */
     $(".items-wrapper").show()
 
