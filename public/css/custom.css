@@ -56,6 +56,9 @@ html{
     justify-content: center;
     align-items: center;
 }
+.noscroll{
+    overflow-y: hidden!important;
+}
 .in_iframe{
     margin-top: 210px;
     margin-bottom: 110px;
