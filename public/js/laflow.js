@@ -323,9 +323,3 @@ function checkIframe()
         $('body').addClass('in_iframe')
     }
 }
-function checkIframe()
-{
-    if ( window.self !== window.top ) {
-        $('body').addClass('in_iframe')
-    }
-}
