@@ -64,7 +64,7 @@
                                 </a>
                             @endforeach
                         @else
-                            <a href="{{url($operation->shortname."/".$category->url)}}"
+                            <a href="{{url($operation->shortname."/".$category->url.'#'.$category->url)}}"
                                class="ctg__link w-inline-block">
                                 <div class="ctg__link_txt link_text--green txt_secondary">
                                     {{$category->name}}
@@ -91,7 +91,7 @@
                                 </a>
                             @endforeach
                         @else
-                            <a href="{{url($operation->shortname."/".$category->url)}}"
+                            <a href="{{url($operation->shortname."/".$category->url.'#'.$category->url)}}"
                                class="ctg__link w-inline-block">
                                 <div class="ctg__link_txt link_text--green txt_primary">
                                     {{$category->name}}

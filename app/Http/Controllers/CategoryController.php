@@ -69,6 +69,7 @@ class CategoryController extends Controller
             if (count($sous_categories) == 0) {
                 $bombe = $bombes[0];
             }
+
             if ($operation->template == "default" || $operation->template == "" || !$operation->template) {
                 return view('catalogue', compact('products', 'bombe', 'bombes', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
             } else {
