@@ -251,7 +251,7 @@ html {
     overflow-y: hidden!important;
 }
 .in_iframe{
-    padding-top: 210px;
+    margin-top: 210px;
     margin-bottom: 110px;
 }
 @media only screen and (min-width: 1025px){
