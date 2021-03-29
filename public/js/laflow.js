@@ -299,3 +299,9 @@ function enabledScroll() {
 function disabledScroll() {
     $('body').attr('scroll', 'off')
 }
+function checkIframe()
+{
+    if ( window.self !== window.top ) {
+        $('body').addClass('in_iframe')
+    }
+}
