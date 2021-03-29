@@ -23,6 +23,7 @@ class Operation extends Model
     {
         return$this->hasMany(Category::class);
     }
+
     public function products()
     {
         return $this->hasMany(Product::class);

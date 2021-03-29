@@ -4,8 +4,9 @@
          {{$pivot->footer_top_color ? 'color:'.$pivot->footer_top_color.';' : ""}}">
         <div class="form w-form">
             <form method="POST"
-                  action="{{url('contact')}}"
+                  action="{{url($operation->shortname.'/contact')}}"
                   id="email-form" name="email-form" data-name="Email Form" class="form__wrapper">
+                <input type="hidden" name="client" value="{{ $client->id }}">
                 <h5 class="heading-2">Notre catalogue et bien plus !</h5>
                 <p class="txt__basic">Inscrivez vous &amp; recevez notre dernier catalogue et nos bonnes affaires en
                     exclusivité !</p>

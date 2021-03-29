@@ -50,6 +50,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/admin/client')}}">Client</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/admin/contact')}}">Contacts</a>
+                    </li>
 
                 </ul>
             </div>

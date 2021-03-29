@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Operation;
 use App\Models\Product;
+use App\Models\SubCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -151,17 +152,25 @@ class CategoryController extends Controller
                 }
             }
             $sous_categories = [];
-            foreach ($categories as $category){
-                $arr = $category->subCategories()->get()->toArray();
-                if (count($arr) > 0){
-                    $sous_categories[]= array_merge($sous_categories, $arr);
+
+            if (!$sous_categories || count($sous_categories) <= 0) {
+                $sous_categories = [];
+                foreach ($categories as $category) {
+                    $arr = $category->subCategories()->get();
+                    if (count($arr) > 0) {
+                        foreach ($arr as $one) {
+                            $sous_categories[] = $one->id;
+                        }
+                    }
                 }
+
+                $sous_categories = SubCategory::findMany($sous_categories);
             }
             $category = "Cataloque";
             if ($operation->template == "default" || $operation->template == "" || !$operation->template) {
                 return view('catalogue', compact('products', 'bombes', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
             } else {
-                return view('templates.catalogue-' . $operation->template, compact('products','bombes', 'category', 'categories', 'pivot', 'sous_categories', 'operation', 'client'));
+                return view('templates.catalogue-' . $operation->template, compact('products', 'bombes', 'category', 'categories', 'pivot', 'sous_categories', 'operation', 'client'));
             }
 
         } else {

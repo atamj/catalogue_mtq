@@ -15,7 +15,7 @@
     <div class="nav_center__wrapper">
         <ul role="list" class="nav__center--products w-list-unstyled">
             <li class="nav__snd_title">
-                <div class="ctg__title_display">{{$category->name}}</div>
+                <div class="ctg__title_display">{{$category->name ?? $category}}</div>
             </li>
             <li class="nav__ctg_lnk comeback">
                 <a href="{{url('/'.$operation->shortname)}}" class="link-block-6 w-inline-block">

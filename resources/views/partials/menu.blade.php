@@ -11,8 +11,8 @@
             <div class="text-block-15 back-btn">Retour au catalogue</div>
         </a>
         @foreach($sous_categories as $sous_category)
-            <a href="#{{$sous_category->url}}" data-w-id="Link Block 21" class="link-block-15 w-inline-block">
-                <div class="text-block-15">{{$sous_category->name}}</div>
+            <a href="#{{$sous_category->url ?? $sous_category['url']}}" data-w-id="Link Block 21" class="link-block-15 w-inline-block">
+                <div class="text-block-15">{{$sous_category->name ?? $sous_category['name']}}</div>
             </a>
         @endforeach
     </div>

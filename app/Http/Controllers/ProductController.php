@@ -16,7 +16,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     /**
@@ -267,7 +267,7 @@ class ProductController extends Controller
                     'data' => json_encode($product),
                     'operation_id' => $operation->id,
                     'category_id' => $category->id,
-                    'subcategory_id' => $subCategory->id,
+                    'sub_category_id' => $subCategory->id,
                 ]);
 
             } else {

@@ -7,11 +7,12 @@ class GSheet {
     /**
      * Post new entry in Sheet
      * */
-    post(email, success, fail) {
+    post(email,client_id=1, success, fail) {
 
         /** Prepare data*/
         const data = {
             email: email,
+            client: client_id,
             "Created at": new Date(),
         };
 
@@ -45,7 +46,7 @@ class GSheet {
 document.addEventListener('DOMContentLoaded', () => {
 
     let url = $("#email-form").attr('action')
-    let sheet = new GSheet(url)
+    let ContactForm = new GSheet(url)
 
     /** Get form */
     var form = $('#email-form')
@@ -60,9 +61,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         /** Get email on form */
         let email = $("input[type=email]").val()
+        let client_id = $('input[name=client]').val()
 
         /** Post on sheet */
-        sheet.post(email, postSuccess, postFail)
+        ContactForm.post(email, client_id, postSuccess, postFail)
 
     })
 });
