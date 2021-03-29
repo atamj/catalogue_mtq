@@ -251,8 +251,7 @@ html {
     overflow-y: hidden!important;
 }
 .in_iframe{
-    margin-top: 210px;
-    margin-bottom: 110px;
+    padding: 210px 0 110px;
 }
 @media only screen and (min-width: 1025px){
     .voir-cata-container{
