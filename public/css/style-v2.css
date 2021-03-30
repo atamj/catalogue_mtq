@@ -114,7 +114,7 @@ h3:hover {
 }
 
 .home .nav {
-    height: 567px;
+    height: 407px;
 }
 
 .image-2 {
@@ -800,7 +800,7 @@ h3:hover {
     padding-top: 0px;
     justify-items: center;
     grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    grid-row-gap: 50px;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
     -ms-grid-rows: auto auto auto;
@@ -1038,6 +1038,9 @@ h3:hover {
 .p__more_infos.more_infos__wrapper.more_infos--spotlight {
     width: 45px;
     height: 45px;
+    position: absolute;
+    top: 20px;
+    left: 40px;
 }
 
 .p__price {
@@ -2283,33 +2286,18 @@ h3:hover {
     .grid {
         justify-items: center;
         grid-column-gap: 30px;
-        grid-row-gap: 30px;
-        -ms-grid-rows: auto auto auto;
+        grid-row-gap: 125px;
         grid-template-rows: auto auto auto;
     }
-
-    /*.product.article__02 {
-        background-image: url('https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg');
-        background-position: 0px 0px;
-        background-size: 180px;
-    }
-
-    .product.article__03 {
-        background-image: url('https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg');
-        background-position: 0px 0px;
-        background-size: 180px;
-    }
-
-    .product.eveil_article_01 {
-        background-image: url('https://d3e54v103j8qbb.cloudfront.net/img/background-image.svg');
-        background-position: 0px 0px;
-        background-size: 180px;
-    }*/
     .p__title {
         font-size: 36px;
         line-height: 25px;
     }
-
+.items-wrapper .p__title{
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1em;
+}
     .p__price_1st.price_1st--old._1st--spotlight {
         font-size: 77px;
         line-height: 88px;

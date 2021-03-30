@@ -60,4 +60,10 @@
             </div>
         </div>
     </div>
+    <div class="p__more_infos more_infos__wrapper more_infos--spotlight">
+        <a href="#"
+           class="p__more_infos w-inline-block">
+            <div class="more_infos_cross">+</div>
+        </a>
+    </div>
 </div>
