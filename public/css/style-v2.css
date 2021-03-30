@@ -2016,8 +2016,8 @@ h3:hover {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    width: 180px;
-    height: 80px;
+    width: calc(3 * 60px);
+    height: 60px;
     right: 20px;
     margin-bottom: -80px;
     padding-bottom: 0px;
@@ -2029,8 +2029,8 @@ h3:hover {
 
 .arrows-wrapper {
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 100%;
 }
 
 .arrows {
@@ -2039,8 +2039,8 @@ h3:hover {
     top: 0%;
     right: 0%;
     bottom: 0%;
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 100%;
     border: 2px solid var(--primary);
     color: var(--primary);
     background-color: #ffffff;
@@ -2048,7 +2048,10 @@ h3:hover {
     justify-content: center;
     align-items: center;
 }
-
+.arrows svg{
+    height: 80%;
+    width: 100%;
+}
 .arrows.arrow-right {
     /*background-color: transparent;*/
     /*background-image: url('../images/arrows-green.svg');*/

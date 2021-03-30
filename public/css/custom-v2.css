@@ -227,7 +227,7 @@ html {
 }
 
 .catalogue .ope-title-block > .text-block-4, .back > a {
-    min-width: 170px;
+    min-width: 207px;
     text-align: center;
 }
 
@@ -238,7 +238,7 @@ html {
     font-family: Amaticsc, sans-serif;
     font-weight: 700;
     line-height: 19px;
-    font-size: 15px;
+    font-size: 25px;
     letter-spacing: 1.8px;
     text-transform: uppercase;
     display: inline-block;
