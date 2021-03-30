@@ -653,9 +653,9 @@ h3:hover {
     text-decoration: none;
 }
 
-.ctg__link_txt.link_text--green {
+/*.ctg__link_txt.link_text--green {
     color: #5cb1b5;
-}
+}*/
 
 .ctg__link_txt.link_text--green:hover {
     border-style: none;

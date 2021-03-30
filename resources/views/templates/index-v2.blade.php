@@ -44,7 +44,7 @@
                     @else
                         <a href="{{url($operation->shortname."/".$category->url.'#'.$category->url)}}"
                            class="ctg__link w-inline-block">
-                            <div class="ctg__link_txt link_text--green txt_secondary">
+                            <div class="ctg__link_txt txt_secondary">
                                 CONSULTER LA RUBRIQUE
                             </div>
                         </a>
