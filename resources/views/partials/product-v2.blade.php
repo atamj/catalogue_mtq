@@ -69,7 +69,7 @@
                                     €{{explode(',', $product->smart_cash)[1] ?? "00"}}</div>
                             </div>
                         </div>
-                        <div>
+                        <div class="small-cagnotte">
                             <small>Prix cagnotte réduite</small>
                         </div>
                     </div>{{--p__old_price--}}

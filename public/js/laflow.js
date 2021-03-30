@@ -267,6 +267,7 @@ $(document).ready(function () {
     $(".menu_btn").click((e) => {
         e.preventDefault()
         $('.menu_list').toggleClass('active')
+        $('.menu').toggleClass('active')
         $('html').toggleClass('noscroll')
         /*if (!$('.menu_list').hasClass('active')) {
 
@@ -275,6 +276,7 @@ $(document).ready(function () {
     })
     $(".link-block-15").click(() => {
         $('.menu_list').removeClass('active')
+        $('.menu').removeClass('active')
         $('html').removeClass('noscroll')
     })
     // $(".product_detail").hover(disabledScroll())
