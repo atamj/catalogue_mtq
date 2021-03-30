@@ -149,7 +149,7 @@ $(document).ready(function () {
         $('#prix_vente_2').html("€" + target.getAttribute('data-prix_vente_2'))
         $('#prix_barre_1').html(target.getAttribute('data-prix_barre_1'))
         $('#prix_barre_2').html("€" + target.getAttribute('data-prix_barre_2'))
-        if (target.getAttribute('data-prix_barre_1') != "0") {
+        if (target.getAttribute('data-prix_barre_1') != "0" && target.getAttribute('data-prix_barre_1') != 0) {
             $(".product_detail .p__old_price").show()
         } else {
             $(".product_detail .p__old_price").hide()

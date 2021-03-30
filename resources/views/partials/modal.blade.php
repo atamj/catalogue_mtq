@@ -18,17 +18,17 @@
                     <div class="p__title p_title--detail" id="designation"><br></div>
                     <p class="p__infos p_infos--details" id="description_short"></p>
 
-<!--                    <div class="p__old_price" style="display: none">
+                    <div class="p__old_price" style="display: none">
                         <div class="p__old_price_wrapper">
                             <div
-                                class="p__price_1st price_1st&#45;&#45;old" id="prix_barre_1"></div>
+                                class="p__price_1st price_1st--old" id="prix_barre_1"></div>
                             <div class="p__price_2nd">
-                                <div class="p__price_cents price_cents&#45;&#45;old" id="prix_barre_2"></div>
+                                <div class="p__price_cents price_cents--old" id="prix_barre_2"></div>
                             </div>
                         </div>
                         <div
                             class="p__cross_bar"></div>
-                    </div>-->
+                    </div>
                     <div class="p__price_wrapper p_price_wrapper--detail">
                         <div class="p__price_1st _1st--detail" id="prix_vente_1"></div>
                         <div class="p__price_cents" id="prix_vente_2"></div>

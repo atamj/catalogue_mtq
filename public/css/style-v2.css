@@ -1390,7 +1390,14 @@ h3:hover {
     justify-content: center;
     width: 100%;
 }
-
+.detail__container .p__old_price_wrapper{
+    justify-content: left;
+}
+.detail__container .p__cross_bar{
+    top: 0;
+    left: 0;
+    background-color: #fff;
+}
 .p__old_price_wrapper.old_price_wrapper--spotlight {
     color: #5cb1b5;
 }
@@ -1448,7 +1455,8 @@ h3:hover {
 
 .spotlight__container {
     position: absolute;
-    bottom: 120px;
+    /*bottom: 120px;*/
+    bottom: 0;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -2332,8 +2340,8 @@ h3:hover {
 
     .spotlight--img {
         top: auto;
-        width: 400px;
-        height: 420px;
+        width: calc(400px * 2);
+        height: calc(420px * 2);
         background-size: 130%;
     }
 
