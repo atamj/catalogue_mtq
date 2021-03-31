@@ -1,21 +1,22 @@
-<div style="opacity:0;display:none;
-    background-image: url('{{asset('storage/' . $operation->shortname . '/images/modal/modal.svg')}}');background-color: {{$pivot->primary_color}}F2;"
+<div style="opacity:0;display:none;background-color: rgba(52,52,52,0.95);"
      class="product_detail">
     <div class="detail__container">
         <div class="close_window_wrapper">
             <a data-w-id="Link Block 15" href="#" class="close_window w-inline-block">
                 <div class="p__more_infos more_infos--detail">
-                    <div class="more_infos_cross cross--detail"></div>
+                    <div class="more_infos_cross cross--detail">+</div>
                 </div>
                 <div>Fermer</div>
             </a>
         </div>
         <div class="div-block-10">
-            <div class="p_img--big" id="photo_principale"></div>
+            <div class="p_img--big" style="background-image: url('{{asset('storage/' . $operation->shortname . "/images/modal_bg/modal_bg.svg" )}}');">
+                <div style="" id="photo_principale"></div>
+            </div>
             <div class="p__details">
                 <div class="p__wrapper p_wrapper_details">
                     <div class="p__title p_title--detail" id="designation"><br></div>
-                    <p class="p__infos p_infos--details"></p>
+                    <p class="p__infos p_infos--details" id="description_short"></p>
 
                     <div class="p__old_price" style="display: none">
                         <div class="p__old_price_wrapper">
@@ -50,7 +51,7 @@
                         <div class="img-share--wrapper">
                             @include('partials.share')
 
-                            <a href="#" class="link-block-11 w-inline-block">
+                            <a href="#" class="link-block-11 w-inline-block" onclick="(e)=>e.preventDefault()">
                                 <div class="share-bn__wrapper"><img src="{{asset('icons/share-icon.svg')}}"
                                                                     loading="lazy" alt="">
                                 </div>

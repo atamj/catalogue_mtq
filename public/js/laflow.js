@@ -4,6 +4,8 @@ var active_section = 1;
 var found_section = "";
 $(document).ready(function () {
 
+    checkIframe()
+
     /** Show product after content is loaded */
     $(".items-wrapper").show()
 
@@ -142,11 +144,12 @@ $(document).ready(function () {
         /** Get products variable*/
         $('#designation').html(target.getAttribute('data-designation'))
         $('#description_produit').html(target.getAttribute('data-description_produit'))
+        $('#description_short').html(target.getAttribute('data-description_short'))
         $('#prix_vente_1').html(target.getAttribute('data-prix_vente_1'))
         $('#prix_vente_2').html("€" + target.getAttribute('data-prix_vente_2'))
         $('#prix_barre_1').html(target.getAttribute('data-prix_barre_1'))
         $('#prix_barre_2').html("€" + target.getAttribute('data-prix_barre_2'))
-        if (target.getAttribute('data-prix_barre_1') != "0") {
+        if (target.getAttribute('data-prix_barre_1') != "0" && target.getAttribute('data-prix_barre_1') != 0) {
             $(".product_detail .p__old_price").show()
         } else {
             $(".product_detail .p__old_price").hide()
@@ -156,7 +159,8 @@ $(document).ready(function () {
         // $('#ean').html("EAN: " + target.getAttribute('data-ean'))
         $(".copy-link").attr('data-ean', target.getAttribute('data-ean'))
         $("#share-email").attr('href', $("#share-email").attr('data-href') + "/" + target.getAttribute('data-ean'),)
-        $('#photo_principale').css('background-image', 'url(/images/' + target.getAttribute('data-photo_principale') + ')')
+        $('#photo_principale').css('background-image', 'url(' + target.getAttribute('data-photo_principale') + ')')
+        // $('#photo_principale').attr('src',target.getAttribute('data-photo_principale'))
 
         /** Multi img*/
         if (target.getAttribute('data-photo_2')) {
@@ -166,15 +170,15 @@ $(document).ready(function () {
             let photo_2 = $('#photo_2')
             let photo_3 = $('#photo_3')
             photo_1.attr('href', target.getAttribute('data-photo_principale'))
-            photo_1.css('background-image', 'url(/images/' + target.getAttribute('data-photo_principale') + ')')
+            photo_1.css('background-image', 'url(' + target.getAttribute('data-photo_principale') + ')')
             photo_2.attr('href', target.getAttribute('data-photo_2'))
-            photo_2.css('background-image', 'url(/images/' + target.getAttribute('data-photo_2') + ')')
+            photo_2.css('background-image', 'url(' + target.getAttribute('data-photo_2') + ')')
 
             if (target.getAttribute('data-photo_3')) {
 
                 photo_3.show()
                 photo_3.attr('href', target.getAttribute('data-photo_3'))
-                photo_3.css('background-image', 'url(/images/' + target.getAttribute('data-photo_3') + ')')
+                photo_3.css('background-image', 'url(' + target.getAttribute('data-photo_3') + ')')
 
             } else {
 
@@ -208,17 +212,22 @@ $(document).ready(function () {
     $('.img-gallery-grid > a').click((e) => {
         e.preventDefault()
         let target = e.target
-        $('#photo_principale').css('background-image', 'url(/images/' + target.getAttribute('href') + ')')
+        $('#photo_principale').css('background-image', 'url(' + target.getAttribute('href') + ')')
 
     })
 
     /** Share */
 
     const shareButton = document.querySelector('#share');
+    const shareWrapper = document.querySelector('.share-bn__wrapper');
+    if (shareWrapper){
+        shareWrapper.addEventListener('click', evt => evt.preventDefault())
+    }
     const shareDialog = document.querySelector('.share-dialog');
     const closeButton = document.querySelector('.close-button');
     if (shareButton) {
         shareButton.addEventListener('click', event => {
+            event.preventDefault()
             let url = $(".pen-url").attr('data-value') + "/" + $(".copy-link").attr('data-ean')
             if (navigator.share) {
                 navigator.share({
@@ -257,15 +266,20 @@ $(document).ready(function () {
 
     $(".menu_btn").click((e) => {
         e.preventDefault()
-        if (!$('.menu_list').hasClass('active')) {
+        $('.menu_list').toggleClass('active')
+        $('.menu').toggleClass('active')
+        $('html').toggleClass('noscroll')
+        /*if (!$('.menu_list').hasClass('active')) {
 
             $('.menu_list').addClass('active')
-        }
+        }*/
     })
     $(".link-block-15").click(() => {
         $('.menu_list').removeClass('active')
+        $('.menu').removeClass('active')
+        $('html').removeClass('noscroll')
     })
-    $(".product_detail").hover(disabledScroll())
+    // $(".product_detail").hover(disabledScroll())
     $(".section__wrapper").hover(enabledScroll())
 
     /** Home menu mobile */
@@ -293,9 +307,21 @@ window.addEventListener('scroll', (e) => {
 })
 
 function enabledScroll() {
-    $('body').attr('scroll', 'on')
+    // $('body').attr('scroll', 'on')
+    // $('html').css('overflow', 'unset')
+    $('html').removeClass('noscroll')
+
 }
 
 function disabledScroll() {
-    $('body').attr('scroll', 'off')
+    // $('body').attr('scroll', 'off')
+    // $('body').css('overflow', 'hidden')
+    $('html').addClass('noscroll')
+
+}
+function checkIframe()
+{
+    if ( window.self !== window.top ) {
+        $('body').addClass('in_iframe')
+    }
 }

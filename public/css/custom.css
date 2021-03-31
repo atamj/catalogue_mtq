@@ -56,3 +56,9 @@ html{
     justify-content: center;
     align-items: center;
 }
+.noscroll{
+    overflow-y: hidden!important;
+}
+.in_iframe{
+    padding: 210px 0 110px;
+}

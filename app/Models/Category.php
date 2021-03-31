@@ -27,4 +27,20 @@ class Category extends Model
     {
         return $this->hasMany(Product::class);
     }
+    public function bombes()
+    {
+        $products = $this->products()->get();
+        $bombes = [];
+        foreach ($products as $product){
+            $product->convertData();
+            if ($product->bombe_1 == "1"){
+                $bombes[] = $product;
+            }
+        }
+        return $bombes;
+    }
+    public function bombe()
+    {
+        return $this->bombes()[0];
+    }
 }

@@ -4,7 +4,7 @@
             display: none;
         }
 
-        svg {
+        .share-dialog svg {
             width: 20px;
             height: 20px;
             margin-right: 7px;

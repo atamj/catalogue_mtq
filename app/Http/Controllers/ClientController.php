@@ -19,7 +19,7 @@ class ClientController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     /**
@@ -71,6 +71,12 @@ class ClientController extends Controller
             }
             $request->file('logo_header')->storeAs('public/clients/'.$client->id.'/logo_header/', $request->file('logo_header')->getClientOriginalName());
             $client->logo_header = $request->file('logo_header')->getClientOriginalName();
+        }
+        if ($request->hasFile('logo_short')){
+            if (Storage::exists('public/clients/'.$client->id.'/logo_short/logo_short.svg')){
+                Storage::delete('public/clients/'.$client->id.'/logo_short/logo_short.svg');
+            }
+            $request->file('logo_short')->storeAs('public/clients/'.$client->id.'/logo_short/logo_short.svg');
         }
         if ($request->hasFile('logo_footer')){
             if (Storage::exists('public/clients/'.$client->id.'/logo_footer/'.$request->file('logo_footer')->getClientOriginalName())){
@@ -130,7 +136,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        $client->update($request->except(['logo_header', 'logo_footer']));
+        $client->update($request->except(['logo_header', 'logo_footer', 'logo_short']));
         $client->operations()->sync($request->get('operation_id'));
 
         if ($request->hasFile('logo_header')){
@@ -139,6 +145,12 @@ class ClientController extends Controller
             }
             $request->file('logo_header')->storeAs('public/clients/'.$client->id.'/logo_header/', $request->file('logo_header')->getClientOriginalName());
             $client->logo_header = $request->file('logo_header')->getClientOriginalName();
+        }
+        if ($request->hasFile('logo_short')){
+            if (Storage::exists('public/clients/'.$client->id.'/logo_short/logo_short.svg')){
+                Storage::delete('public/clients/'.$client->id.'/logo_short/logo_short.svg');
+            }
+            $request->file('logo_short')->storeAs('public/clients/'.$client->id.'/logo_short/', 'logo_short.svg');
         }
         if ($request->hasFile('logo_footer')){
             if (Storage::exists('public/clients/'.$client->id.'/logo_footer/'.$request->file('logo_footer')->getClientOriginalName())){
@@ -153,12 +165,6 @@ class ClientController extends Controller
             }
             $request->file('favicon')->storeAs('public/clients/'.$client->id.'/favicon/', 'favicon.png');
         }
-        if ($request->hasFile('logo_short')){
-            if (Storage::exists('public/clients/'.$client->id.'/logo_short/logo_short.svg')){
-                Storage::delete('public/clients/'.$client->id.'/logo_short/logo_short.svg');
-            }
-            $request->file('logo_short')->storeAs('public/clients/'.$client->id.'/logo_short/', 'logo_short.svg');
-        }
         if ($request->hasFile('logo_header') || $request->hasFile('logo_footer')){
             $client->save();
         }
@@ -168,6 +174,8 @@ class ClientController extends Controller
     {
         $client = Client::find($client_id);
         $operation = $client->operations()->wherePivot('id', $request->get('pivot_id'))->first();
+        $pivot = $client->operations->find($operation->id)->pivot;
+        $pivot = $pivot->find($pivot->id);
         $client->operations()->newPivotStatement()->where('id', $request->all()['pivot_id'])->update([
             'title'         => $request->get('title'),
             'title_color'   => $request->get('title_color'),
@@ -210,6 +218,16 @@ class ClientController extends Controller
                 Storage::delete('public/'.$operation->shortname.'/images/covers/'.$client->id.'/cover.png');
             }
             $request->file('cover')->storeAs('public/'.$operation->shortname.'/images/covers/'.$client->id, 'cover.png');
+        }
+        if ($request->has('del_header_bgi') && $request->get('del_header_bgi') == 1){
+            Storage::delete('public/'.$operation->shortname.'/images/header_bgi/'.$client->id.'/'.$pivot->header_bgi);
+            $client->operations()->newPivotStatement()->where('id', $pivot->id)->update(['header_bgi'  => null]);
+
+        }
+        if ($request->has('del_footer_top_bgi') && $request->get('del_footer_top_bgi') == 1){
+            Storage::delete('public/'.$operation->shortname.'/images/footer_top_bgi/'.$client->id.'/'.$pivot->footer_top_bgi);
+            $client->operations()->newPivotStatement()->where('id', $pivot->id)->update(['footer_top_bgi'  => null]);
+
         }
 
         return back()->with('status', 'success');

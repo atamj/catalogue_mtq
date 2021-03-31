@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Operation;
 use App\Models\Product;
+use App\Models\SubCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
@@ -26,7 +27,7 @@ class CategoryController extends Controller
 
     }
 
-    public function index($ope,$category)
+    public function index($ope, $category)
     {
         if (env("APP_VERSION") == "2") {
 
@@ -51,40 +52,54 @@ class CategoryController extends Controller
             }
 
             /** On récupère toutes les catégories de cette opération*/
-            $category = Category::where('url', $category)->first();
+            $category = Category::where('url', $category)->where('operation_id', $operation->id)->first();
+            $categories = $operation->categories()->get();
             $pivot = $client->operations->find($operation->id)->pivot;
             $pivot = $pivot->find($pivot->id);
             $products = $category->products()->get();
-            foreach ($products as $product) $product->convertData();
-            $bombe = $products->where('bombe_1', '1');
+            $bombes = [];
+            foreach ($products as $product) {
+                $product->convertData();
+                if ($product->bombe_1 == '1') {
+                    $bombes[] = $product;
+                }
+            }
             $sous_categories = $category->subCategories()->get();
+            $bombe = "";
+            if (count($sous_categories) == 0) {
+                $bombe = $bombes[0];
+            }
 
-            return view('catalogue', compact('products', 'bombe', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
+            if ($operation->template == "default" || $operation->template == "" || !$operation->template) {
+                return view('catalogue', compact('products', 'bombe', 'bombes', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
+            } else {
+                return view('templates.catalogue-' . $operation->template, compact('products', 'bombe', 'category', 'categories', 'pivot', 'sous_categories', 'operation', 'client'));
+            }
 
-        }else{
-        /** Redirect to secure URL if app production*/
-        $this->secure();
-        /** Get products from GSheet or Session */
-        $this->getProducts($ope);
+        } else {
+            /** Redirect to secure URL if app production*/
+            $this->secure();
+            /** Get products from GSheet or Session */
+            $this->getProducts($ope);
 
-        /** Filter products by category based on  URL */
-        $products = $this->products->where('categorie_url', $category);
+            /** Filter products by category based on  URL */
+            $products = $this->products->where('categorie_url', $category);
 
-        /** Get product bombe 1*/
-        $bombe = $products->where('bombe_1', '1');
+            /** Get product bombe 1*/
+            $bombe = $products->where('bombe_1', '1');
 
-        /** Get list of sub-categories for current products list */
-        $sous_categories = Product::getSubCategories($products);
+            /** Get list of sub-categories for current products list */
+            $sous_categories = Product::getSubCategories($products);
 
-        /** Get Category string & category_url*/
-        $category_url = $category;
-        $category = $products->first()->categorie;
+            /** Get Category string & category_url*/
+            $category_url = $category;
+            $category = $products->first()->categorie;
 
-        return view('catalogue', compact('products', 'bombe', 'category', 'category_url', 'sous_categories', 'ope'));
+            return view('catalogue', compact('products', 'bombe', 'category', 'category_url', 'sous_categories', 'ope'));
         }
     }
 
-    public function show($ope,$ean)
+    public function show($ope, $ean)
     {
         /** Redirect to secure URL if app production*/
         $this->secure();
@@ -100,25 +115,83 @@ class CategoryController extends Controller
 
     /**
      * Get full catalogue
-    */
+     */
     public function catalogue($ope)
     {
-        /** Redirect to secure URL if app production*/
-        $this->secure();
+        if (env("APP_VERSION") == "2") {
 
-        /** Get products from GSheet or Session */
-        $this->getProducts($ope);
+            /** Récupère les info de l'opération selon l'url*/
+            $operation = Operation::where('shortname', $ope)->first();
 
-        /** Filter products by category based on  URL */
-        $products = $this->products;
-        /** Get product bombe 1*/
-        $bombe = $products->where('bombe_1', '1');
+            /** On récupère l'url de base pour identifier le client*/
+            $client_url = \request()->server->get('HTTP_HOST');
 
-        /** Get list of sub-categories for current products list */
-        $sous_categories = Product::getSubCategories($products);
+            /** Local*/
+            if (env("APP_ENV") == 'local') {
 
-        $category = "Cataloque";
-        return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories', 'ope'));
+                /** On récupère les info client selon l'url*/
+                $client = $operation->clients()->where('url', env('APP_URL'))->first();
+
+            } /** Production*/
+            else {
+
+                /** On récupère les info client selon l'url*/
+                $client = $operation->clients()->where('url', $client_url)->first();
+
+            }
+
+            /** On récupère toutes les catégories de cette opération*/
+            $categories = $operation->categories()->get();
+            $pivot = $client->operations->find($operation->id)->pivot;
+            $pivot = $pivot->find($pivot->id);
+            $products = $operation->products()->get();
+            $bombes = [];
+            foreach ($products as $product) {
+                $product->convertData();
+                if ($product->bombe_1 == '1') {
+                    $bombes[] = $product;
+                }
+            }
+            $sous_categories = [];
+
+            if (!$sous_categories || count($sous_categories) <= 0) {
+                $sous_categories = [];
+                foreach ($categories as $category) {
+                    $arr = $category->subCategories()->get();
+                    if (count($arr) > 0) {
+                        foreach ($arr as $one) {
+                            $sous_categories[] = $one->id;
+                        }
+                    }
+                }
+
+                $sous_categories = SubCategory::findMany($sous_categories);
+            }
+            $category = "Cataloque";
+            if ($operation->template == "default" || $operation->template == "" || !$operation->template) {
+                return view('catalogue', compact('products', 'bombes', 'category', 'pivot', 'sous_categories', 'operation', 'client'));
+            } else {
+                return view('templates.catalogue-' . $operation->template, compact('products', 'bombes', 'category', 'categories', 'pivot', 'sous_categories', 'operation', 'client'));
+            }
+
+        } else {
+            /** Redirect to secure URL if app production*/
+            $this->secure();
+
+            /** Get products from GSheet or Session */
+            $this->getProducts($ope);
+
+            /** Filter products by category based on  URL */
+            $products = $this->products;
+            /** Get product bombe 1*/
+            $bombe = $products->where('bombe_1', '1');
+
+            /** Get list of sub-categories for current products list */
+            $sous_categories = Product::getSubCategories($products);
+
+            $category = "Cataloque";
+            return view('catalogue', compact('products', 'bombe', 'category', 'sous_categories', 'ope'));
+        }
 
     }
 
@@ -169,32 +242,32 @@ class CategoryController extends Controller
 //                /** Reset session*/
 //                session()->forget('products');
 
-                /** Reset $this->products*/
-                $this->products = [];
+        /** Reset $this->products*/
+        $this->products = [];
 
-                /** Get products from BD*/
-                $products = Product::where('ope', $ope)->get();
+        /** Get products from BD*/
+        $products = Product::where('ope', $ope)->get();
 
-                /** Format et save products in $this->products*/
-                foreach ($products as $item) {
+        /** Format et save products in $this->products*/
+        foreach ($products as $item) {
 
-                    $product = new Product();
-                    $product->ope = $item->ope;
-                    $item = json_decode($item->data);
-                    foreach ($item as $key => $value) {
+            $product = new Product();
+            $product->ope = $item->ope;
+            $item = json_decode($item->data);
+            foreach ($item as $key => $value) {
 
-                        $product->$key = $value;
+                $product->$key = $value;
 
-                    }
+            }
 
-                    $this->products[] = $product;
+            $this->products[] = $product;
 
-                }
+        }
 
-                /** Convert $this->products to laravel collection*/
-                $this->products = collect($this->products);
+        /** Convert $this->products to laravel collection*/
+        $this->products = collect($this->products);
 
-                /** Put products in session*/
+        /** Put products in session*/
 //                session()->put('products', $this->products);
 
 //            }

@@ -9,13 +9,14 @@ use App\Models\SubCategory;
 use Composer\Package\Archiver\ZipArchiver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use ZanySoft\Zip\Zip;
 use function React\Promise\all;
 
 class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     /**
@@ -50,18 +51,20 @@ class ProductController extends Controller
         if ($request->hasFile('csv')) {
             $request->file('csv')->storeAs('public/' . $request->operation, 'data.csv');
 
+            $operation = Operation::where('shortname', $request->operation)->first();
             /** Get all products in BD to delete*/
-            $products = Product::all();
+            $products = $operation->products()->get();
 
             /** List IDS to delete*/
-            $idsToDelete = [];
+//            $idsToDelete = [];
             foreach ($products as $product) {
-                if ($product->ope == $request->operation) {
-                    $idsToDelete[] = $product->id;
-                }
+//                if ($product->ope == $request->operation) {
+//                    $idsToDelete[] = $product->id;
+//                }
+                $product->delete();
             }
             /** Delete list*/
-            Product::destroy($idsToDelete);
+//            Product::destroy($idsToDelete);
 
             /** Get formated data from CSV */
             $this->formatData($request->operation);
@@ -72,9 +75,14 @@ class ProductController extends Controller
 
         if ($request->has('zip')){
             $request->file('zip')->storeAs('public/'.$request->operation.'/images', 'products.zip' );
+            /*$is_valid = Zip::check(public_path('storage/'.$request->operation.'/images/products.zip'));
+            if ($is_valid){
+                $zip = Zip::open(public_path('storage/'.$request->operation.'/images/products.zip'));
+                $zip->extract(public_path('storage/'.$request->operation.'/images/products'));
+            }*/
             $zip = new \ZipArchive();
-            if ($zip->open(storage_path('app/public/'.$request->operation.'/images/products.zip')) === TRUE) {
-                $zip->extractTo(storage_path('app/public/'.$request->operation.'/images/'));
+            if ($zip->open(public_path('storage/'.$request->operation.'/images/products.zip')) === TRUE) {
+                $zip->extractTo(public_path('storage/'.$request->operation.'/images/products'));
                 $zip->close();
             } else {
                 return back()->with('status', 'échec');
@@ -237,7 +245,7 @@ class ProductController extends Controller
                 $product->$title = $val;
 
             }
-            $category = Category::where('url', $product->categorie_url)->first();
+            $category = Category::where('url', $product->categorie_url)->where('operation_id', $operation->id)->first();
             if (!$category) {
                 $category = Category::create([
                     'operation_id' => $operation->id,
@@ -259,7 +267,7 @@ class ProductController extends Controller
                     'data' => json_encode($product),
                     'operation_id' => $operation->id,
                     'category_id' => $category->id,
-                    'subcategory_id' => $subCategory->id,
+                    'sub_category_id' => $subCategory->id,
                 ]);
 
             } else {

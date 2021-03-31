@@ -23,32 +23,59 @@
 {{-- End Arrow nav--}}
 
 <div class="section__wrapper">
-    @foreach($sous_categories as $sous_category)
-{{--        @if ($key == "")--}}
-{{--            <div id="{{$category_url ?? $category}}" class="section-wrapper">--}}
-{{--        @else--}}
-            <div id="{{$sous_category->url}}" class="section-wrapper">
-{{--        @endif--}}
+    @if (count($sous_categories) > 0)
+
+        @foreach($sous_categories as $sous_category)
+
+            <div id="{{$sous_category->url ?? $sous_category["url"]}}" class="section-wrapper">
+                <div class="cat__wrapper">
+                    <div class="nav-section category-01">
+                        <a href="#" class="arrow arrow-left w-inline-block"></a>
+                        <a href="#" class="arrow arrow--right w-inline-block"></a>
+                    </div>
+                    {{-- Produit Bombe--}}
+                    @foreach($sous_category->products()->get() as $product)
+                        @if ($product->convertData()->bombe_1 == "1")
+                            @include('partials.product-bombe', ['product'=>$product])
+                        @endif
+                    @endforeach
+
+                    {{-- End Produit Bombe--}}
+                    <div class="items-wrapper" style="display: none">
+                        <div class="w-layout-grid grid">
+                            @foreach($products->where('sous_categorie_url', $sous_category->url)->where('bombe_1', '0') as $product)
+                                @include('partials.product', ['product'=> $product])
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    @else
+        <div id="{{$category->url ?? ""}}" class="section-wrapper">
             <div class="cat__wrapper">
                 <div class="nav-section category-01">
                     <a href="#" class="arrow arrow-left w-inline-block"></a>
                     <a href="#" class="arrow arrow--right w-inline-block"></a>
                 </div>
                 {{-- Produit Bombe--}}
-                @if ($bombe->where('sous_categorie_url', $sous_category->url)->first())
-                    @include('partials.product-bombe', ['product'=>$bombe->where('sous_categorie_url', $sous_category->url)->first()])
-                @endif
+                @foreach($category->products()->get() as $product)
+                    @if ($product->convertData()->bombe_1 == "1")
+                        @include('partials.product-bombe', ['product'=>$product])
+                    @endif
+                @endforeach
+
                 {{-- End Produit Bombe--}}
                 <div class="items-wrapper" style="display: none">
                     <div class="w-layout-grid grid">
-                        @foreach($products->where('sous_categorie_url', $sous_category->url)->where('bombe_1', '0') as $product)
+                        @foreach($products->where('categorie_url', $category->url)->where('bombe_1', '0') as $product)
                             @include('partials.product', ['product'=> $product])
                         @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    @endforeach
+    @endif
 </div>
 @if (env('APP_URL') === "https://catalogue.carrefour-martinique.com")
     @include('partials.footer-carrefour')

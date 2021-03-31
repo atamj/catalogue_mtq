@@ -27,6 +27,7 @@ class Product extends Model
         foreach ($productData as $key => $value){
             $this->$key = $value;
         }
+        return $this;
     }
     public function operation(){
         return $this->belongsTo(Operation::class);
@@ -37,7 +38,7 @@ class Product extends Model
     }
     public function subcategory()
     {
-        return $this->hasOne(SubCategory::class);
+        return $this->belongsTo(SubCategory::class);
     }
 
 }

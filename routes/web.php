@@ -38,7 +38,9 @@ Route::resources([
     'admin/operation'   => OperationController::class,
     'admin/product'     => ProductController::class,
     'admin/client'      => ClientController::class,
+    'admin/contact'     => ContactController::class,
 ]);
+//Route::get('getcontact', [ContactController::class, 'get'])->name('getcontact');
 Route::get('admin/client-operation/{client_id}/{operation_id}', [ClientController::class, 'editPivot']);
 Route::put('admin/client-operation/{client_id}', [ClientController::class, 'updatePivot']);
 
@@ -128,8 +130,11 @@ Route::get('/{ope}', function ($ope) {
         $categories = $operation->categories()->get();
         $pivot = $client->operations->find($operation->id)->pivot;
         $pivot = $pivot->find($pivot->id);
-
-        return view('index', compact('client', 'operation', 'categories', 'pivot'));
+        if ($operation->template ==  "default" || $operation->template == "" || !$operation->template){
+            return view('index', compact('client', 'operation', 'categories', 'pivot'));
+        }else{
+            return view('templates.index-'.$operation->template, compact('client', 'operation', 'categories', 'pivot'));
+        }
 
     } else {
 
@@ -144,9 +149,9 @@ Route::post('{ope}/contact',
     [ContactController::class, 'store']
 );
 
-Route::get('{ope}/contact18647659564849',
+/*Route::get('{ope}/contact18647659564849',
     [ContactController::class, 'get']
-);
+);*/
 
 /** Full Catalogue */
 Route::get(

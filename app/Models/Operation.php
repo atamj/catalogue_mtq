@@ -13,6 +13,7 @@ class Operation extends Model
         'start',
         'end',
         'title',
+        'template',
     ];
     public function clients()
     {
@@ -21,5 +22,10 @@ class Operation extends Model
     public function categories()
     {
         return$this->hasMany(Category::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }
