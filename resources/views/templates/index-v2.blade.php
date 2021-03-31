@@ -24,7 +24,7 @@
 
         <div class="categories">
             @if($loop->odd)
-                <div class="ctg__title img_gears"
+                <div class="ctg__title"
                      style="background-image: url('{{asset('storage/'.$operation->shortname.'/images/categories/'.$category->img)}}')">
                     <div class="ctg__title--size bg--yellow bg_primary txt_secondary">{{$category->name}}</div>
                 </div>
@@ -51,7 +51,7 @@
                     @endif
                 </div>
             @else
-                <div class="ctg__title img_gears"
+                <div class="ctg__title"
                      style="background-image: url('{{asset('storage/'.$operation->shortname.'/images/categories/'.$category->img)}}')">
                     <div class="ctg__title--size bg--yellow bg_secondary txt_primary">{{$category->name}}</div>
                 </div>
