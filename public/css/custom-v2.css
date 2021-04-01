@@ -1,10 +1,7 @@
 .spotlight--img, .p_img--big {
     background-repeat: no-repeat;
     background-position: center;
-    background-size: contain;
-}
-.spotlight--img{
-    background-size: 100%;
+    background-size: var(--spotlight-img-background-size)
 }
 .p__price_cents.spotlight-02-txt {
     /*color: #5cb1b5;*/
@@ -226,23 +223,7 @@ html {
     padding: 0 10px;
 }
 
-.catalogue .ope-title-block > .text-block-4, .back > a {
-    min-width: 207px;
-    text-align: center;
-}
 
-.back > a {
-    background-color: var(--custom);
-    padding: 0.5em 1em;
-    text-decoration: none;
-    font-family: Amaticsc, sans-serif;
-    font-weight: 700;
-    line-height: 19px;
-    font-size: 25px;
-    letter-spacing: 1.8px;
-    text-transform: uppercase;
-    display: inline-block;
-}
 
 .back > a, .back > a:visited, .back > a:active, .back > a:hover {
     color: #ffffff;
@@ -344,6 +325,9 @@ html {
 }
 
 @media screen and (max-width: 425px) {
+    .catalogue .event{
+        display: none;
+    }
     .form {
         flex-direction: column;
         width: 100%;
@@ -387,3 +371,5 @@ html {
         background-size: 100%;
     }
 }
+
+
