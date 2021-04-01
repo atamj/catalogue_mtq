@@ -147,22 +147,7 @@ html {
 /*    justify-content: center;*/
 /*    align-items: center;*/
 /*}*/
-.list {
-    border: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    padding-right: 10px;
-    padding-left: 10px;
-}
 
-.list-link {
-    flex-direction: row;
-    margin: auto;
-    flex-wrap: wrap;
-}
 
 .list-link > li {
     padding: 1em 1rem;

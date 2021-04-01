@@ -1,5 +1,7 @@
 <div id="w-node-643069de73f7-b30ad297" class="product {{($product->bombe_2 == '1') ? "bombe2" : ""}}{{($product->smart_cash != "") ? "smartcash" : ""}}"
+     @if ($product->photo_principale && \Illuminate\Support\Facades\Storage::exists('public/'. $operation->shortname .'/images/products/'.$product->photo_principale))
      style="background-image: url('{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}')"
+     @endif
      data-designation="{{$product->designation}}"
      data-description_produit="{{$product->description_produit}}"
      data-description_short="{{$product->description_short}}"

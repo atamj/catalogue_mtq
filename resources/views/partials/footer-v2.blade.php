@@ -120,4 +120,4 @@
 <!-- [if lte IE 9]>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 
-<script src="{{'js/form.js'}}"></script>
+<script src="{{asset('js/form.js')}}"></script>

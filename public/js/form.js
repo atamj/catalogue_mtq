@@ -47,13 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let url = $("#email-form").attr('action')
     let ContactForm = new GSheet(url)
-
     /** Get form */
     var form = $('#email-form')
 
     /** Event on form submit */
     form.submit((e) => {
-
         e.preventDefault()
         $('.w-button').hide()
         /** Add loader */

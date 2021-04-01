@@ -4476,6 +4476,21 @@ h3:hover {
         font-size: 1rem;
         line-height: 1.5em;
     }
+    .list {
+        border: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .list-link {
+        flex-direction: row;
+        margin: auto;
+        flex-wrap: wrap;
+    }
 }
 
 @media screen and (max-width: 320px) {
@@ -4545,6 +4560,9 @@ h3:hover {
     .p__price_cents {
         font-size: 1.1rem;
     }
+    .list-link{
+        flex-direction: column;
+    }
 
 }
 
@@ -4553,13 +4571,21 @@ h3:hover {
     .detail__container .p__cross_bar {
         height: 3px;
     }
+    .list-link{
+        flex-direction: column;
+    }
+
 }
 
-@media screen and (min-width: 376px) and (min-width: 425px) {
+@media screen and (min-width: 376px) and (max-width: 425px) {
     /*Mobile L*/
     .detail__container .p__cross_bar {
         height: 3px;
     }
+    .list-link{
+        flex-direction: column;
+    }
+
 
 }
 
@@ -4616,6 +4642,9 @@ h3:hover {
         top: 12px;
         left: -9px;
     }
+    /*.spotlight{
+        min-height: 784px;
+    }*/
 }
 
 @media screen and (min-width: 1441px) {
@@ -4629,3 +4658,4 @@ h3:hover {
         left: -9px;
     }
 }
+
