@@ -4426,13 +4426,30 @@ h3:hover {
     .p_img--big{
         max-width: 100vw;
     }
+    .detail__container .p__cross_bar{
+        width: 6.2em;
+    }
+    .p__price_1st.spotlight-02-txt{
+        line-height: 1em;
+    }
+    .p__price_cents{
+        line-height: 1em;
+    }
 }
 @media screen and (max-width: 320px){
     /*Mobile S*/
-
+    .spotlight{
+        min-height: 460px;
+    }
+    .spotlight__container{
+        padding-right: unset;
+        padding-left: unset;
+        padding-bottom: unset;
+    }
     /*Block prix avec bg*/
     .spotlight_price{
         height: 174px;
+        width: 168px;
     }
     /*Old price conrainer*/
     .p__old_price.old_price--spotlight{
@@ -4452,6 +4469,14 @@ h3:hover {
     .p__price_cents.price_cents--spotlight {
         font-size: 1rem;
     }
+    .p__title.p__title--spotlight{
+        font-size: 2rem;
+        line-height: 1em;
+    }
+    .p__wrapper--spotlight .brand{
+        font-size: 1em;
+        line-height: 1.5em;
+    }
     .p_img--big{
         width: 90%;
     }
@@ -4459,23 +4484,53 @@ h3:hover {
         width: 76%;
         height: 87%;
     }
+    .detail__container .p__cross_bar{
+        height: 2px;
+        left: -13px;
+    }
+
+    /*Bombe2 prix*/
+    .p__price_1st.spotlight-02-txt{
+        font-size: 2.5rem;
+    }
+    .p__price_cents{
+        font-size: 1.1rem;
+    }
+
 }
 @media screen and (min-width: 321px) and (max-width: 375px){
     /*Mobile M*/
+    .detail__container .p__cross_bar{
+        height: 3px;
+    }
 }
 @media screen and (min-width: 376px) and (min-width: 425px){
     /*Mobile L*/
+    .detail__container .p__cross_bar{
+        height: 3px;
+    }
 }
 @media screen and (min-width: 426px) and (max-width: 768px){
     /*Tablet*/
     .spotlight__container{
         flex-direction: row;
     }
+    .detail__container .p__old_price_wrapper{
+        justify-content: center;
+    }
+    .detail__container .p__cross_bar{
+        top: 10px;
+        left: 39%;
+    }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px){
     /*Laptop*/
     .p__price_1st.price_1st--spotlight{
         font-size: 5rem;
+    }
+    .detail__container .p__cross_bar{
+        top: 12px;
+        left: -9px;
     }
 }
 @media screen and (min-width: 1025px) and (max-width: 1440px){
@@ -4486,11 +4541,18 @@ h3:hover {
     .p__price_1st.price_1st--spotlight{
         font-size: 6rem;
     }
+    .detail__container .p__cross_bar{
+        top: 12px;
+        left: -9px;
+    }
 }
 @media screen and (min-width: 1441px) {
     /*4K and more*/
     .p__price_1st.price_1st--spotlight {
         font-size: 8rem;
     }
+    .detail__container .p__cross_bar{
+        top: 12px;
+        left: -9px;
+    }
 }
-

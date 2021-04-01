@@ -105,6 +105,29 @@
             border: unset;
             background-color: unset;
         }
+        @media screen and (max-width: 320px) {
+            .share-dialog{
+                top: 150%;
+            }
+        }
+
+        @media screen and (min-width: 321px) and (max-width: 375px) {
+        }
+
+        @media screen and (min-width: 376px) and (min-width: 425px) {
+        }
+
+        @media screen and (min-width: 426px) and (max-width: 768px) {
+        }
+
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+        }
+
+        @media screen and (min-width: 1025px) and (max-width: 1440px) {
+        }
+
+        @media screen and (min-width: 1441px) {
+        }
 
     </style>
     <div class="share-dialog">
