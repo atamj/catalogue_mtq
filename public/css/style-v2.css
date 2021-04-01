@@ -1062,8 +1062,8 @@ h3:hover {
     position: absolute;
     left: auto;
     top: var(--block-price-top);
-    right: 0%;
-    bottom: 0%;
+    right: 0;
+    bottom: 0;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
