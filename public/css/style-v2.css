@@ -1129,13 +1129,13 @@ h3:hover {
     right: 40px;
 }
 .spotlight .p__more_infos{
-    width: 65px;
-    height: 65px;
-}
-.spotlight .p__more_infos .more_infos_cross{
     width: 45px;
     height: 45px;
-    font-size: 3.5rem;
+}
+.spotlight .p__more_infos .more_infos_cross{
+    width: 35px;
+    height: 35px;
+    font-size: 2.5rem;
 }
 .p__price {
     color: var(--custom);
