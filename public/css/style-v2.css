@@ -17,8 +17,8 @@
     --ctg-title-bgz: cover;
 
     /*.product .p__title*/
-    --product-title-fz: 27px;
-    --product-title-fw: 800;
+    --product-title-fz: 2rem;
+    --product-title-fw: 700;
 
     /*product*/
     --product-width: 250px;
@@ -4423,6 +4423,9 @@ h3:hover {
     .p__price_cents.price_cents--spotlight{
         line-height: 2.1em;
     }
+    .p_img--big{
+        max-width: 100vw;
+    }
 }
 @media screen and (max-width: 320px){
     /*Mobile S*/
@@ -4448,6 +4451,13 @@ h3:hover {
     }
     .p__price_cents.price_cents--spotlight {
         font-size: 1rem;
+    }
+    .p_img--big{
+        width: 90%;
+    }
+    #photo_principale{
+        width: 76%;
+        height: 87%;
     }
 }
 @media screen and (min-width: 321px) and (max-width: 375px){
