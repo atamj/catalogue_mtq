@@ -1124,13 +1124,19 @@ h3:hover {
 }
 
 .p__more_infos.more_infos__wrapper.more_infos--spotlight {
+    position: absolute;
+    bottom: 20%;
+    right: 40px;
+}
+.spotlight .p__more_infos{
+    width: 65px;
+    height: 65px;
+}
+.spotlight .p__more_infos .more_infos_cross{
     width: 45px;
     height: 45px;
-    position: absolute;
-    top: 20px;
-    left: 40px;
+    font-size: 3.5rem;
 }
-
 .p__price {
     color: var(--custom);
     position: absolute;
@@ -1328,7 +1334,7 @@ h3:hover {
     display: block;
     color: #FF9ACA;
     font-size: 9px;
-    margin-top: -1em;
+    margin-top: -3px;
     margin-bottom: 1em;
 }
 

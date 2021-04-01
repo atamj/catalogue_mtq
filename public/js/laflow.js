@@ -138,6 +138,7 @@ $(document).ready(function () {
 
     /** Pop up fiche produit*/
     $(".product, .spotlight").click((e) => {
+        e.preventDefault()
         /**Product target */
         let target = e.target
 

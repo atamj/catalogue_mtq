@@ -63,7 +63,18 @@
     <div class="p__more_infos more_infos__wrapper more_infos--spotlight">
         <a href="#"
            class="p__more_infos w-inline-block">
-            <div class="more_infos_cross">+</div>
+            <div class="more_infos_cross" data-designation="{{$product->designation}}"
+                 data-description_produit="{{$product->description_produit}}"
+                 data-prix_vente_1="{{explode(',', $product->prix_vente)[0]}}"
+                 data-prix_vente_2="{{explode(',', $product->prix_vente)[1] ?? "00"}}"
+                 data-prix_barre_1="{{explode(',', $product->prix_barre)[0]}}"
+                 data-prix_barre_2="{{explode(',', $product->prix_barre)[1] ?? "00"}}"
+                 data-eco_part="{{$product->eco_part}}"
+                 data-marque="{{$product->marque}}"
+                 data-ean="{{$product->ean}}"
+                 data-photo_principale="{{$product->photo_principale ?  asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_principale) : ""}}"
+                 data-photo_2="{{$product->photo_2 ? asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_2) : ""}}"
+                 data-photo_3="{{$product->photo_3 ? asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_3) : ""}}">+</div>
         </a>
     </div>
 </div>
