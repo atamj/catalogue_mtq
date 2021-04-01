@@ -3772,12 +3772,23 @@ h3:hover {
         display: block;
         width: 30px;
         height: 30px;
-        background-image: url('../images/more-infos-buttons.svg');
+        /*background-image: url('../images/more-infos-buttons.svg');*/
         background-position: 100% 50%;
         background-size: cover;
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
+        font-size: 2rem;
+        font-family: Arial;
+        color: var(--primary);
+        background-color: #FFFFFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+    .ctg__link.close_menu.txt-white{
+        background-color: var(--primary);
     }
 
     .div-block-6 {
@@ -4563,7 +4574,23 @@ h3:hover {
     .list-link{
         flex-direction: column;
     }
-
+    .home .nav{
+        height: 205px;
+        background-size: 100%;
+    }
+    .nav_conrainer__wrapper{
+        height: 100%;
+    }
+    .ope-title-block{
+        height: 100%;
+        justify-content: space-between;
+    }
+    .home .menu{
+        top: 175px;
+    }
+    .categories{
+        position: relative;
+    }
 }
 
 @media screen and (min-width: 321px) and (max-width: 375px) {
@@ -4574,7 +4601,23 @@ h3:hover {
     .list-link{
         flex-direction: column;
     }
-
+    .home .nav{
+        height: 205px;
+        background-size: 100%;
+    }
+    .nav_conrainer__wrapper{
+        height: 100%;
+    }
+    .ope-title-block{
+        height: 100%;
+        justify-content: space-between;
+    }
+    .home .menu{
+        top: 175px;
+    }
+    .categories{
+        position: relative;
+    }
 }
 
 @media screen and (min-width: 376px) and (max-width: 425px) {
@@ -4585,8 +4628,23 @@ h3:hover {
     .list-link{
         flex-direction: column;
     }
-
-
+    .home .nav{
+        height: 205px;
+        background-size: 100%;
+    }
+    .nav_conrainer__wrapper{
+        height: 100%;
+    }
+    .ope-title-block{
+        height: 100%;
+        justify-content: space-between;
+    }
+    .home .menu{
+        top: 175px;
+    }
+    .categories{
+        position: relative;
+    }
 }
 
 @media screen and (min-width: 426px) and (max-width: 768px) {
@@ -4606,6 +4664,9 @@ h3:hover {
     .detail__container .p__cross_bar {
         top: 10px;
         left: 39%;
+    }
+    .categories{
+        position: relative;
     }
 }
 

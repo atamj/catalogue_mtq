@@ -19,7 +19,13 @@
             au {{strftime('%d %B',strtotime($operation->end)) ?? "7 mars"}}</div>
 
     </div>
-
+    <a data-w-id="Link Block 22" href="#" class="menu_btn w-inline-block">
+        <div class="lines_wrapper">
+            <div class="lines lines--top"></div>
+            <div class="lines lines--mdl"></div>
+            <div class="lines lines--btm"></div>
+        </div>
+    </a>
     <div class="header-right-content">
 {{--        <div class="separator">|</div>--}}
         <div>

@@ -6,6 +6,8 @@
 <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="nav w-nav" style="{{$pivot->header_bgi ? "background-image: url(".asset('storage/'.$operation->shortname.'/images/header_bgi/'.$client->id.'/'.$pivot->header_bgi).")" : ""}}">
     @include('partials.header-v2')
 </div>
+@include('partials.menu-v2')
+
 <div class="hero">
     <div class="voir-cata-container">
         @if(count($categories) > 0)
@@ -30,7 +32,8 @@
                 </div>
                 <div class="ctg__menu ctg__menu--gears" style="background-color: {{$pivot->primary_color}}e6;">
                     <a data-w-id="Link Block 11" href="#" class="ctg__link close_menu w-inline-block">
-                        <div class="ctg__link_txt"></div>
+{{--                        <div class="ctg__link_txt"></div>--}}
+                        +
                     </a>
                     @if($category->subCategories()->count() != 0)
                         @foreach($category->subCategories()->get() as $subCategory)
@@ -56,8 +59,9 @@
                     <div class="ctg__title--size bg--yellow bg_secondary txt_primary">{{$category->name}}</div>
                 </div>
                 <div class="ctg__menu ctg__menu--gears" style="background-color: {{$pivot->secondary_color}}e6;">
-                    <a data-w-id="Link Block 11" href="#" class="ctg__link close_menu w-inline-block">
-                        <div class="ctg__link_txt"></div>
+                    <a data-w-id="Link Block 11" href="#" class="ctg__link close_menu w-inline-block txt-white">
+{{--                        <div class="ctg__link_txt"></div>--}}
+                        +
                     </a>
                     @if($category->subCategories()->count() != 0)
                         @foreach($category->subCategories()->get() as $subCategory)
