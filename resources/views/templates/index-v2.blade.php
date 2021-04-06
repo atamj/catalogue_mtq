@@ -99,6 +99,25 @@
             @endif
         </div>
     @endforeach
+    {{--VIDEO--}}
+    <div class="categories" style="display:none">
+        <div class="ctg__title">
+            <div class="ctg__title--size bg--yellow bg_primary txt_secondary">video</div>
+        </div>
+        <div class="ctg__menu ctg__menu--gears" style="background-color: {{$pivot->primary_color}}e6;">
+            <a data-w-id="Link Block 11" href="#" class="ctg__link close_menu w-inline-block">
+                {{--                        <div class="ctg__link_txt"></div>--}}
+                +
+            </a>
+            <a href=""
+               class="ctg__link w-inline-block">
+                <div class="ctg__link_txt txt_secondary">
+                    CONSULTER LA RUBRIQUE
+                </div>
+            </a>
+
+        </div>
+    </div>
 
 </div>
 @if ($operation->template)
