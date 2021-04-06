@@ -10,7 +10,7 @@
             </a>
         </div>
         <div class="div-block-10">
-            <div class="p_img--big" style="background-image: url('{{asset('storage/' . $operation->shortname . "/images/modal_bg/modal_bg.svg" )}}');">
+            <div class="p_img--big" id="bg_img_spot" style="background-image: url('{{asset('storage/' . $operation->shortname . "/images/modal_bg/modal_bg.svg" )}}');" data-bg="{{asset('storage/' . $operation->shortname . "/images/modal_bg/modal_bg.svg" )}}" data-bg-smart="{{asset('storage/' . $operation->shortname . "/images/modal_bg/modal_bg_smartcash.svg" )}}">
                 <div style="" id="photo_principale"></div>
             </div>
             <div class="p__details">

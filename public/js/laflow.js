@@ -154,9 +154,14 @@ $(document).ready(function () {
         if (product.smart_cash != ""){
             $('.product_detail').addClass('smartcash')
             $('#prix_cagnotte_reduite').html(product.prix_cagnotte_reduite.split(",")[0] + "<sup>€" + product.prix_cagnotte_reduite.split(",")[1] + "</sup>")
-            $('#prix_cagnotte_reduite_mention').show()
-            $('#prix_caise_smart_mention').show()
+            // $('#prix_cagnotte_reduite_mention').show()
+            // $('#prix_caise_smart_mention').show()
             $('.product_detail.smartcash .parent_price').css('display', 'grid')
+            $('#bg_img_spot').css('background-image', "url("+$('#bg_img_spot').attr('data-bg-smart')+")")
+        }else {
+            $('.product_detail').removeClass('smartcash')
+            $('.product_detail.smartcash .parent_price').css('display', 'block')
+            $('#bg_img_spot').css('background-image', "url("+$('#bg_img_spot').attr('data-bg')+")")
         }
         if (target.getAttribute('data-prix_barre_1') != "0" && target.getAttribute('data-prix_barre_1') != 0) {
             $(".product_detail .p__old_price").show()

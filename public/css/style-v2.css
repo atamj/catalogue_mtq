@@ -1663,13 +1663,25 @@ h3:hover {
 .product_detail.smartcash .parent_price{
     grid-template-columns: auto auto;
 }
+.product_detail.smartcash .p__title.p_title--detail{
+    -webkit-text-stroke: 1px #FFF;
+}
+.product_detail .smartcash, .product_detail .prix_cagnotte_reduite, .product_detail .prix_cagnotte_reduite_mention, .product_detail .prix_caise_smart_mention{
+    display: none;
+}
+.product_detail.smartcash .prix_cagnotte_reduite, .product_detail.smartcash .prix_cagnotte_reduite_mention, .product_detail.smartcash .prix_caise_smart_mention{
+    display: block;
+}
+.product_detail.smartcash #photo_principale{
+    width: 69%;
+}
 .product_detail.smartcash .smartcash{
     display: flex;
     justify-content: center;
     align-items: flex-end;
     font-family: Gilroy, sans-serif;
     font-weight: 800;
-    font-size: 26px;
+    font-size: 38px;
     line-height: 1em;
     height: 139.4px;
     width: 217.04px;
@@ -1684,6 +1696,12 @@ h3:hover {
 }
 .product_detail.smartcash .smartcash sup{
     top: -0.3em;
+}
+.product_detail.smartcash .smartcash span{
+    font-size: 20px;
+    font-family: "DIN Condensed";
+    line-height: 13px;
+    font-weight: 400;
 }
 
 .product_detail.smartcash div#prix_cagnotte_reduite{

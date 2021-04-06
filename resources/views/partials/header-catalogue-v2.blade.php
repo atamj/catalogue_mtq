@@ -18,7 +18,7 @@
             {{$category->name ?? $category}}
         </div>
         <div class="back">
-            <a href="{{url('/')}}">RETOUR A L’ACCUEIL</a>
+            <a href="{{url('/'.$operation->shortname)}}">RETOUR A L’ACCUEIL</a>
         </div>
 
     </div>
