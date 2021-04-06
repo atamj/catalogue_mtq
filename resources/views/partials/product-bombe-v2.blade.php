@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="small-cagnotte">
-                        <small>Prix cagnotte réduite</small>
+                        <small>Prix cagnotte déduite</small>
                     </div>
                 </div>{{--p__old_price--}}
 
