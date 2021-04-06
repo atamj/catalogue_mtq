@@ -1069,7 +1069,12 @@ h3:hover {
     padding-left: 0px;
     color: var(--primary);
 }
-
+.smartcash .p__wrapper.p__wrapper--spotlight{
+    color: var(--smartcash);
+}
+.smartmention .p__wrapper.p__wrapper--spotlight{
+    color: var(--smartcash);
+}
 .p__wrapper.p_wrapper_details {
     position: static;
     color: #ffffff;
@@ -1381,6 +1386,9 @@ h3:hover {
     font-weight: 400;
     letter-spacing: 0;
 }
+.smartcash .p__wrapper--spotlight .brand{
+    color: var(--smartcash);
+}
 
 .smartmention {
     display: none;
@@ -1477,9 +1485,40 @@ h3:hover {
 }
 
 .small-cagnotte {
+    display: none;
     margin-top: -0.5em;
 }
-
+.spotlight.smartcash .small-cagnotte, .spotlight.smartcash .smartmention{
+    display: block;
+    color: #ffffff;
+}
+.spotlight.smartcash .smartmention{
+    position: relative;
+    top: -2rem;
+}
+.spotlight.smartcash .smartcash{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: Gilroy, sans-serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+    line-height: 1.3em;
+    height: 122.4px;
+    width: 192.04px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    bottom: -82px;
+    color: #ffffff;
+    padding-bottom: 1em;
+}
+.spotlight.smartcash .smartcash sup{
+    top: -0.4em;
+}
 .p__price_cents.price_cents--old.cents--spotlight {
     color: #fff;
     font-size: 31px;
@@ -1490,6 +1529,10 @@ h3:hover {
     color: #ffffff;
     font-size: 60px;
     line-height: 1em;
+}
+.spotlight.smartcash .p__price_cents.price_cents--spotlight{
+    font-size: 2rem;
+    line-height: 2.3em;
 }
 
 .p__price_cents.spotkight-02-txt {
@@ -1538,6 +1581,9 @@ h3:hover {
     margin-top: 83px;
 }
 
+.spotlight.smartcash .p__old_price.old_price--spotlight{
+    margin-top: 33px;
+}
 .p__old_price.mask {
     display: none;
 }
@@ -1615,7 +1661,10 @@ h3:hover {
     background-repeat: no-repeat;
     background-attachment: scroll;
 }
-
+.spotlight.smartcash .spotlight_price{
+    bottom: 80px;
+    height: 204px;
+}
 .spotlight__container {
     position: absolute;
     /*bottom: 120px;*/
@@ -4587,6 +4636,7 @@ h3:hover {
         margin: auto;
         flex-wrap: wrap;
     }
+
 }
 
 @media screen and (max-width: 320px) {
@@ -4608,8 +4658,8 @@ h3:hover {
     }
 
     .p__price_1st.price_1st--old._1st--spotlight {
-        font-size: 3rem;
-        line-height: 0.5em;
+        font-size: 2rem;
+        line-height: 0.8em;
     }
 
     .p__price_cents.price_cents--old.cents--spotlight {
@@ -4675,6 +4725,10 @@ h3:hover {
     }
     .categories{
         position: relative;
+    }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 4rem;
+        line-height: 1.6em;
     }
 }
 
@@ -4764,6 +4818,10 @@ h3:hover {
     .p__price_1st.price_1st--spotlight {
         font-size: 5rem;
     }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 4rem;
+        line-height: 1.6em;
+    }
 
     .detail__container .p__cross_bar {
         top: 12px;
@@ -4797,6 +4855,10 @@ h3:hover {
     /*4K and more*/
     .p__price_1st.price_1st--spotlight {
         font-size: 8rem;
+    }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 4rem;
+        line-height: 1.6em;
     }
 
     .detail__container .p__cross_bar {
