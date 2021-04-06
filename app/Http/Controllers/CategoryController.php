@@ -99,18 +99,48 @@ class CategoryController extends Controller
         }
     }
 
-    public function show($ope, $ean)
+    public function show($ope, $id)
     {
         /** Redirect to secure URL if app production*/
-        $this->secure();
+//        $this->secure();
 
         /** Get all product stored to $this->products */
-        $this->getProducts($ope);
+//        $this->getProducts($ope);
 
         /** Filter product by ean*/
-        $product = $this->products->where('ean', $ean)->first();
+//        $product = $this->products->where('ean', $ean)->first();
+        $product = Product::find($id);
 
-        return view('show', compact('product', 'ope'));
+        /** Récupère les info de l'opération selon l'url*/
+        $operation = Operation::where('shortname', $ope)->first();
+
+        /** On récupère l'url de base pour identifier le client*/
+        $client_url = \request()->server->get('HTTP_HOST');
+        if (env("APP_ENV") == 'local') {
+
+            /** On récupère les info client selon l'url*/
+            $client = $operation->clients()->where('url', env('APP_URL'))->first();
+
+        } /** Production*/
+        else {
+
+            /** On récupère les info client selon l'url*/
+            $client = $operation->clients()->where('url', $client_url)->first();
+
+        }
+        $pivot = $client->operations->find($operation->id)->pivot;
+        $pivot = $pivot->find($pivot->id);
+        $product->convertData();
+        $category = $product->category()->first();
+        $sous_category =$product->subcategory()->first();
+        if (!$sous_category){
+            $sous_category = $category;
+        }
+        if ($operation->template == "default" || $operation->template == "" || !$operation->template) {
+            return view('show', compact('product', 'ope', 'client', 'pivot', 'operation', 'category', 'sous_category'));
+        } else {
+            return view('templates/show-' . $operation->template, compact('product', 'ope', 'client', 'pivot', 'operation', 'category', 'sous_category'));
+        }
     }
 
     /**

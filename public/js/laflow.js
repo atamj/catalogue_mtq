@@ -158,7 +158,7 @@ $(document).ready(function () {
         // $('#eco_part').html(target.getAttribute('data-eco_part'))
         $('#marque').html(target.getAttribute('data-marque'))
         // $('#ean').html("EAN: " + target.getAttribute('data-ean'))
-        $(".copy-link").attr('data-ean', target.getAttribute('data-ean'))
+        $(".copy-link").attr('data-id', target.getAttribute('id'))
         $("#share-email").attr('href', $("#share-email").attr('data-href') + "/" + target.getAttribute('data-ean'),)
         $('#photo_principale').css('background-image', 'url(' + target.getAttribute('data-photo_principale') + ')')
         // $('#photo_principale').attr('src',target.getAttribute('data-photo_principale'))
@@ -229,7 +229,7 @@ $(document).ready(function () {
     if (shareButton) {
         shareButton.addEventListener('click', event => {
             event.preventDefault()
-            let url = $(".pen-url").attr('data-value') + "/" + $(".copy-link").attr('data-ean')
+            let url = $(".pen-url").attr('data-value') + "/" + $(".copy-link").attr('data-id')
             if (navigator.share) {
                 navigator.share({
                     title: 'Carefour',

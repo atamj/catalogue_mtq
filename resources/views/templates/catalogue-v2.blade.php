@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-@include('partials.head-v2', ['title'=> $pivot->title])
+@if ($operation->template)
+    @include('partials.head-'.$operation->template, ['title'=> $pivot->title])
+@else
+    @include('partials.head', ['title'=> $pivot->title])
+@endif
 <body class="catalogue {{$category->url ?? "full"}}">
 <script>
     if (location.hash == "") {
@@ -12,25 +16,34 @@
         }
     })
 </script>
-{{-- Modal --}}
-@include('partials.modal')
-{{-- End Modal --}}
 
-@include('partials.banner-v2')
-@include('partials.menu-v2')
+@if ($operation->template)
+    {{-- Modal --}}
+    @include('partials.modal-'.$operation->template)
+    {{-- End Modal --}}
+    @include('partials.banner-'.$operation->template)
+    @include('partials.menu-'.$operation->template)
+    {{-- Arrow nav --}}
+    @include('partials.slide-arrows-'.$operation->template)
+    {{-- End Arrow nav--}}
 
-{{-- Arrow nav --}}
-@include('partials.slide-arrows-v2')
-{{-- End Arrow nav--}}
+@else
+    {{-- Modal --}}
+    @include('partials.modal')
+    {{-- End Modal --}}
+    @include('partials.banner')
+    @include('partials.menu')
+    {{-- Arrow nav --}}
+    @include('partials.slide-arrows')
+    {{-- End Arrow nav--}}
+@endif
+
 
 <div class="section__wrapper">
     @if (count($sous_categories) != 0)
         @foreach($sous_categories as $sous_category)
-            {{--        @if ($key == "")--}}
-            {{--            <div id="{{$category_url ?? $category}}" class="section-wrapper">--}}
-            {{--        @else--}}
+
             <div id="{{$sous_category->url}}" class="section-wrapper">
-                {{--        @endif--}}
                 <div class="cat__wrapper">
                     <div class="nav-section category-01">
                         <a href="#" class="arrow arrow-left w-inline-block"></a>
@@ -38,19 +51,31 @@
                     </div>
                     {{-- Produit Bombe--}}
                     @if (isset($bombe) && $bombe)
-                        @include('partials.product-bombe-v2', ['product'=>$bombe ?? ''])
+                        @if ($operation->template)
+                            @include('partials.product-bombe-'.$operation->template, ['product'=>$bombe ?? ''])
+                        @else
+                            @include('partials.product-bombe', ['product'=>$bombe ?? ''])
+                        @endif
                     @endif
                     {{-- End Produit Bombe--}}
                     <div class="items-wrapper" style="display: none">
                         <div class="w-layout-grid grid">
                             @if (count($sous_categories) != 0)
                                 @foreach($products->where('sous_categorie_url', $sous_category->url)->where('bombe_1', '0') as $product)
-                                    @include('partials.product', ['product'=> $product])
+                                    @if ($operation->template)
+                                        @include('partials.product-'.$operation->template, ['product'=> $product])
+                                    @else
+                                        @include('partials.product', ['product'=> $product])
+                                    @endif
                                 @endforeach
                             @else
                                 @foreach($products as $product)
                                     @if ($product->bombe_1 == '0')
-                                        @include('partials.product', ['product'=> $product])
+                                        @if ($operation->template)
+                                            @include('partials.product-'.$operation->template, ['product'=> $product])
+                                        @else
+                                            @include('partials.product', ['product'=> $product])
+                                        @endif
                                     @endif
                                 @endforeach
                             @endif
@@ -62,30 +87,30 @@
         {{--Cata entier--}}
     @elseif ($category == "Cataloque")
         @foreach($categories as $sous_category)
-            {{--        @if ($key == "")--}}
-            {{--            <div id="{{$category_url ?? $category}}" class="section-wrapper">--}}
-            {{--        @else--}}
+
             <div id="{{$sous_category->url}}" class="section-wrapper">
-                {{--        @endif--}}
                 <div class="cat__wrapper">
                     <div class="nav-section category-01">
                         <a href="#" class="arrow arrow-left w-inline-block"></a>
                         <a href="#" class="arrow arrow--right w-inline-block"></a>
                     </div>
                     {{-- Produit Bombe--}}
-                    {{--                    @foreach($bombes as $bombe)--}}
-                    {{--                        @if ($bombe->category_id == $sous_category->id)--}}
-                    {{--                            @include('partials.product-bombe-v2', ['product'=> $bombe ])--}}
-                    {{--                        @endif--}}
-                    {{--                    @endforeach--}}
-                    @include('partials.product-bombe-v2', ['product'=> $sous_category->bombe() ])
 
+                    @if ($operation->template)
+                        @include('partials.product-bombe-'.$operation->template, ['product'=> $sous_category->bombe() ])
+                    @else
+                        @include('partials.product-bombe', ['product'=> $sous_category->bombe() ])
+                    @endif
                     {{-- End Produit Bombe--}}
                     <div class="items-wrapper" style="display: none">
                         <div class="w-layout-grid grid">
                             @foreach($products->where('category_id', $sous_category->id) as $product)
                                 @if (($product->convertData())->bombe_1 != '1')
-                                    @include('partials.product-v2', ['product'=> ($product)])
+                                    @if ($operation->template)
+                                        @include('partials.product-'.$operation->template, ['product'=> $product])
+                                    @else
+                                        @include('partials.product', ['product'=> $product])
+                                    @endif
                                 @endif
                             @endforeach
                         </div>
@@ -97,7 +122,6 @@
     @else
         {{--Cata par catégorie--}}
         <div id="{{$category->url}}" class="section-wrapper">
-            {{--        @endif--}}
             <div class="cat__wrapper">
                 <div class="nav-section category-01">
                     <a href="#" class="arrow arrow-left w-inline-block"></a>
@@ -105,14 +129,22 @@
                 </div>
                 {{-- Produit Bombe--}}
                 @if ($bombe ?? '')
-                    @include('partials.product-bombe-v2', ['product'=>$bombe ?? ''])
+                    @if ($operation->template)
+                        @include('partials.product-bombe-'.$operation->template, ['product'=>$bombe ?? ''])
+                    @else
+                        @include('partials.product-bombe', ['product'=>$bombe ?? ''])
+                    @endif
                 @endif
                 {{-- End Produit Bombe--}}
                 <div class="items-wrapper" style="display: none">
                     <div class="w-layout-grid grid">
                         @foreach($products as $product)
                             @if ($product->bombe_1 != '1')
-                                @include('partials.product-v2', ['product'=> $product])
+                                @if ($operation->template)
+                                    @include('partials.product-'.$operation->template, ['product'=> $product])
+                                @else
+                                    @include('partials.product', ['product'=> $product])
+                                @endif
                             @endif
                         @endforeach
                     </div>

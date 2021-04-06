@@ -1,21 +1,23 @@
 <!doctype html>
 <html lang="fr">
-@include('partials.head',['title'=> "Catalogue:".$product->designation])
+@include('partials.head-v2',['title'=> "Catalogue:".$product->designation])
 <body>
-<div class="product_detail" style="display: block;background-image: url('{{asset('storage/' . $product->ope . '/images/autres/bg-show.svg')}}');">
+<div class="product_detail" style="display: block;background-color: rgba(52,52,52,0.95);">
     <div class="detail__container">
         <div class="close_window_wrapper">
-            <a data-w-id="Link Block 15" href="{{url($product->ope.'/'.$product->categorie_url.'#'.$product->sous_categorie_url)}}"
+            <a data-w-id="Link Block 15" href="{{url($operation->shortname . '/' . $category->url.'#'.$sous_category->url)}}"
                class="close_window w-inline-block">
                 <div class="p__more_infos more_infos--detail">
-                    <div class="more_infos_cross cross--detail"></div>
+                    <div class="more_infos_cross cross--detail">+</div>
                 </div>
                 <div>Fermer</div>
             </a>
         </div>
         <div class="div-block-10">
-            <div class="p_img--big" id="photo_principale"
-                 style="background-image: url('{{asset('images/'.$product->photo_principale)}}')"></div>
+            <div class="p_img--big"
+                 style="background-image: url('{{asset('storage/' . $operation->shortname . "/images/modal_bg/modal_bg.svg" )}}')">
+                <div style="background-image: url('{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}')" id="photo_principale"></div>
+            </div>
             <div class="p__details">
                 <div class="p__wrapper p_wrapper_details">
                     <div class="p__title p_title--detail" id="designation">{{$product->designation}}<br></div>
