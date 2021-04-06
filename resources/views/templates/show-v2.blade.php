@@ -2,10 +2,12 @@
 <html lang="fr">
 @include('partials.head-v2',['title'=> "Catalogue:".$product->designation])
 <body>
-<div class="product_detail" style="display: block;background-color: rgba(52,52,52,0.95);">
+<div class="product_detail {{$product->smart_cash ? "smartcash" : ""}}"
+     style="display: block;background-color: rgba(52,52,52,0.95);">
     <div class="detail__container">
         <div class="close_window_wrapper">
-            <a data-w-id="Link Block 15" href="{{url($operation->shortname . '/' . $category->url.'#'.$sous_category->url)}}"
+            <a data-w-id="Link Block 15"
+               href="{{url($operation->shortname . '/' . $category->url.'#'.$sous_category->url)}}"
                class="close_window w-inline-block">
                 <div class="p__more_infos more_infos--detail">
                     <div class="more_infos_cross cross--detail">+</div>
@@ -15,8 +17,15 @@
         </div>
         <div class="div-block-10">
             <div class="p_img--big"
-                 style="background-image: url('{{asset('storage/' . $operation->shortname . "/images/modal_bg/modal_bg.svg" )}}')">
-                <div style="background-image: url('{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}')" id="photo_principale"></div>
+                 @if ($product->smart_cash)
+                 style="background-image: url('{{asset('storage/' . $operation->shortname . "/images/modal_bg/modal_bg_smartcash.svg" )}}')"
+                 @else
+                 style="background-image: url('{{asset('storage/' . $operation->shortname . "/images/modal_bg/modal_bg.svg" )}}')"
+                @endif
+            >
+                <div
+                    style="background-image: url('{{$product->photo_principale ? asset('storage/'. $operation->shortname .'/images/products/'.$product->photo_principale) : ""}}')"
+                    id="photo_principale"></div>
             </div>
             <div class="p__details">
                 <div class="p__wrapper p_wrapper_details">
@@ -36,16 +45,35 @@
                                 class="p__cross_bar"></div>
                         </div>
                     @endif
-                    <div class="p__price_wrapper p_price_wrapper--detail">
-                        <div class="p__price_1st _1st--detail"
-                             id="prix_vente_1">{{explode(',', $product->prix_vente)[0]}}</div>
-                        <div class="p__price_cents" id="prix_vente_2">€{{explode(',', $product->prix_vente)[1]}}</div>
+                    @if ($product->prix_cagnotte_reduite)
+                        <div id="prix_cagnotte_reduite">{{explode(',',$product->prix_cagnotte_reduite)[0]}}
+                            <sup>€{{explode(',',$product->prix_cagnotte_reduite)[1]}}</sup></div>
+                        <small id="prix_cagnotte_reduite_mention">Prix cagnotte reduite</small>
+                    @endif
+                    <div class="parent_price">
+                        <div>
+                            <div class="p__price_wrapper p_price_wrapper--detail">
+                                <div class="p__price_1st _1st--detail"
+                                     id="prix_vente_1">{{explode(',', $product->prix_vente)[0]}}</div>
+                                <div class="p__price_cents" id="prix_vente_2">
+                                    €{{explode(',', $product->prix_vente)[1]}}</div>
+                            </div>
+                            <small id="prix_caise_smart_mention">prix payé en caisse</small>
+                        </div>
+                        <div class="smartcash"
+                             style="background-image: url('{{asset('storage/je-choisis-etre-belle/images/stickers/smartcash.svg')}}');">
+                            <p>
+                                -0<sup>€29</sup>
+                                <br>
+                                <span>EN SMART <i>Cash **</i></span>
+                            </p>
+                        </div>
                     </div>
                     {{--@if ($product->eco_part)
                         <div class="p__ecopart" id="eco_part">ÉCOPART {{$product->eco_part}}€</div>
                     @endif--}}
                     <div class="brand brand--detail" id="marque">{{$product->marque}}</div>
-{{--                    <div class="text-block-12"><span class="ean ean--detail" id="ean">EAN: {{$product->ean}}</span></div>--}}
+                    {{--                    <div class="text-block-12"><span class="ean ean--detail" id="ean">EAN: {{$product->ean}}</span></div>--}}
                     <p class="paragraph" id="description_produit">{{$product->description_produit}}</p>
                     <div class="img-gallery" style="display: none">
                         <div class="img-gallery-txt">Plus d&#x27;images</div>

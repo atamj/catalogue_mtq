@@ -41,7 +41,7 @@
                         </div>
                         <div class="smartcash" style="background-image: url('{{asset('storage/je-choisis-etre-belle/images/stickers/smartcash.svg')}}');">
                             <p>
-                                -0<sup>€29</sup>
+                                <sup></sup>
                                 <br>
                                 <span>EN SMART <i>Cash **</i></span>
                             </p>

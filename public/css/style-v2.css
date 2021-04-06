@@ -1663,8 +1663,11 @@ h3:hover {
 .product_detail.smartcash{
     background-color: rgba(255,  255, 255, 0.95)!important;
 }
+
 .product_detail.smartcash .parent_price{
+    display: grid;
     grid-template-columns: auto auto;
+
 }
 .product_detail .smartcash, .product_detail .prix_cagnotte_reduite, .product_detail .prix_cagnotte_reduite_mention, .product_detail .prix_caise_smart_mention, .product_detail #prix_caise_smart_mention, .product_detail #prix_cagnotte_reduite_mention{
     display: none;
@@ -1684,6 +1687,10 @@ h3:hover {
 .product_detail.smartcash #photo_principale{
     width: 69%;
 }
+.product_detail.smartcash .link-block-11{
+    color:var(--smartcash);
+}
+
 .product_detail.smartcash .smartcash{
     display: flex;
     justify-content: center;

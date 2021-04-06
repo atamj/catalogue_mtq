@@ -154,6 +154,9 @@ $(document).ready(function () {
         if (product.smart_cash != ""){
             $('.product_detail').addClass('smartcash')
             $('#prix_cagnotte_reduite').html(product.prix_cagnotte_reduite.split(",")[0] + "<sup>€" + product.prix_cagnotte_reduite.split(",")[1] + "</sup>")
+            let smart_cash_part1 = product.smart_cash.split(",")[0]
+            let smart_cash_part2 = product.smart_cash.split(",")[1] ? product.smart_cash.split(",")[1] : ""
+            $('.product_detail.smartcash .smartcash').html("<p>-" + smart_cash_part1 + "<sup>€" + smart_cash_part2 + "</sup><br><span>EN SMART <i>Cash **</i></span></p>")
             // $('#prix_cagnotte_reduite_mention').show()
             // $('#prix_caise_smart_mention').show()
             $('.product_detail.smartcash .parent_price').css('display', 'grid')

@@ -100,7 +100,7 @@
                 @if ($product->smart_cash != "")
                     <div class="smartcash" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/smartcash.svg')}});">
                         <p>
-                            -{{explode(',', $product->smart_cash)[0]}}<sup>€{{explode(',', $product->smart_cash)[1] ?? "00"}}</sup>
+                            -{{explode(',', $product->smart_cash)[0]}}<sup>€{{explode(',', $product->smart_cash)[1] ?? ""}}</sup>
                             <br>
                             <span>EN SMART <i>Cash **</i></span>
                         </p>
