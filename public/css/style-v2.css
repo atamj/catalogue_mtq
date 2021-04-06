@@ -24,6 +24,7 @@
     --product-width: 250px;
     --product-height: 300px;
     --product-mw: auto;
+    --product-bgs: 80%;
 
     /*.product-wrapper*/
     --product-wrapper-width: 100%;
@@ -39,6 +40,7 @@
     :root {
         --ope-title-mw: 150px;
         --back-btn-fz: 16px;
+        --product-bgs: 90%;
     }
 }
 
@@ -948,7 +950,7 @@ h3:hover {
     background-color: transparent;
 
     background-position: -55% 0%;
-    background-size: 80%;
+    background-size: var(--product-bgs);
     background-repeat: no-repeat;
 }
 
