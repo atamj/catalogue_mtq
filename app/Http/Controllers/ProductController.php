@@ -82,11 +82,13 @@ class ProductController extends Controller
             }*/
             $zip = new \ZipArchive();
             if ($zip->open(public_path('storage/'.$request->operation.'/images/products.zip')) === TRUE) {
+//                Storage::delete('public/'.$request->operation.'/images/products');
                 $zip->extractTo(public_path('storage/'.$request->operation.'/images/products'));
                 $zip->close();
+                Storage::delete('public/'.$request->operation.'/images/products.zip');
             } else {
+                Storage::delete('public/'.$request->operation.'/images/products.zip');
                 return back()->with('status', 'échec');
-
             }
         }
         return back()->with('status', 'success');

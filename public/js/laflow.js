@@ -141,7 +141,7 @@ $(document).ready(function () {
         e.preventDefault()
         /**Product target */
         let target = e.target
-
+        let product = JSON.parse(target.getAttribute('data-product'))
         /** Get products variable*/
         $('#designation').html(target.getAttribute('data-designation'))
         $('#description_produit').html(target.getAttribute('data-description_produit'))

@@ -14,7 +14,8 @@
      data-ean="{{$product->ean}}"
      data-photo_principale="{{$product->photo_principale ?  asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_principale) : ""}}"
      data-photo_2="{{$product->photo_2 ? asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_2) : ""}}"
-     data-photo_3="{{$product->photo_3 ? asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_3) : ""}}">
+     data-photo_3="{{$product->photo_3 ? asset('storage/' . $operation->shortname . '/images/products/' . $product->photo_3) : ""}}"
+    data-product="{{$product->data}}">
 
     <div class="product-wrapper">
         <ul role="list" class="list-3 w-list-unstyled">
@@ -61,14 +62,14 @@
                     <div
                         class="p__cross_bar {{($product->bombe_2 == '1') ? "spotlight-02" : ""}}"></div>
                 </div>
-            @elseif($product->smart_cash != "")
+            @elseif($product->prix_cagnotte_reduite != "")
                     <div class="p__old_price">
                         <div class="p__old_price_wrapper">
                             <div
-                                class="p__price_1st price_1st--old">{{explode(',', $product->smart_cash)[0]}}</div>
+                                class="p__price_1st price_1st--old">{{explode(',', $product->prix_cagnotte_reduite)[0]}}</div>
                             <div class="p__price_2nd">
                                 <div class="p__price_cents price_cents--old">
-                                    €{{explode(',', $product->smart_cash)[1] ?? "00"}}</div>
+                                    €{{explode(',', $product->prix_cagnotte_reduite)[1] ?? "00"}}</div>
                             </div>
                         </div>
                         <div class="small-cagnotte">
