@@ -44,7 +44,7 @@
 
         @else
             {{--Normale--}}
-            <div class="p__price" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/price.svg')}});">
+            <div class="p__price" style="background-image: url({{asset('storage/'.$operation->shortname.'/images/stickers/price_bombe2.svg')}});">
 
         @endif
 {{--        <div class="p__price {{($product->bombe_2 == '1') ? "spotlight-02" : ""}} ">--}}
