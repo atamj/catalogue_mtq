@@ -93,7 +93,7 @@
         --spotlight-img-top: auto;
         --spotlight-img-width: calc(400px * 2);
         --spotlight-img-height: calc(420px * 2);
-        --ctg-title-bgz: auto;
+        --ctg-title-bgz: auto 100%;
         --product-title-fz: 32px;
         --product-wrapper-width: 80%;
     }
@@ -947,7 +947,7 @@ h3:hover {
     border: 1px none #000;
     background-color: transparent;
 
-    background-position: 0% 0%;
+    background-position: -55% 0%;
     background-size: 80%;
     background-repeat: no-repeat;
 }
@@ -1188,6 +1188,8 @@ h3:hover {
 }
 
 .p__price {
+    transform: translateX(30px);
+    transform: translateX(30px);
     color: var(--custom);
     position: absolute;
     left: auto;
