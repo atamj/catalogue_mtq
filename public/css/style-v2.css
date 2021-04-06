@@ -1184,11 +1184,11 @@ h3:hover {
     height: 45px;
 }
 
-.spotlight .p__more_infos .more_infos_cross {
+/*.spotlight .p__more_infos .more_infos_cross {
     width: 35px;
     height: 35px;
     font-size: 2.5rem;
-}
+}*/
 
 .p__price {
     transform: translateX(30px);
@@ -1660,17 +1660,26 @@ h3:hover {
     overflow-y: scroll;
 }
 /*.product_detail.smatcash*/
+.product_detail.smartcash{
+    background-color: rgba(255,  255, 255, 0.95)!important;
+}
 .product_detail.smartcash .parent_price{
     grid-template-columns: auto auto;
 }
-.product_detail.smartcash .p__title.p_title--detail{
-    -webkit-text-stroke: 1px #FFF;
-}
-.product_detail .smartcash, .product_detail .prix_cagnotte_reduite, .product_detail .prix_cagnotte_reduite_mention, .product_detail .prix_caise_smart_mention{
+.product_detail .smartcash, .product_detail .prix_cagnotte_reduite, .product_detail .prix_cagnotte_reduite_mention, .product_detail .prix_caise_smart_mention, .product_detail #prix_caise_smart_mention, .product_detail #prix_cagnotte_reduite_mention{
     display: none;
 }
-.product_detail.smartcash .prix_cagnotte_reduite, .product_detail.smartcash .prix_cagnotte_reduite_mention, .product_detail.smartcash .prix_caise_smart_mention{
+.product_detail.smartcash .prix_cagnotte_reduite, .product_detail.smartcash .prix_cagnotte_reduite_mention, .product_detail.smartcash .prix_caise_smart_mention, .product_detail.smartcash #prix_caise_smart_mention, .product_detail.smartcash #prix_cagnotte_reduite_mention{
     display: block;
+}
+.product_detail.smartcash .close_window{
+    color: var(--smartcash);
+}
+.product_detail.smartcash .more_infos_cross.cross--detail{
+    background-color: var(--smartcash);
+}
+.product_detail.smartcash .paragraph{
+    color: #000000;
 }
 .product_detail.smartcash #photo_principale{
     width: 69%;
@@ -2987,10 +2996,17 @@ h3:hover {
     }
 
     .p__title.p_title--detail {
-        font-size: 30px;
+        font-size: 60px;
         line-height: 30px;
     }
 
+    .product_detail.smartcash .parent_price{
+        grid-template-columns: auto;
+        grid-gap: 20px;
+    }
+    .product_detail.smartcash #prix_caise_smart_mention{
+        text-align: center;
+    }
     .p__infos {
         margin-bottom: 0px;
     }
