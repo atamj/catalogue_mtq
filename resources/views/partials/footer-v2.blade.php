@@ -102,8 +102,8 @@
                     @endif
                 </li>
                 <li class="list-item">
-                    @if($client->legales)
-                        <a href="{{$client->legales}}" rel="nofollow" target="_blank"
+                    @if($client->mentions)
+                        <a href="{{$client->mentions}}" rel="nofollow" target="_blank"
                            class="link-block-2 w-inline-block">
                             <div>Mentions légales</div>
                         </a>
