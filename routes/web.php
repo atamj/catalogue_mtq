@@ -87,7 +87,7 @@ Route::get('/', function () {
         }
 
         /** Récupère les info de l'opération selon l'url*/
-        $operation = $client->operations()->get()->last();
+        $operation = $client->operations->where('start','<=', date('Y-m-d'))->last();
 
         /** On récupère toutes les catégories de cette opération*/
         $categories = $operation->categories()->get();

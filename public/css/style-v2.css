@@ -1659,7 +1659,41 @@ h3:hover {
     background-size: cover;
     overflow-y: scroll;
 }
+/*.product_detail.smatcash*/
+.product_detail.smartcash .parent_price{
+    grid-template-columns: auto auto;
+}
+.product_detail.smartcash .smartcash{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-family: Gilroy, sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 1em;
+    height: 139.4px;
+    width: 217.04px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    color: #ffffff;
+}
+.product_detail.smartcash .smartcash p{
+    line-height: 1em;
+    text-align: center;
+}
+.product_detail.smartcash .smartcash sup{
+    top: -0.3em;
+}
 
+.product_detail.smartcash div#prix_cagnotte_reduite{
+    font-size: 2rem;
+    line-height: 1em;
+    margin-top: 1em;
+}
+.product_detail.smartcash .p__wrapper.p_wrapper_details, .product_detail.smartcash .brand.brand--detail{
+    color: var(--smartcash);
+}
 #photo_principale {
     width: 82%;
     height: 82%;

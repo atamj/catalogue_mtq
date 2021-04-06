@@ -29,9 +29,23 @@
                         <div
                             class="p__cross_bar"></div>
                     </div>
-                    <div class="p__price_wrapper p_price_wrapper--detail">
-                        <div class="p__price_1st _1st--detail" id="prix_vente_1"></div>
-                        <div class="p__price_cents" id="prix_vente_2"></div>
+                    <div id="prix_cagnotte_reduite"></div>
+                    <small style="display: none" id="prix_cagnotte_reduite_mention">Prix cagnotte reduite</small>
+                    <div class="parent_price">
+                        <div>
+                            <div class="p__price_wrapper p_price_wrapper--detail">
+                                <div class="p__price_1st _1st--detail" id="prix_vente_1"></div>
+                                <div class="p__price_cents" id="prix_vente_2"></div>
+                            </div>
+                            <small style="display: none" id="prix_caise_smart_mention">prix payé en caisse</small>
+                        </div>
+                        <div class="smartcash" style="background-image: url('{{asset('storage/je-choisis-etre-belle/images/stickers/smartcash.svg')}}');">
+                            <p>
+                                -0<sup>€29</sup>
+                                <br>
+                                <span>EN SMART <i>Cash **</i></span>
+                            </p>
+                        </div>
                     </div>
                     {{--                    <div class="p__ecopart" id="eco_part"></div>--}}
                     <div class="brand brand--detail" id="marque"></div>

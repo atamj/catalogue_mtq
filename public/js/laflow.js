@@ -142,6 +142,7 @@ $(document).ready(function () {
         /**Product target */
         let target = e.target
         let product = JSON.parse(target.getAttribute('data-product'))
+        console.log(product)
         /** Get products variable*/
         $('#designation').html(target.getAttribute('data-designation'))
         $('#description_produit').html(target.getAttribute('data-description_produit'))
@@ -150,6 +151,13 @@ $(document).ready(function () {
         $('#prix_vente_2').html("€" + target.getAttribute('data-prix_vente_2'))
         $('#prix_barre_1').html(target.getAttribute('data-prix_barre_1'))
         $('#prix_barre_2').html("€" + target.getAttribute('data-prix_barre_2'))
+        if (product.smart_cash != ""){
+            $('.product_detail').addClass('smartcash')
+            $('#prix_cagnotte_reduite').html(product.prix_cagnotte_reduite.split(",")[0] + "<sup>€" + product.prix_cagnotte_reduite.split(",")[1] + "</sup>")
+            $('#prix_cagnotte_reduite_mention').show()
+            $('#prix_caise_smart_mention').show()
+            $('.product_detail.smartcash .parent_price').css('display', 'grid')
+        }
         if (target.getAttribute('data-prix_barre_1') != "0" && target.getAttribute('data-prix_barre_1') != 0) {
             $(".product_detail .p__old_price").show()
         } else {
