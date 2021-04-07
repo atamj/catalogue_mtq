@@ -4951,13 +4951,25 @@ h3:hover {
         top: 12px;
         left: -9px;
     }
-    /*.spotlight{
-        min-height: 784px;
-    }*/
+    /*Smart bombe 1*/
+    .spotlight.smartcash .p__old_price.old_price--spotlight{
+        margin-top: 51px;
+    }
+    .spotlight.smartcash .p__old_price.old_price--spotlight .small-cagnotte{
+        margin-top: unset;
+    }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 3.5rem;
+        line-height: 2em;
+    }
+    .spotlight.smartcash .p__price_cents.price_cents--spotlight{
+        line-height: 3em;
+    }
+    /*End Smart bombe 1*/
 }
 
 @media screen and (min-width: 1441px) {
-    /*4K and more*/
+/*4K and more*/
     .p__price_1st.price_1st--spotlight {
         font-size: 8rem;
     }
