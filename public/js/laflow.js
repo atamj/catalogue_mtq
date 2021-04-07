@@ -61,6 +61,19 @@ $(document).ready(function () {
             .removeClass("visible")
             .addClass("hidden");
     });
+    $(".video-modal").click((e)=>{
+        e.target.classList.forEach((item)=>{
+            if (item == 'visible'){
+                $(".video-modal")
+                    .removeClass("visible")
+                    .addClass("hidden")
+                    .html("");
+                $(".hide-video")
+                    .removeClass("visible")
+                    .addClass("hidden");
+            }
+        })
+    })
 
     if (active_section > 1) {
         $("#prev")
