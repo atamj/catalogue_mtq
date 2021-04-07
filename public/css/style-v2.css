@@ -1198,8 +1198,7 @@ h3:hover {
 }*/
 
 .p__price {
-    transform: translateX(30px);
-    transform: translateX(30px);
+    transform: translateX(13px);
     color: var(--prduct-color);
     position: absolute;
     left: auto;
@@ -1724,6 +1723,9 @@ h3:hover {
     display: none;
 }
 .product_detail.smartcash .prix_cagnotte_reduite, .product_detail.smartcash .prix_cagnotte_reduite_mention, .product_detail.smartcash .prix_caise_smart_mention, .product_detail.smartcash #prix_caise_smart_mention, .product_detail.smartcash #prix_cagnotte_reduite_mention{
+    display: block;
+}
+.product.bombe2smartcash .small-cagnotte, .product.smartcash .small-cagnotte{
     display: block;
 }
 .product_detail.smartcash .close_window{
@@ -4065,7 +4067,7 @@ h3:hover {
         position: relative;
         width: 150px;
         height: 150px;
-        padding-left: 15px;
+        /*padding-left: 15px;*/
     }
 
     .spotlight__container {
@@ -4786,7 +4788,34 @@ h3:hover {
         position: relative;
     }
 }
+@media screen and (max-width: 425px){
+    .spotlight.smartcash .spotlight_price{
+        height: 164px;
+        width: 138px;
+    }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 3rem;
+        line-height: 2rem;
+    }
+    .spotlight.smartcash .p__price_cents.price_cents--spotlight{
+        font-size: 1rem;
+        line-height: 3.6em;
+    }
+    .p__price_1st.price_1st--old._1st--spotlight{
+        font-size: 1.5rem;
+    }
+    .spotlight.smartcash .p__old_price.old_price--spotlight .small-cagnotte small{
+        font-size: 68%;
+    }
+    .spotlight.smartcash .smartmention{
+        font-size: 80%;
+    }
+    .spotlight.smartcash .smartcash{
+        width: 162px;
+        font-size: 0.9rem;
+    }
 
+}
 @media screen and (min-width: 426px) and (max-width: 768px) {
     /*Tablet*/
     .spotlight {
