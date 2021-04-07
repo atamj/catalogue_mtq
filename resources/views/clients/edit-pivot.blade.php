@@ -136,15 +136,11 @@
                             <hr>
                             <div class="form-floating mb-3">
                                 <label for="css">CSS custom</label>
-                                <textarea class="form-control" name="css" id="css" style="height: 100px">
-                                        {{$pivot->css ?? ""}}
-                                    </textarea>
+                                <textarea class="form-control" name="css" id="css" style="height: 100px">{{$pivot->css ?? ""}}</textarea>
                             </div>
                             <div class="form-floating mb-3">
                                 <label for="css">JS custom</label>
-                                <textarea class="form-control" name="js" id="js" style="height: 100px">
-                                        {{$pivot->js ?? ""}}
-                                    </textarea>
+                                <textarea class="form-control" name="js" id="js" style="height: 100px">{{$pivot->js ?? ""}}</textarea>
                             </div>
 
                             <button class="btn btn-primary" type="submit">Save</button>
