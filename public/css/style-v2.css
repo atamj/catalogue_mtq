@@ -159,6 +159,12 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Dragon is coming';
+    src: url('../fonts/Dragon_is_coming.otf') format('otf');
+    font-style: normal;
+    font-weight: normal;
+}
 .bg_primary {
     background-color: var(--primary) !important;
 }
