@@ -1376,8 +1376,11 @@ h3:hover {
     font-family: "DIN Condensed";
     line-height: 13px;
     font-weight: 400;
+    visibility: hidden;
 }
-
+.spotlight.smartcash .smartcash span{
+    visibility: hidden;
+}
 .product .smartcash span i {
     font-size: 9px;
     font-weight: 300;
