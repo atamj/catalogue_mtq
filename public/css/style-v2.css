@@ -951,7 +951,8 @@ h3:hover {
     border: 1px none #000;
     background-color: transparent;
 
-    background-position: -55% 0%;
+    /*background-position: -55% 0%;*/
+    background-position: -55% 30%;
     background-size: var(--product-bgs);
     background-repeat: no-repeat;
 }
@@ -3054,7 +3055,7 @@ h3:hover {
 
     .p__title.p_title--detail {
         font-size: 60px;
-        line-height: 30px;
+        line-height: 1.1em;
     }
 
     .product_detail.smartcash .parent_price{
@@ -4619,7 +4620,7 @@ h3:hover {
     }
     .p__infos.p_infos--details{
         font-size: 1rem;
-        line-height: 1.5em;
+        line-height: 2em;
     }
     .list {
         border: none;
