@@ -103,13 +103,17 @@
         </div>
     @endforeach
     {{--VIDEO--}}
-    <div class="categories" style="">
+    <div class="categories video" style="">
         <div class="ctg__title" style="background-image: url('{{asset('storage/'.$operation->shortname.'/images/categories')}}/section-video.jpg')">
-            <div class="ctg__title--size bg--yellow bg_secondary txt_primary">video</div>
+            <div class="ctg__title--size bg--yellow bg_primary txt_secondary">
+                <p>
+                    La routine de<br>
+                    <em>@neomotive</em>
+                </p>
+            </div>
         </div>
         <div class="ctg__menu ctg__menu--gears" style="background-color: {{$pivot->secondary_color}}e6;">
             <a data-w-id="Link Block 11" href="#" class="ctg__link close_menu w-inline-block">
-                {{--                        <div class="ctg__link_txt"></div>--}}
                 +
             </a>
             <a href="#"

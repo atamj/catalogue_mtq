@@ -46,9 +46,9 @@
     }
 }
 @media screen and (max-width: 425px){
-    :root{
+    /*:root{
         --spotlight-img-background-size: 130%;
-    }
+    }*/
 }
 @media screen and (min-width: 426px) and (max-width: 768px) {
 
@@ -1745,7 +1745,8 @@ h3:hover {
     color: #000000;
 }
 .product_detail.smartcash #photo_principale{
-    width: 69%;
+    width: 68%;
+    height: 86%;
 }
 .product_detail.smartcash .link-block-11{
     color:var(--smartcash);
@@ -1795,7 +1796,8 @@ h3:hover {
     border-radius: 50%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    /*background-size: contain;*/
+    background-size: 120%;
     margin-bottom: 2px;
 }
 
@@ -4172,7 +4174,7 @@ h3:hover {
     .spotlight--img {
         width: 400px;
         height: 400px;
-        /*background-size: 300px;*/
+        background-size: 300px;
     }
 
     .nav_center__wrapper {
@@ -4653,6 +4655,15 @@ h3:hover {
         margin: auto;
         flex-wrap: wrap;
     }
+    .categories.video .ctg__title{
+        background-position: 35%;
+    }
+    .categories.video .ctg__title .ctg__title--size{
+        width: auto; background-color: unset!important;
+    }
+    .categories.video .ctg__title .ctg__title--size > p{
+        font-size: 2rem;line-height: 2rem;
+    }
 
 }
 
@@ -4828,9 +4839,9 @@ h3:hover {
         width: 162px;
         font-size: 0.9rem;
     }
-    .spotlight--img{
+    /*.spotlight--img{
         background-position: -50px -58px;
-    }
+    }*/
 
 }
 @media screen and (min-width: 426px) and (max-width: 768px) {
