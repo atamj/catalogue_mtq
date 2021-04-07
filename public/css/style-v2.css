@@ -4355,7 +4355,16 @@ h3:hover {
         height: 244px;
     }
 }
-
+@media screen and (min-width: 1025px){
+    .p_img--big {
+        width: 660px;
+        height: 718px;
+    }
+    .product_detail.smartcash #photo_principale{
+        width: 38%;
+        height: 86%;
+    }
+}
 @media screen  and (max-width: 1440px) {
     .spotlight__container {
         justify-content: flex-start;
