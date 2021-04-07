@@ -9,6 +9,7 @@
     --spotlight-img-height: 450px;
     --spotlight-img-top: 140px;
     --spotlight-img-background-size: contain;
+    --detail-img-background-size: contain;
 
     /*p__title--spotlight*/
     --title-spotlight-fz: 70px;
@@ -44,7 +45,11 @@
         --product-bgs: 90%;
     }
 }
-
+@media screen and (max-width: 425px){
+    :root{
+        --spotlight-img-background-size: 130%;
+    }
+}
 @media screen and (min-width: 426px) and (max-width: 768px) {
 
     :root {
@@ -1983,7 +1988,14 @@ h3:hover {
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    /*background-size: var(--spotlight-img-background-size);*/
+    background-size: var(--spotlight-img-background-size);
+}
+.spotlight--img, .p_img--big {
+     background-repeat: no-repeat;
+     background-position: center;
+ }
+.p_img--big{
+    background-size: var(--detail-img-background-size)
 }
 
 .spotlight--img.spot--eveil_img {
@@ -4160,7 +4172,7 @@ h3:hover {
     .spotlight--img {
         width: 400px;
         height: 400px;
-        background-size: 300px;
+        /*background-size: 300px;*/
     }
 
     .nav_center__wrapper {
@@ -4815,6 +4827,9 @@ h3:hover {
     .spotlight.smartcash .smartcash{
         width: 162px;
         font-size: 0.9rem;
+    }
+    .spotlight--img{
+        background-position: -50px -58px;
     }
 
 }
