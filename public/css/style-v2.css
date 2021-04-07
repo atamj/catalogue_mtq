@@ -1713,7 +1713,9 @@ h3:hover {
 .product_detail.smartcash{
     background-color: rgba(255,  255, 255, 0.95)!important;
 }
-
+.product_detail.smartcash .share-bn__wrapper svg path{
+    fill: var(--smartcash);
+}
 .product_detail.smartcash .parent_price{
     display: grid;
     grid-template-columns: auto auto;
