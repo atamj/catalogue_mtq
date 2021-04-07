@@ -341,6 +341,30 @@ $(document).ready(function () {
         let cible = e.target.closest(".ctg__menu")
         cible.style.display = ""
     })
+/*code iframe*/
+    var standalone = window.navigator.standalone,
+        userAgent = window.navigator.userAgent.toLowerCase(),
+        safari = /safari/.test(userAgent),
+        ios = /iphone|ipod|ipad/.test(userAgent);
+    if (ios) {
+        if (!standalone && safari) {
+            // Safari
+        } else if (!standalone && !safari) {
+            // iOS webview
+            $('body')
+                .css("padding","244px 0 244px 0");
+            //.addClass('in_iframe');
+        }
+    } else {
+        if (userAgent.includes('wv')) {
+            // Android webview
+            $('body')
+                .css("padding","244px 0 244px 0");
+            //.addClass('in_iframe');
+        } else {
+            // Chrome
+        }
+    }
 });
 
 function copy() {
