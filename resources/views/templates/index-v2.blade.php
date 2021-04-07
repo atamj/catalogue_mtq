@@ -1,6 +1,5 @@
-<!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Fri Feb 05 2021 18:12:15 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="601d786ad06b3f9b2b0ad294" data-wf-site="601d786ad06b3f2f840ad293">
+<!DOCTYPE html>
+<html>
 @if ($operation->template)
     @include('partials.head-'.$operation->template, ['title'=> $pivot->title])
 @else
