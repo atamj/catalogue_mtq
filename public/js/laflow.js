@@ -43,6 +43,25 @@ $(document).ready(function () {
 
     });
 
+    $(".show-video").click(function(){
+        $(".video-modal")
+            .removeClass("hidden")
+            .addClass("visible")
+            .html("<iframe display:\"block\" src=\"https://www.youtube.com/embed/TTztXVAMi8M\" title=\"Carrefour video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>");
+        $(".hide-video")
+            .removeClass("hidden")
+            .addClass("visible")
+    });
+    $(".hide-video").click(function(){
+        $(".video-modal")
+            .removeClass("visible")
+            .addClass("hidden")
+            .html("");
+        $(".hide-video")
+            .removeClass("visible")
+            .addClass("hidden");
+    });
+
     if (active_section > 1) {
         $("#prev")
             .removeClass("nav-inactive")
@@ -222,6 +241,7 @@ $(document).ready(function () {
         modal.css('opacity', '0')
         modal.css('z-index', '0')
         modal.hide()
+        $('#prix_cagnotte_reduite').html("");
         enabledScroll()
     })
 

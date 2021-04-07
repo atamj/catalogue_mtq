@@ -1,3 +1,56 @@
+.video-modal.hidden {
+    width:0;
+    height:0;
+    overflow:hidden;
+    opacity:0;
+    z-index:-10000;
+    display:none;
+}
+.video-modal.visible {
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    opacity:1;
+    background-color:rgba(0,0,0,.75);
+    position:absolute;
+    z-index:9999;
+    top:0;
+    left:0;
+    transition:opacity 900ms linear;
+    display:block;
+}
+.video-modal.visible iframe {
+  margin: 0 auto;
+  display:block;
+  min-height:480px;
+  min-width:320px;
+  max-height:100vw;
+  max-width:100vh;
+  margin-top:10vh;
+}
+.hide-video.hidden {
+    width:0;
+    height:0;
+    overflow:hidden;
+    opacity:0;
+    z-index:-10000;
+    display:none;
+
+}
+.hide-video.visible {
+    width:40px;
+    height:40px;
+    overflow:hidden;
+    opacity:1;
+    background:none;
+    position:absolute;
+    z-index:9999;
+    top:20px;
+    right:20px;
+    transition:opacity 550ms linear;
+    display:block;
+}
+
 @media screen and (min-width: 992px){
     .section-wrapper {
         position: absolute;

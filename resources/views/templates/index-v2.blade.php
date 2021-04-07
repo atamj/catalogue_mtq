@@ -21,7 +21,10 @@
     @include('partials.menu')
 @endif
 
-
+<div class="video-modal hidden"></div>
+<div class="p__more_infos more_infos--detail hide-video hidden">
+    <div class="more_infos_cross cross--detail">+</div>
+</div>
 <div class="hero">
     <div class="voir-cata-container">
         @if(count($categories) > 0)
@@ -100,8 +103,8 @@
         </div>
     @endforeach
     {{--VIDEO--}}
-    <div class="categories" style="display:none">
-        <div class="ctg__title">
+    <div class="categories" style="">
+        <div class="ctg__title" style="background-image: url('{{asset('storage/'.$operation->shortname.'/images/categories')}}/section-video.jpg')">
             <div class="ctg__title--size bg--yellow bg_primary txt_secondary">video</div>
         </div>
         <div class="ctg__menu ctg__menu--gears" style="background-color: {{$pivot->primary_color}}e6;">
@@ -109,9 +112,9 @@
                 {{--                        <div class="ctg__link_txt"></div>--}}
                 +
             </a>
-            <a href=""
+            <a href="#"
                class="ctg__link w-inline-block">
-                <div class="ctg__link_txt txt_secondary">
+                <div class="ctg__link_txt txt_secondary show-video">
                     CONSULTER LA RUBRIQUE
                 </div>
             </a>
