@@ -108,7 +108,7 @@
             <div class="ctg__title--size bg--yellow bg_primary txt_secondary">
                 <p>
                     La routine de<br>
-                    <em>@neomotive</em>
+                    <em>@neomotive avec Nivea</em>
                 </p>
             </div>
         </div>

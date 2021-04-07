@@ -48,7 +48,7 @@
                     @if ($product->prix_cagnotte_reduite)
                         <div id="prix_cagnotte_reduite">{{explode(',',$product->prix_cagnotte_reduite)[0]}}
                             <sup>€{{explode(',',$product->prix_cagnotte_reduite)[1]}}</sup></div>
-                        <small id="prix_cagnotte_reduite_mention">Prix cagnotte deduite</small>
+                        <small id="prix_cagnotte_reduite_mention">Prix cagnotte déduite</small>
                     @endif
                     <div class="parent_price">
                         <div>

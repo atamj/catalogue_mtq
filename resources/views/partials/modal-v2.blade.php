@@ -30,7 +30,7 @@
                             class="p__cross_bar"></div>
                     </div>
                     <div id="prix_cagnotte_reduite"></div>
-                    <small id="prix_cagnotte_reduite_mention">Prix cagnotte deduite</small>
+                    <small id="prix_cagnotte_reduite_mention">Prix cagnotte déduite</small>
                     <div class="parent_price">
                         <div>
                             <div class="p__price_wrapper p_price_wrapper--detail">
