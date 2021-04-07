@@ -1782,6 +1782,7 @@ h3:hover {
     font-family: "DIN Condensed";
     line-height: 13px;
     font-weight: 400;
+    visibility: hidden;
 }
 
 .product_detail.smartcash div#prix_cagnotte_reduite{
@@ -4919,6 +4920,18 @@ h3:hover {
         top: 12px;
         left: -9px;
     }
+    /*Smart bombe 1*/
+    .spotlight.smartcash .p__old_price.old_price--spotlight{
+        margin-top: 51px;
+    }
+    .spotlight.smartcash .p__old_price.old_price--spotlight .small-cagnotte{
+        margin-top: unset;
+    }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 3.5rem;
+    }
+    /*End Smart bombe 1*/
+
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
