@@ -4850,7 +4850,7 @@ h3:hover {
 @media screen and (min-width: 426px) and (max-width: 768px) {
     /*Tablet*/
     .spotlight {
-        min-height: 720px;
+        min-height: 600px;
     }
 
     .spotlight__container {
@@ -4868,6 +4868,37 @@ h3:hover {
     .categories{
         position: relative;
     }
+    /*Smart bombe1*/
+
+    .spotlight.smartcash .spotlight_price{
+        height: 184px;
+        width: 248px;
+    }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 3rem;
+        line-height: 2em;
+    }
+    .spotlight.smartcash .p__price_cents.price_cents--spotlight{
+        font-size: 1rem;
+        line-height: 4.5em;
+    }
+    .p__price_1st.price_1st--old._1st--spotlight{
+        font-size: 1.5rem;
+    }
+    .spotlight.smartcash .p__old_price.old_price--spotlight .small-cagnotte{
+        margin-top: unset;
+    }
+    .spotlight.smartcash .smartmention{
+        font-size: 80%;
+    }
+    .spotlight.smartcash .smartcash{
+        width: 162px;
+        font-size: 0.9rem;
+    }
+    .spotlight.smartcash .p__old_price.old_price--spotlight{
+        margin-top: 39px;
+    }
+    /*End Smart bombe1*/
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
