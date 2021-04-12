@@ -2698,7 +2698,8 @@ h3:hover {
     }
 
     .menu {
-        top: 180px;
+        /*top: 180px;*/
+        top: 0;
     }
 
     .spotlight_price {
@@ -3559,7 +3560,8 @@ h3:hover {
         position: absolute;
         width: 100%;
         left: 0;
-        top: 150px;
+        /*top: 150px;*/
+        top: 0;
         z-index: 999999;
         height: auto;
     }
@@ -4191,7 +4193,8 @@ h3:hover {
     .menu_list {
         display: none;
         height: 100%;
-        margin-top: 30px;
+        /*margin-top: 30px;*/
+        margin-top: 0;
     }
 
     .link-block-15 {
@@ -4636,6 +4639,12 @@ h3:hover {
         margin: auto;
         flex-wrap: wrap;
     }
+    .menu.active a.menu_btn.w-inline-block{
+        position: absolute;
+        right: 20px;
+        top: 10px;
+        left: unset;
+    }
 
 }
 
@@ -4721,7 +4730,8 @@ h3:hover {
         justify-content: space-between;
     }
     .home .menu{
-        top: 175px;
+        /*top: 175px;*/
+        top: 0;
     }
     .categories{
         position: relative;
@@ -4752,7 +4762,8 @@ h3:hover {
         justify-content: space-between;
     }
     .home .menu{
-        top: 175px;
+        /*top: 175px;*/
+        top: 0;
     }
     .categories{
         position: relative;
@@ -4779,7 +4790,8 @@ h3:hover {
         justify-content: space-between;
     }
     .home .menu{
-        top: 175px;
+        /*top: 175px;*/
+        top: 0;
     }
     .categories{
         position: relative;

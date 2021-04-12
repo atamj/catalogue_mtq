@@ -7,6 +7,11 @@
     @include('partials.head', ['title'=> $pivot->title])
 @endif
 <body class="home">
+@if ($operation->template)
+    @include('partials.menu-'.$operation->template)
+@else
+    @include('partials.menu')
+@endif
 <div data-collapse="medium" data-animation="default" data-duration="400" role="banner" class="nav w-nav"
      style="{{$pivot->header_bgi ? "background-image: url(".asset('storage/'.$operation->shortname.'/images/header_bgi/'.$client->id.'/'.$pivot->header_bgi).")" : ""}}">
     @if ($operation->template)
@@ -15,11 +20,6 @@
         @include('partials.header')
     @endif
 </div>
-@if ($operation->template)
-    @include('partials.menu-'.$operation->template)
-@else
-    @include('partials.menu')
-@endif
 
 
 <div class="hero">

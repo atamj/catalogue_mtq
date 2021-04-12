@@ -21,8 +21,8 @@
     {{-- Modal --}}
     @include('partials.modal-'.$operation->template)
     {{-- End Modal --}}
-    @include('partials.banner-'.$operation->template)
     @include('partials.menu-'.$operation->template)
+    @include('partials.banner-'.$operation->template)
     {{-- Arrow nav --}}
     @include('partials.slide-arrows-'.$operation->template)
     {{-- End Arrow nav--}}
@@ -31,8 +31,8 @@
     {{-- Modal --}}
     @include('partials.modal')
     {{-- End Modal --}}
-    @include('partials.banner')
     @include('partials.menu')
+    @include('partials.banner')
     {{-- Arrow nav --}}
     @include('partials.slide-arrows')
     {{-- End Arrow nav--}}
