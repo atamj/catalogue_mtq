@@ -55,6 +55,7 @@ html {
 
 .menu_list.active {
     display: flex;
+    justify-content: center;
 }
 
 .product_detail {
