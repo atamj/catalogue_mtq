@@ -1,8 +1,4 @@
-.spotlight--img, .p_img--big {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: var(--spotlight-img-background-size)
-}
+
 .p__price_cents.spotlight-02-txt {
     /*color: #5cb1b5;*/
 }

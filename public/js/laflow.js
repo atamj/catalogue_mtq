@@ -43,6 +43,38 @@ $(document).ready(function () {
 
     });
 
+    $(".show-video").click(function(){
+        $(".video-modal")
+            .removeClass("hidden")
+            .addClass("visible")
+            .html("<iframe display:\"block\" src=\"https://www.youtube.com/embed/TTztXVAMi8M\" title=\"Carrefour video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>");
+        $(".hide-video")
+            .removeClass("hidden")
+            .addClass("visible")
+    });
+    $(".hide-video").click(function(){
+        $(".video-modal")
+            .removeClass("visible")
+            .addClass("hidden")
+            .html("");
+        $(".hide-video")
+            .removeClass("visible")
+            .addClass("hidden");
+    });
+    $(".video-modal").click((e)=>{
+        e.target.classList.forEach((item)=>{
+            if (item == 'visible'){
+                $(".video-modal")
+                    .removeClass("visible")
+                    .addClass("hidden")
+                    .html("");
+                $(".hide-video")
+                    .removeClass("visible")
+                    .addClass("hidden");
+            }
+        })
+    })
+
     if (active_section > 1) {
         $("#prev")
             .removeClass("nav-inactive")
@@ -222,6 +254,7 @@ $(document).ready(function () {
         modal.css('opacity', '0')
         modal.css('z-index', '0')
         modal.hide()
+        $('#prix_cagnotte_reduite').html("");
         enabledScroll()
     })
 
@@ -308,6 +341,30 @@ $(document).ready(function () {
         let cible = e.target.closest(".ctg__menu")
         cible.style.display = ""
     })
+/*code iframe*/
+    var standalone = window.navigator.standalone,
+        userAgent = window.navigator.userAgent.toLowerCase(),
+        safari = /safari/.test(userAgent),
+        ios = /iphone|ipod|ipad/.test(userAgent);
+    if (ios) {
+        if (!standalone && safari) {
+            // Safari
+        } else if (!standalone && !safari) {
+            // iOS webview
+            $('body')
+                .css("padding","244px 0 244px 0");
+            //.addClass('in_iframe');
+        }
+    } else {
+        if (userAgent.includes('wv')) {
+            // Android webview
+            $('body')
+                .css("padding","244px 0 244px 0");
+            //.addClass('in_iframe');
+        } else {
+            // Chrome
+        }
+    }
 });
 
 function copy() {

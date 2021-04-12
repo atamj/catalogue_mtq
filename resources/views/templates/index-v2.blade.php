@@ -1,6 +1,5 @@
-<!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Fri Feb 05 2021 18:12:15 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="601d786ad06b3f9b2b0ad294" data-wf-site="601d786ad06b3f2f840ad293">
+<!DOCTYPE html>
+<html>
 @if ($operation->template)
     @include('partials.head-'.$operation->template, ['title'=> $pivot->title])
 @else
@@ -21,7 +20,10 @@
     @endif
 </div>
 
-
+<div class="video-modal hidden"></div>
+<div class="p__more_infos more_infos--detail hide-video hidden">
+    <div class="more_infos_cross cross--detail">+</div>
+</div>
 <div class="hero">
     <div class="voir-cata-container">
         @if(count($categories) > 0)
@@ -100,19 +102,23 @@
         </div>
     @endforeach
     {{--VIDEO--}}
-    <div class="categories" style="display:none">
-        <div class="ctg__title">
-            <div class="ctg__title--size bg--yellow bg_primary txt_secondary">video</div>
+    <div class="categories video" style="">
+        <div class="ctg__title" style="background-image: url('{{asset('storage/'.$operation->shortname.'/images/categories')}}/section-video.jpg')">
+            <div class="ctg__title--size bg--yellow bg_primary txt_secondary">
+                <p>
+                    La routine de<br>
+                    <em>@neomotive avec Nivea</em>
+                </p>
+            </div>
         </div>
-        <div class="ctg__menu ctg__menu--gears" style="background-color: {{$pivot->primary_color}}e6;">
+        <div class="ctg__menu ctg__menu--gears" style="background-color: {{$pivot->secondary_color}}e6;">
             <a data-w-id="Link Block 11" href="#" class="ctg__link close_menu w-inline-block">
-                {{--                        <div class="ctg__link_txt"></div>--}}
                 +
             </a>
-            <a href=""
+            <a href="#"
                class="ctg__link w-inline-block">
-                <div class="ctg__link_txt txt_secondary">
-                    CONSULTER LA RUBRIQUE
+                <div class="ctg__link_txt txt_primary show-video">
+                    Regarder la vidéo
                 </div>
             </a>
 

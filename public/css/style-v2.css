@@ -9,6 +9,7 @@
     --spotlight-img-height: 450px;
     --spotlight-img-top: 140px;
     --spotlight-img-background-size: contain;
+    --detail-img-background-size: contain;
 
     /*p__title--spotlight*/
     --title-spotlight-fz: 70px;
@@ -44,7 +45,11 @@
         --product-bgs: 90%;
     }
 }
-
+@media screen and (max-width: 425px){
+    /*:root{
+        --spotlight-img-background-size: 130%;
+    }*/
+}
 @media screen and (min-width: 426px) and (max-width: 768px) {
 
     :root {
@@ -154,6 +159,14 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Dragon is Coming';
+    src: url('../fonts/DragonisComing.woff2') format('woff2'),
+    url('../fonts/DragonisComing.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
 .bg_primary {
     background-color: var(--primary) !important;
 }
@@ -951,7 +964,8 @@ h3:hover {
     border: 1px none #000;
     background-color: transparent;
 
-    background-position: -55% 0%;
+    /*background-position: -55% 0%;*/
+    background-position: -55% 30%;
     background-size: var(--product-bgs);
     background-repeat: no-repeat;
 }
@@ -1197,8 +1211,7 @@ h3:hover {
 }*/
 
 .p__price {
-    transform: translateX(30px);
-    transform: translateX(30px);
+    transform: translateX(13px);
     color: var(--prduct-color);
     position: absolute;
     left: auto;
@@ -1371,8 +1384,11 @@ h3:hover {
     font-family: "DIN Condensed";
     line-height: 13px;
     font-weight: 400;
+    visibility: hidden;
 }
-
+.spotlight.smartcash .smartcash span{
+    visibility: hidden;
+}
 .product .smartcash span i {
     font-size: 9px;
     font-weight: 300;
@@ -1713,7 +1729,9 @@ h3:hover {
 .product_detail.smartcash{
     background-color: rgba(255,  255, 255, 0.95)!important;
 }
-
+.product_detail.smartcash .share-bn__wrapper svg path{
+    fill: var(--smartcash);
+}
 .product_detail.smartcash .parent_price{
     display: grid;
     grid-template-columns: auto auto;
@@ -1723,6 +1741,9 @@ h3:hover {
     display: none;
 }
 .product_detail.smartcash .prix_cagnotte_reduite, .product_detail.smartcash .prix_cagnotte_reduite_mention, .product_detail.smartcash .prix_caise_smart_mention, .product_detail.smartcash #prix_caise_smart_mention, .product_detail.smartcash #prix_cagnotte_reduite_mention{
+    display: block;
+}
+.product.bombe2smartcash .small-cagnotte, .product.smartcash .small-cagnotte{
     display: block;
 }
 .product_detail.smartcash .close_window{
@@ -1735,7 +1756,8 @@ h3:hover {
     color: #000000;
 }
 .product_detail.smartcash #photo_principale{
-    width: 69%;
+    width: 68%;
+    height: 86%;
 }
 .product_detail.smartcash .link-block-11{
     color:var(--smartcash);
@@ -1768,6 +1790,7 @@ h3:hover {
     font-family: "DIN Condensed";
     line-height: 13px;
     font-weight: 400;
+    visibility: hidden;
 }
 
 .product_detail.smartcash div#prix_cagnotte_reduite{
@@ -1785,7 +1808,8 @@ h3:hover {
     border-radius: 50%;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    /*background-size: contain;*/
+    background-size: 120%;
     margin-bottom: 2px;
 }
 
@@ -1978,7 +2002,14 @@ h3:hover {
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    /*background-size: var(--spotlight-img-background-size);*/
+    background-size: var(--spotlight-img-background-size);
+}
+.spotlight--img, .p_img--big {
+     background-repeat: no-repeat;
+     background-position: center;
+ }
+.p_img--big{
+    background-size: var(--detail-img-background-size)
 }
 
 .spotlight--img.spot--eveil_img {
@@ -3055,7 +3086,7 @@ h3:hover {
 
     .p__title.p_title--detail {
         font-size: 60px;
-        line-height: 30px;
+        line-height: 1.1em;
     }
 
     .product_detail.smartcash .parent_price{
@@ -4066,7 +4097,7 @@ h3:hover {
         position: relative;
         width: 150px;
         height: 150px;
-        padding-left: 15px;
+        /*padding-left: 15px;*/
     }
 
     .spotlight__container {
@@ -4335,7 +4366,16 @@ h3:hover {
         height: 244px;
     }
 }
-
+@media screen and (min-width: 1025px){
+    .p_img--big {
+        width: 660px;
+        height: 718px;
+    }
+    .product_detail.smartcash #photo_principale, .product_detail #photo_principale{
+        width: 38%;
+        height: 86%;
+    }
+}
 @media screen  and (max-width: 1440px) {
     .spotlight__container {
         justify-content: flex-start;
@@ -4622,7 +4662,7 @@ h3:hover {
     }
     .p__infos.p_infos--details{
         font-size: 1rem;
-        line-height: 1.5em;
+        line-height: 2em;
     }
     .list {
         border: none;
@@ -4638,6 +4678,16 @@ h3:hover {
         flex-direction: row;
         margin: auto;
         flex-wrap: wrap;
+    }
+
+    .categories.video .ctg__title{
+        background-position: 35%;
+    }
+    .categories.video .ctg__title .ctg__title--size{
+        width: auto; background-color: unset!important;
+    }
+    .categories.video .ctg__title .ctg__title--size > p{
+        font-size: 2rem;line-height: 2rem;
     }
     .menu.active a.menu_btn.w-inline-block{
         position: absolute;
@@ -4797,11 +4847,41 @@ h3:hover {
         position: relative;
     }
 }
+@media screen and (max-width: 425px){
+    .spotlight.smartcash .spotlight_price{
+        height: 164px;
+        width: 138px;
+    }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 3rem;
+        line-height: 2rem;
+    }
+    .spotlight.smartcash .p__price_cents.price_cents--spotlight{
+        font-size: 1rem;
+        line-height: 3.6em;
+    }
+    .p__price_1st.price_1st--old._1st--spotlight{
+        font-size: 1.5rem;
+    }
+    .spotlight.smartcash .p__old_price.old_price--spotlight .small-cagnotte small{
+        font-size: 68%;
+    }
+    .spotlight.smartcash .smartmention{
+        font-size: 80%;
+    }
+    .spotlight.smartcash .smartcash{
+        width: 162px;
+        font-size: 0.9rem;
+    }
+    /*.spotlight--img{
+        background-position: -50px -58px;
+    }*/
 
+}
 @media screen and (min-width: 426px) and (max-width: 768px) {
     /*Tablet*/
     .spotlight {
-        min-height: 720px;
+        min-height: 600px;
     }
 
     .spotlight__container {
@@ -4819,6 +4899,37 @@ h3:hover {
     .categories{
         position: relative;
     }
+    /*Smart bombe1*/
+
+    .spotlight.smartcash .spotlight_price{
+        height: 184px;
+        width: 248px;
+    }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 3rem;
+        line-height: 2em;
+    }
+    .spotlight.smartcash .p__price_cents.price_cents--spotlight{
+        font-size: 1rem;
+        line-height: 4.5em;
+    }
+    .p__price_1st.price_1st--old._1st--spotlight{
+        font-size: 1.5rem;
+    }
+    .spotlight.smartcash .p__old_price.old_price--spotlight .small-cagnotte{
+        margin-top: unset;
+    }
+    .spotlight.smartcash .smartmention{
+        font-size: 80%;
+    }
+    .spotlight.smartcash .smartcash{
+        width: 162px;
+        font-size: 0.9rem;
+    }
+    .spotlight.smartcash .p__old_price.old_price--spotlight{
+        margin-top: 39px;
+    }
+    /*End Smart bombe1*/
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
@@ -4839,6 +4950,18 @@ h3:hover {
         top: 12px;
         left: -9px;
     }
+    /*Smart bombe 1*/
+    .spotlight.smartcash .p__old_price.old_price--spotlight{
+        margin-top: 51px;
+    }
+    .spotlight.smartcash .p__old_price.old_price--spotlight .small-cagnotte{
+        margin-top: unset;
+    }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 3.5rem;
+    }
+    /*End Smart bombe 1*/
+
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
@@ -4858,13 +4981,25 @@ h3:hover {
         top: 12px;
         left: -9px;
     }
-    /*.spotlight{
-        min-height: 784px;
-    }*/
+    /*Smart bombe 1*/
+    .spotlight.smartcash .p__old_price.old_price--spotlight{
+        margin-top: 51px;
+    }
+    .spotlight.smartcash .p__old_price.old_price--spotlight .small-cagnotte{
+        margin-top: unset;
+    }
+    .spotlight.smartcash .p__price_1st.price_1st--spotlight{
+        font-size: 3.5rem;
+        line-height: 2em;
+    }
+    .spotlight.smartcash .p__price_cents.price_cents--spotlight{
+        line-height: 3em;
+    }
+    /*End Smart bombe 1*/
 }
 
 @media screen and (min-width: 1441px) {
-    /*4K and more*/
+/*4K and more*/
     .p__price_1st.price_1st--spotlight {
         font-size: 8rem;
     }

@@ -30,7 +30,7 @@
                             class="p__cross_bar"></div>
                     </div>
                     <div id="prix_cagnotte_reduite"></div>
-                    <small id="prix_cagnotte_reduite_mention">Prix cagnotte deduite</small>
+                    <small id="prix_cagnotte_reduite_mention">Prix cagnotte déduite</small>
                     <div class="parent_price">
                         <div>
                             <div class="p__price_wrapper p_price_wrapper--detail">
@@ -66,8 +66,8 @@
                             @include('partials.share')
 
                             <a href="#" class="link-block-11 w-inline-block" onclick="(e)=>e.preventDefault()">
-                                <div class="share-bn__wrapper"><img src="{{asset('icons/share-icon.svg')}}"
-                                                                    loading="lazy" alt="">
+                                <div class="share-bn__wrapper">
+                                    <svg height="20" viewBox="0 0 18.462 20" width="18.462" xmlns="http://www.w3.org/2000/svg"><path d="m79.385 48a3.089 3.089 0 0 0 -3.077 3.077 3.046 3.046 0 0 0 .1.79l-7.118 4.006a3.077 3.077 0 1 0 0 4.255l7.122 4.006a3.046 3.046 0 0 0 -.1.79 3.075 3.075 0 0 0 6.15.078.769.769 0 0 0 0-.156 3.069 3.069 0 0 0 -5.287-2.05l-7.123-4.007a3.049 3.049 0 0 0 .1-.71.769.769 0 0 0 0-.156 3.048 3.048 0 0 0 -.1-.71l7.123-4.007a3.069 3.069 0 0 0 5.287-2.05.769.769 0 0 0 0-.156 3.087 3.087 0 0 0 -3.077-3zm0 1.538a1.538 1.538 0 1 1 -1.311 2.351q-.014-.03-.03-.059t-.031-.051a1.55 1.55 0 0 1 -.167-.7 1.527 1.527 0 0 1 1.539-1.541zm-12.308 6.924a1.528 1.528 0 0 1 1.311.726q.014.03.03.059t.031.051a1.568 1.568 0 0 1 0 1.407q-.017.025-.031.051t-.03.059a1.54 1.54 0 1 1 -1.311-2.351zm12.308 6.923a1.538 1.538 0 1 1 -1.538 1.538 1.55 1.55 0 0 1 .167-.7q.017-.025.031-.051t.03-.059a1.528 1.528 0 0 1 1.31-.728z" fill="#fff" transform="translate(-64 -48)"/></svg>
                                 </div>
                                 <div class="text-block-11" id="share">Partager</div>
                             </a>
